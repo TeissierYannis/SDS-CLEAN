@@ -19,9 +19,6 @@
         <testsuite name="unit">
             <directory>domain/tests</directory>
         </testsuite>
-        <testsuite name="integration">
-            <directory>tests/IntegrationTests</directory>
-        </testsuite>
         <testsuite name="system">
             <directory>tests/SystemTests</directory>
         </testsuite>
