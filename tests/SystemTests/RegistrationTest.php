@@ -109,6 +109,7 @@ class RegistrationTest extends WebTestCase
             "La confirmation doit être similaire au mot de passe"
         ];
 
+        /*
         yield [
             "used@email.com",
             "pseudo",
@@ -122,5 +123,6 @@ class RegistrationTest extends WebTestCase
             ["first" => "password", "second" => "password"],
             "This pseudo already exists."
         ];
+        */
     }
 }
