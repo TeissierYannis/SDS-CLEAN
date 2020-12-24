@@ -1,18 +1,16 @@
 <?php
 
-namespace TBoileau\CodeChallenge\Domain\Tests\Security;
+namespace TYannis\SDS\Domain\Tests\Security;
 
 use Assert\AssertionFailedException;
 use Generator;
-use Ramsey\Uuid\Uuid;
+use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\UuidInterface;
-use TYannis\SDS\Domain\Security\Entity\User;
-use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 use TYannis\SDS\Domain\Security\Presenter\RegistrationPresenterInterface;
 use TYannis\SDS\Domain\Security\Request\RegistrationRequest;
 use TYannis\SDS\Domain\Security\Response\RegistrationResponse;
 use TYannis\SDS\Domain\Security\UseCase\Registration;
-use PHPUnit\Framework\TestCase;
+use TYannis\SDS\Domain\Tests\Fixtures\Adapter\UserRepository;
 
 /**
  * Class RegistrationTest
@@ -42,21 +40,7 @@ class RegistrationTest extends TestCase
             }
         };
 
-        $userGateway = new class () implements UserGateway {
-            public function isEmailUnique(?string $email): bool
-            {
-                return !in_array($email, ["used@email.com"]);
-            }
-
-            public function isPseudoUnique(?string $pseudo): bool
-            {
-                return !in_array($pseudo, ["used_pseudo"]);
-            }
-
-            public function register(User $user): void
-            {
-            }
-        };
+        $userGateway = new UserRepository();
 
         $this->useCase = new Registration($userGateway);
     }
@@ -76,9 +60,9 @@ class RegistrationTest extends TestCase
 
     /**
      * @dataProvider provideFailedRequestData
-     * @param        string $email
-     * @param        string $pseudo
-     * @param        string $plainPassword
+     * @param string $email
+     * @param string $pseudo
+     * @param string $plainPassword
      */
     public function testFailedRequest(string $email, string $pseudo, string $plainPassword): void
     {

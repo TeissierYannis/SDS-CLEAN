@@ -12,6 +12,13 @@ use TYannis\SDS\Domain\Security\Entity\User;
 interface UserGateway
 {
     /**
+     * @param string $email
+     *
+     * @return User|null
+     */
+    public function getUserByEmail(string $email): ?User;
+
+    /**
      * @param  string|null $email
      * @return bool
      */

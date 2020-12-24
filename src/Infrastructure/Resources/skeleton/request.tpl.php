@@ -1,4 +1,6 @@
-<?php echo "<?php\n" ?>
+<?php
+
+echo "<?php\n" ?>
 
 namespace <?php echo $namespace; ?>;
 

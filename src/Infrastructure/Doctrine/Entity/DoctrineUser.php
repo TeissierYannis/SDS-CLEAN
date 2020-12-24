@@ -15,7 +15,7 @@ class DoctrineUser
     /**
      * @var UuidInterface
      * @ORM\Id
-     * @ORM\Column
+     * @ORM\Column(type="uuid")
      */
     private UuidInterface $id;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Test\Adapter\Repository;
+namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
 use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
@@ -8,12 +8,13 @@ use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 
 /**
  * Class UserRepository
- * @package App\Infrastructure\Test\Adapter\Repository
+ * @package TYannis\SDS\Domain\Tests\Fixtures\Adapter
  */
 class UserRepository implements UserGateway
 {
     /**
-     * @inheritDoc
+     * @param string|null $email
+     * @return bool
      */
     public function isEmailUnique(?string $email): bool
     {
@@ -21,7 +22,8 @@ class UserRepository implements UserGateway
     }
 
     /**
-     * @inheritDoc
+     * @param string|null $pseudo
+     * @return bool
      */
     public function isPseudoUnique(?string $pseudo): bool
     {
@@ -29,12 +31,16 @@ class UserRepository implements UserGateway
     }
 
     /**
-     * @inheritDoc
+     * @param User $user
      */
     public function register(User $user): void
     {
     }
 
+    /**
+     * @param string $email
+     * @return User|null
+     */
     public function getUserByEmail(string $email): ?User
     {
         if ($email !== "used@email.com") {
