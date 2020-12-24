@@ -61,31 +61,31 @@ class MakeUseCase extends AbstractMaker
 
         $testClassNameDetails = $generator->createClassNameDetails(
             $input->getArgument('name'),
-            'TBoileau\\CodeChallenge\\Domain\\Tests',
+            'TYannis\\SDS\\Domain\\Tests',
             'Test'
         );
 
         $useCaseClassNameDetails = $generator->createClassNameDetails(
             $input->getArgument('name'),
-            sprintf('TBoileau\\CodeChallenge\\Domain\\%s\\UseCase', Str::asCamelCase($input->getArgument("domain"))),
+            sprintf('TYannis\\SDS\\Domain\\%s\\UseCase', Str::asCamelCase($input->getArgument("domain"))),
             ''
         );
 
         $requestClassNameDetails = $generator->createClassNameDetails(
             $input->getArgument('name'),
-            sprintf('TBoileau\\CodeChallenge\\Domain\\%s\\Request', Str::asCamelCase($input->getArgument("domain"))),
+            sprintf('TYannis\\SDS\\Domain\\%s\\Request', Str::asCamelCase($input->getArgument("domain"))),
             'Request'
         );
 
         $responseClassNameDetails = $generator->createClassNameDetails(
             $input->getArgument('name'),
-            sprintf('TBoileau\\CodeChallenge\\Domain\\%s\\Response', Str::asCamelCase($input->getArgument("domain"))),
+            sprintf('TYannis\\SDS\\Domain\\%s\\Response', Str::asCamelCase($input->getArgument("domain"))),
             'Response'
         );
 
         $presenterClassNameDetails = $generator->createClassNameDetails(
             $input->getArgument('name'),
-            sprintf('TBoileau\\CodeChallenge\\Domain\\%s\\Presenter', Str::asCamelCase($input->getArgument("domain"))),
+            sprintf('TYannis\\SDS\\Domain\\%s\\Presenter', Str::asCamelCase($input->getArgument("domain"))),
             'PresenterInterface'
         );
 
@@ -99,7 +99,7 @@ class MakeUseCase extends AbstractMaker
             [
                 'className' => $useCaseClassNameDetails->getShortName(),
                 "namespace" => sprintf(
-                    'TBoileau\\CodeChallenge\\Domain\\%s\\UseCase',
+                    'TYannis\\SDS\\Domain\\%s\\UseCase',
                     Str::asCamelCase($input->getArgument("domain"))
                 ),
                 'requestClassName' => $requestClassNameDetails->getShortName(),
@@ -118,7 +118,7 @@ class MakeUseCase extends AbstractMaker
             [
                 'className' => $requestClassNameDetails->getShortName(),
                 "namespace" => sprintf(
-                    'TBoileau\\CodeChallenge\\Domain\\%s\\Request',
+                    'TYannis\\SDS\\Domain\\%s\\Request',
                     Str::asCamelCase($input->getArgument("domain"))
                 )
             ]
@@ -134,7 +134,7 @@ class MakeUseCase extends AbstractMaker
             [
                 'className' => $responseClassNameDetails->getShortName(),
                 "namespace" => sprintf(
-                    'TBoileau\\CodeChallenge\\Domain\\%s\\Response',
+                    'TYannis\\SDS\\Domain\\%s\\Response',
                     Str::asCamelCase($input->getArgument("domain"))
                 )
             ]
@@ -150,7 +150,7 @@ class MakeUseCase extends AbstractMaker
             [
                 'className' => $presenterClassNameDetails->getShortName(),
                 "namespace" => sprintf(
-                    'TBoileau\\CodeChallenge\\Domain\\%s\\Presenter',
+                    'TYannis\\SDS\\Domain\\%s\\Presenter',
                     Str::asCamelCase($input->getArgument("domain"))
                 ),
                 'responseClassName' => $responseClassNameDetails->getShortName()
@@ -167,7 +167,7 @@ class MakeUseCase extends AbstractMaker
             [
                 'className' => $testClassNameDetails->getShortName(),
                 "namespace" => sprintf(
-                    'TBoileau\\CodeChallenge\\Domain\\Tests\\%s',
+                    'TYannis\\SDS\\Domain\\Tests\\%s',
                     Str::asCamelCase($input->getArgument("domain"))
                 ),
                 'useCaseClassName' => $useCaseClassNameDetails->getShortName(),

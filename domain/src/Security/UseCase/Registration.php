@@ -3,6 +3,7 @@
 namespace TYannis\SDS\Domain\Security\UseCase;
 
 use Assert\AssertionFailedException;
+use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 use TYannis\SDS\Domain\Security\Presenter\RegistrationPresenterInterface;
@@ -32,7 +33,7 @@ class Registration
     }
 
     /**
-     * @param RegistrationRequest            $request
+     * @param RegistrationRequest $request
      * @param RegistrationPresenterInterface $presenter
      *
      * @throws AssertionFailedException

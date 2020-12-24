@@ -53,4 +53,21 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
         $this->_em->persist($doctrineUser);
         $this->_em->flush();
     }
+
+    public function getUserByEmail(string $email): ?User
+    {
+        /** @var DoctrineUser $doctrineUser */
+        $doctrineUser = $this->findOneByEmail($email);
+
+        if ($doctrineUser === null) {
+            return null;
+        }
+
+        return new User(
+            $doctrineUser->getId(),
+            $doctrineUser->getEmail(),
+            $doctrineUser->getPseudo(),
+            $doctrineUser->getPassword()
+        );
+    }
 }
