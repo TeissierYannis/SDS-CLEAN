@@ -29,7 +29,6 @@ class Create
         $this->articleGateway = $articleGateway;
     }
 
-
     /**
      * @param CreateRequest $request
      * @param CreatePresenterInterface $presenter

@@ -8,6 +8,11 @@ login:
     methods: GET|POST
     controller: App\UserInterface\Controller\LoginController
 
+article_create:
+    path: /articles/create
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Article\CreateController
+
 home:
     path: /
     methods: GET

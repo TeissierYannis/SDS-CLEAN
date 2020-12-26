@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
 use TYannis\SDS\Domain\Blog\Entity\Article;

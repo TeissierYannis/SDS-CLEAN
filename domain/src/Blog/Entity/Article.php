@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TYannis\SDS\Domain\Blog\Entity;
 
 use Ramsey\Uuid\Uuid;

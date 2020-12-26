@@ -28,6 +28,17 @@ class CreateRequest
     private Category $category;
 
     /**
+     * @param string $title
+     * @param string $content
+     * @param Category $category
+     * @return static
+     */
+    public static function create(string $title, string $content, Category $category): self
+    {
+        return new self($title, $content, $category);
+    }
+
+    /**
      * CreateRequest constructor.
      * @param string $title
      * @param string $content
@@ -74,9 +85,5 @@ class CreateRequest
 
         Assertion::notBlank($this->content);
         Assertion::minLength($this->content, 3);
-
-        // TODO Peut être enlever la validation de cet endroit
-        Assertion::notBlank($this->category->getTitle());
-        Assertion::minLength($this->category->getTitle(), 3);
     }
 }
