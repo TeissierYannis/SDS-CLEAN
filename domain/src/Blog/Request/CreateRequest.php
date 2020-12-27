@@ -85,5 +85,8 @@ class CreateRequest
 
         Assertion::notBlank($this->content);
         Assertion::minLength($this->content, 3);
+
+        Assertion::notBlank($this->category->getTitle());
+        Assertion::minLength($this->category->getTitle(), 3);
     }
 }
