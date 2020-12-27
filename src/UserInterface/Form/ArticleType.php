@@ -42,7 +42,7 @@ class ArticleType extends AbstractType
 
             ])->add('category', EntityType::class, [
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'class' => DoctrineCategory::class,
                 'choice_label' => 'title',
                 'placeholder' => 'Choisir une catégorie',
