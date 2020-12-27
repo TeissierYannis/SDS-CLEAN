@@ -30,7 +30,7 @@ class RegistrationTest extends WebTestCase
 
         $client->submit($form);
 
-        $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
     }
 
     /**
@@ -123,6 +123,7 @@ class RegistrationTest extends WebTestCase
             ["first" => "password", "second" => "password"],
             "This pseudo already exists."
         ];
+
         */
     }
 }

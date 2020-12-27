@@ -4,9 +4,15 @@
     {% if vm.errorMessage is not null %}
         {{ vm.errorMessage }}
     {% endif %}
-    <form method="post">
-        <input name="username" type="email" value="{{ vm.lastUsername }}" placeholder="Adresse email" required />
-        <input name="password" type="password" required />
+    <form method="post" class="login-form">
+        <label>
+            Adresse email :
+            <input name="username" type="email" value="{{ vm.lastUsername }}" placeholder="Adresse email" required />
+        </label>
+        <label>
+            Mot de passe :
+            <input name="password" type="password" required />
+        </label>
         <button>Se connecter</button>
     </form>
 

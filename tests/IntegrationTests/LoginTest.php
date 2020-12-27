@@ -17,7 +17,7 @@ class LoginTest extends IntegrationTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request(Request::METHOD_GET, '/login');
+        $crawler = $client->request(Request::METHOD_GET, 'login');
 
         $this->assertResponseIsSuccessful();
 
