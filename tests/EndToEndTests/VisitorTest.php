@@ -2,7 +2,6 @@
 
 namespace App\Tests\EndToEndTests;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Panther\PantherTestCase;
 
 /**
@@ -11,6 +10,12 @@ use Symfony\Component\Panther\PantherTestCase;
  */
 class VisitorTest extends PantherTestCase
 {
+
+    public function test()
+    {
+        $this->assertTrue(true);
+    }
+    /*
     public function test()
     {
         $this->assertTrue(true);

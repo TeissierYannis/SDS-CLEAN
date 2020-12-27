@@ -123,6 +123,7 @@ class RegistrationTest extends WebTestCase
             ["first" => "password", "second" => "password"],
             "This pseudo already exists."
         ];
-         **/
+
+        */
     }
 }
