@@ -6,6 +6,7 @@ use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
 use App\UserInterface\DataTransferObject\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -20,10 +21,12 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', EntityType::class, [
-               'class' => DoctrineCategory::class,
-                'choice_label' => 'title',
-                'label' => 'Titre de la catégorie'
+            ->add('title', TextType::class, [
+                'label' => 'Titre de la catégorie',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
+                ]
             ]);
     }
     public function configureOptions(OptionsResolver $resolver)
