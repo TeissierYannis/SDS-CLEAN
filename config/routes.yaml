@@ -13,6 +13,11 @@ article_create:
     methods: GET|POST
     controller: App\UserInterface\Controller\Article\CreateController
 
+category_create:
+    path: /categories/create
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Category\CreateController
+
 logout:
     path: /logout
     methods: GET

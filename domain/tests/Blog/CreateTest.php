@@ -12,6 +12,7 @@ use TYannis\SDS\Domain\Blog\Presenter\CreatePresenterInterface;
 use TYannis\SDS\Domain\Blog\Request\CreateRequest;
 use TYannis\SDS\Domain\Blog\Response\CreateResponse;
 use TYannis\SDS\Domain\Blog\UseCase\Create;
+use TYannis\SDS\Domain\Blog\UseCase\CreateCategory;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\ArticleRepository;
 
 /**
@@ -46,7 +47,7 @@ class CreateTest extends TestCase
 
     public function testSuccessful(): void
     {
-        $request = new CreateRequest('Article title', 'My content', Category::create('My category'));
+        $request = CreateRequest::create('Article title', 'My content', Category::create('My category'));
 
 
         $this->useCase->execute($request, $this->presenter);
