@@ -6,10 +6,12 @@ use App\UserInterface\DataTransferObject\Article;
 use App\UserInterface\Form\ArticleType;
 use App\UserInterface\Presenter\Article\CreatePresenter;
 use Assert\AssertionFailedException;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -50,7 +52,8 @@ class CreateController
         FormFactoryInterface $formFactory,
         Environment $twig,
         UrlGeneratorInterface $urlGenerator
-    ) {
+    )
+    {
         $this->formFactory = $formFactory;
         $this->twig = $twig;
         $this->urlGenerator = $urlGenerator;
@@ -80,12 +83,22 @@ class CreateController
             if (is_string($category)) {
                 $category = Category::create($category);
             } else {
-                $category = new Category($category->getId(), $category->getTitle());
-            }
-            $request = CreateRequest::create($article->getTitle(), $article->getContent(), $category);
-            $create->execute($request, $presenter);
 
-            return new RedirectResponse($this->urlGenerator->generate('home'));
+                if (!empty($category)) {
+                    $category = new Category($category->getId(), $category->getTitle());
+                }else{
+                    $form->addError(new FormError('Category cannot be null'));
+                    $flashBag = new FlashBag();
+                    $flashBag->clear();
+                }
+            }
+
+            if ($form->getErrors(true)->count() === 0) {
+                $request = CreateRequest::create($article->getTitle(), $article->getContent(), $category);
+                $create->execute($request, $presenter);
+
+                return new RedirectResponse($this->urlGenerator->generate('home'));
+            }
         }
         return new Response($this->twig->render('article/create.html.twig', [
             'form' => $form->createView()
