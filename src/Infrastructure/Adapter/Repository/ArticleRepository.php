@@ -30,6 +30,21 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
+     * @param Article $article
+     * @throws ORMException
+     */
+    public function create(Article $article): void
+    {
+        $doctrineArticle = new DoctrineArticle();
+        self::hydrateArticle($doctrineArticle, $article);
+
+        $this->findCategoryFromArticle($article, $doctrineArticle);
+
+        $this->_em->persist($doctrineArticle);
+        $this->_em->flush();
+    }
+
+    /**
      * @param DoctrineArticle $doctrineArticle
      * @param Article $article
      */
@@ -62,21 +77,6 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
         }
 
         $doctrineArticle->setCategory($category);
-    }
-
-    /**
-     * @param Article $article
-     * @throws ORMException
-     */
-    public function create(Article $article): void
-    {
-        $doctrineArticle = new DoctrineArticle();
-        self::hydrateArticle($doctrineArticle, $article);
-
-        $this->findCategoryFromArticle($article, $doctrineArticle);
-
-        $this->_em->persist($doctrineArticle);
-        $this->_em->flush();
     }
 
     /**
@@ -119,5 +119,44 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
             $doctrineArticle->getContent(),
             $category
         );
+    }
+
+    /**
+     * @param int $page
+     * @param int $limit
+     * @param string $field
+     * @param string $order
+     * @return Article[]
+     */
+    public function getArticles(int $page, int $limit, string $field, string $order): array
+    {
+        $fields = [
+            'title' => 'q.title'
+        ];
+
+        $articles = $this->createQueryBuilder('q')
+            ->join('q.category', 'a')
+            ->orderBy($fields[$field], $order)
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return array_map(
+            fn(DoctrineArticle $article) => new Article(
+                $article->getId(),
+                $article->getTitle(),
+                $article->getContent(),
+                new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
+            ),
+            $articles);
+    }
+
+    /**
+     * @return int
+     */
+    public function countArticles(): int
+    {
+        return $this->count([]);
     }
 }

@@ -26,4 +26,18 @@ interface ArticleGateway
      * @return Article|null
      */
     public function getArticleById(UuidInterface $id): ?Article;
+
+    /**
+     * @param int $page
+     * @param int $limit
+     * @param string $field
+     * @param string $order
+     * @return Article[]
+     */
+    public function getArticles(int $page, int $limit, string $field, string $order): array;
+
+    /**
+     * @return int
+     */
+    public function countArticles(): int;
 }
