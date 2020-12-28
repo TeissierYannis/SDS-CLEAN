@@ -10,6 +10,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\HttpFoundation\Response;
 use TYannis\SDS\Domain\Blog\Entity\Category;
 use TYannis\SDS\Domain\Blog\Gateway\CategoryGateway;
@@ -26,7 +27,17 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DoctrineArticle::class);
+        parent::__construct($registry, DoctrineCategory::class);
+    }
+
+    /**
+     * @param DoctrineCategory $doctrineCategory
+     * @param Category $category
+     */
+    private static function hydrateArticle(DoctrineCategory $doctrineCategory, Category $category): void
+    {
+        $doctrineCategory->setId($category->getId());
+        $doctrineCategory->setTitle($category->getTitle());
     }
 
     /**
@@ -45,10 +56,42 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
         }
 
         $doctrineCategory = new DoctrineCategory();
-        $doctrineCategory->setId($category->getId());
-        $doctrineCategory->setTitle($category->getTitle());
+        self::hydrateArticle($doctrineCategory, $category);
 
         $this->_em->persist($doctrineCategory);
         $this->_em->flush();
+    }
+
+    /**
+     * @param Category $category
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function update(Category $category): void
+    {
+        $doctrineCategory = $this->find($category->getId());
+
+        self::hydrateArticle($doctrineCategory, $category);
+
+        $this->_em->persist($doctrineCategory);
+        $this->_em->flush();
+    }
+
+    /**
+     * @param UuidInterface $id
+     * @return Category|null
+     */
+    public function getCategoryById(UuidInterface $id): ?Category
+    {
+        $doctrineCategory = $this->find($id);
+
+        if ($doctrineCategory === null) {
+            return null;
+        }
+
+        return new Category(
+            $doctrineCategory->getId(),
+            $doctrineCategory->getTitle()
+        );
     }
 }

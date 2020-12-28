@@ -62,6 +62,10 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
+        "clean-code": [
+            "phpcbf --standard=PSR12 tests src domain",
+            "phpcs --standard=PSR12 tests src domain"
+        ],
         "database": [
             "@database-dev",
             "@database-panther",

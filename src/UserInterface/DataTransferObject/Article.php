@@ -29,7 +29,7 @@ class Article
         $newArticle = new self();
         $newArticle->setTitle($article->getTitle());
         $newArticle->setContent($article->getContent());
-        $newArticle->setCategory(new Category($article->getCategory()));
+        $newArticle->setCategory(new Category($article->getCategory()->getId(), $article->getCategory()->getTitle()));
 
         return $newArticle;
     }

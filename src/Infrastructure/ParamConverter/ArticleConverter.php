@@ -1,13 +1,12 @@
 <?php
 
-
 namespace App\Infrastructure\ParamConverter;
-
 
 use Ramsey\Uuid\Uuid;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use TYannis\SDS\Domain\Blog\Entity\Article;
+use TYannis\SDS\Domain\Blog\Entity\Category;
 use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
 
 class ArticleConverter implements \Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface
@@ -34,10 +33,10 @@ class ArticleConverter implements \Sensio\Bundle\FrameworkExtraBundle\Request\Pa
     {
 
         $request->attributes
-            ->set('domainArticle',
+            ->set(
+                'domainArticle',
                 $this->articleGateway
-                    ->getArticleById(Uuid::fromString($request->get('id'))
-                    )
+                    ->getArticleById(Uuid::fromString($request->get('id')))
             );
     }
 

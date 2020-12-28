@@ -23,6 +23,11 @@ category_create:
     methods: GET|POST
     controller: App\UserInterface\Controller\Category\CreateController
 
+category_update:
+    path: /categories/{id}/update
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Category\UpdateController
+
 logout:
     path: /logout
     methods: GET

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\UserInterface\Controller\Article;
+namespace App\UserInterface\Controller\Category;
 
-use App\UserInterface\DataTransferObject\Article;
-use App\UserInterface\Form\ArticleType;
-use App\UserInterface\Presenter\Article\UpdatePresenter;
+use App\UserInterface\DataTransferObject\Category;
+use App\UserInterface\Form\CategoryType;
+use App\UserInterface\Presenter\Category\UpdateCategoryPresenter;
 use Assert\AssertionFailedException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -18,14 +17,14 @@ use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
-use TYannis\SDS\Domain\Blog\Entity\Category;
-use TYannis\SDS\Domain\Blog\Request\UpdateRequest;
-use TYannis\SDS\Domain\Blog\UseCase\Update;
+use TYannis\SDS\Domain\Blog\Entity\Category as DomainCategory;
+use TYannis\SDS\Domain\Blog\Request\CreateCategoryRequest;
+use TYannis\SDS\Domain\Blog\Request\UpdateCategoryRequest;
+use TYannis\SDS\Domain\Blog\UseCase\UpdateCategory;
 
 /**
  * Class UpdateController
- * @package App\UserInterface\Controller\Article
+ * @package App\UserInterface\Controller\Category
  */
 class UpdateController
 {
@@ -45,7 +44,7 @@ class UpdateController
     private UrlGeneratorInterface $urlGenerator;
 
     /**
-     * UpdateController constructor.
+     * CreateController constructor.
      * @param FormFactoryInterface $formFactory
      * @param Environment $twig
      * @param UrlGeneratorInterface $urlGenerator
@@ -54,17 +53,18 @@ class UpdateController
         FormFactoryInterface $formFactory,
         Environment $twig,
         UrlGeneratorInterface $urlGenerator
-    ) {
+    )
+    {
         $this->formFactory = $formFactory;
         $this->twig = $twig;
         $this->urlGenerator = $urlGenerator;
     }
 
     /**
-     * @param DomainArticle $domainArticle
+     * @param DomainCategory $domainCategory
      * @param Request $request
-     * @param Update $create
-     * @param UpdatePresenter $presenter
+     * @param UpdateCategory $create
+     * @param UpdateCategoryPresenter $presenter
      * @return RedirectResponse|Response
      * @throws AssertionFailedException
      * @throws LoaderError
@@ -72,45 +72,33 @@ class UpdateController
      * @throws SyntaxError
      */
     public function __invoke(
-        DomainArticle $domainArticle,
+        DomainCategory $domainCategory,
         Request $request,
-        Update $create,
-        UpdatePresenter $presenter
-    ) {
-        $article = Article::fromDomainArticle($domainArticle);
+        UpdateCategory $create,
+        UpdateCategoryPresenter $presenter
+    )
+    {
+        $category = Category::fromDomainCategory($domainCategory);
+
 
         $form = $this->formFactory
-            ->create(ArticleType::class, $article)
+            ->create(CategoryType::class, $category)
             ->handleRequest($request);
 
         if ($form->isSubmitted() and $form->isValid()) {
-            $category = $form->get('category')->getData();
-
-            if (is_string($category)) {
-                $category = Category::create($category);
-            } else {
-                if (!empty($category)) {
-                    $category = new Category($category->getId(), $category->getTitle());
-                } else {
-                    $form->addError(new FormError('Category cannot be null'));
-                    $flashBag = new FlashBag();
-                    $flashBag->clear();
-                }
-            }
-
-            if ($form->getErrors(true)->count() === 0) {
-                $request = UpdateRequest::create(
-                    $domainArticle->getId(),
-                    $article->getTitle(),
-                    $article->getContent(),
-                    $category
-                );
+            try {
+                $request = UpdateCategoryRequest::create($category->getId(), $category->getTitle());
                 $create->execute($request, $presenter);
-
+            } catch (\Exception $exception) {
+                $form->addError(new FormError($exception->getMessage()));
+                $flashBag = new FlashBag();
+                $flashBag->clear();
+            }
+            if ($form->getErrors(true)->count() === 0) {
                 return new RedirectResponse($this->urlGenerator->generate('home'));
             }
         }
-        return new Response($this->twig->render('article/update.html.twig', [
+        return new Response($this->twig->render('category/update.html.twig', [
             'form' => $form->createView()
         ]));
     }

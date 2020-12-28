@@ -104,7 +104,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     {
         $doctrineArticle = $this->find($id);
 
-        if($doctrineArticle === null) {
+        if ($doctrineArticle === null) {
             return null;
         }
 
