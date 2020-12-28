@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for category in vm.categories %}
+
+                <tr>
+                    <td>{{ category.title }}</td>
+                    <td>
+
+                        <a href="{{ path('category_update', { id: category.id }) }}">Modifier</a>
+
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

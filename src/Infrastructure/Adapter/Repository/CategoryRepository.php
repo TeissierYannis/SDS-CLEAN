@@ -94,4 +94,31 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
             $doctrineCategory->getTitle()
         );
     }
+
+    public function getCategories(int $page, int $limit, string $field, string $order): array
+    {
+        $fields = [
+            'title' => 'q.title'
+        ];
+
+        $categories = $this->createQueryBuilder('q')
+            ->orderBy($fields[$field], $order)
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return array_map(
+            fn(DoctrineCategory $article) => new Category(
+                $article->getId(),
+                $article->getTitle(),
+            ),
+            $categories
+        );
+    }
+
+    public function countCategories(): int
+    {
+        return $this->count([]);
+    }
 }
