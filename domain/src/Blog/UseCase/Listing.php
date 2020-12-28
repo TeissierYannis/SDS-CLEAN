@@ -5,7 +5,9 @@ namespace TYannis\SDS\Domain\Blog\UseCase;
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
+use TYannis\SDS\Domain\Blog\Presenter\ListingCategoriesPresenterInterface;
 use TYannis\SDS\Domain\Blog\Presenter\ListingPresenterInterface;
+use TYannis\SDS\Domain\Blog\Request\ListingCategoriesRequest;
 use TYannis\SDS\Domain\Blog\Request\ListingRequest;
 use TYannis\SDS\Domain\Blog\Response\ListingResponse;
 

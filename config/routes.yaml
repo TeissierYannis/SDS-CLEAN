@@ -33,6 +33,11 @@ category_update:
     methods: GET|POST
     controller: App\UserInterface\Controller\Category\UpdateController
 
+category_listing:
+    path: /categories
+    methods: GET
+    controller: App\UserInterface\Controller\Category\ListingController
+
 logout:
     path: /logout
     methods: GET
