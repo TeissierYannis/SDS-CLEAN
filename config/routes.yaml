@@ -18,6 +18,11 @@ article_update:
     methods: GET|POST
     controller: App\UserInterface\Controller\Article\UpdateController
 
+article_listing:
+    path: /articles
+    methods: GET
+    controller: App\UserInterface\Controller\Article\ListingController
+
 category_create:
     path: /categories/create
     methods: GET|POST

@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>Article</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for article in vm.articles %}
+
+                <tr>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.category.title }}</td>
+                    <td>
+
+                        <a href="{{ path('article_update', { id: article.id }) }}">Modifier</a>
+
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

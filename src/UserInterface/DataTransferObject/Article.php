@@ -3,6 +3,7 @@
 namespace App\UserInterface\DataTransferObject;
 
 use App\UserInterface\DataTransferObject\Category;
+use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
 
 /**
@@ -11,6 +12,11 @@ use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
  */
 class Article
 {
+    /**
+     * @var UuidInterface|null
+     */
+    private ?UuidInterface $id;
+
     /**
      * @var string|null
      */
@@ -24,14 +30,35 @@ class Article
      */
     private $category = null;
 
+    /**
+     * @param DomainArticle $article
+     * @return static
+     */
     public static function fromDomainArticle(DomainArticle $article): self
     {
         $newArticle = new self();
+        $newArticle->setId($article->getId());
         $newArticle->setTitle($article->getTitle());
         $newArticle->setContent($article->getContent());
         $newArticle->setCategory(new Category($article->getCategory()->getId(), $article->getCategory()->getTitle()));
 
         return $newArticle;
+    }
+
+    /**
+     * @return UuidInterface|null
+     */
+    public function getId(): ?UuidInterface
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param UuidInterface|null $id
+     */
+    public function setId(?UuidInterface $id): void
+    {
+        $this->id = $id;
     }
 
     /**
