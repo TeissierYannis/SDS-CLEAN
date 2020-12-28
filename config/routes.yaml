@@ -23,6 +23,11 @@ article_listing:
     methods: GET
     controller: App\UserInterface\Controller\Article\ListingController
 
+article_remove:
+    path: /articles/{id}/remove
+    methods: GET
+    controller: App\UserInterface\Controller\Article\RemoveController
+
 category_create:
     path: /categories/create
     methods: GET|POST

@@ -160,4 +160,20 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     {
         return $this->count([]);
     }
+
+    /**
+     * @param Article $article
+     * @return bool
+     * @throws ORMException
+     */
+    public function remove(Article $article): bool
+    {
+        $doctrineArticle = $this->find($article->getId());
+
+        $this->_em->remove($doctrineArticle);
+
+        $this->_em->flush();
+
+        return is_null($this->find($article->getId())) ? true : false;
+    }
 }

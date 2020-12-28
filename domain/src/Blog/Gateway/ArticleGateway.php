@@ -22,6 +22,12 @@ interface ArticleGateway
     public function update(Article $article): void;
 
     /**
+     * @param Article $article
+     * @return bool
+     */
+    public function remove(Article $article): bool;
+
+    /**
      * @param UuidInterface $id
      * @return Article|null
      */

@@ -58,4 +58,9 @@ class ArticleRepository implements ArticleGateway
     {
         return 25;
     }
+
+    public function remove(Article $article): bool
+    {
+        return true;
+    }
 }

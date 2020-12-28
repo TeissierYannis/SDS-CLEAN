@@ -41,7 +41,6 @@ class UpdateTest extends TestCase
             Category::create('My category')
         );
 
-
         $this->useCase->execute($request, $this->presenter);
 
         $this->assertInstanceOf(UpdateResponse::class, $this->presenter->response);
