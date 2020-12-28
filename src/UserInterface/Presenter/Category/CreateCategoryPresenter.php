@@ -20,7 +20,7 @@ class CreateCategoryPresenter implements CreateCategoryPresenterInterface
     private FlashBagInterface $flashBag;
 
     /**
-     * RegistrationPresenter constructor.
+     * CreateCategoryPresenter constructor.
      * @param FlashBagInterface $flashBag
      */
     public function __construct(FlashBagInterface $flashBag)

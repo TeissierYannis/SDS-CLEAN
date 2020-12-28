@@ -4,13 +4,15 @@ namespace App\UserInterface\Presenter\Article;
 
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use TYannis\SDS\Domain\Blog\Presenter\CreatePresenterInterface;
+use TYannis\SDS\Domain\Blog\Presenter\UpdatePresenterInterface;
 use TYannis\SDS\Domain\Blog\Response\CreateResponse;
+use TYannis\SDS\Domain\Blog\Response\UpdateResponse;
 
 /**
- * Class CreatePresenter
+ * Class UpdatePresenter
  * @package App\UserInterface\Presenter\Article
  */
-class CreatePresenter implements CreatePresenterInterface
+class UpdatePresenter implements UpdatePresenterInterface
 {
     /**
      * @var FlashBagInterface
@@ -18,7 +20,7 @@ class CreatePresenter implements CreatePresenterInterface
     private FlashBagInterface $flashBag;
 
     /**
-     * CreatePresenter constructor.
+     * UpdatePresenter constructor.
      * @param FlashBagInterface $flashBag
      */
     public function __construct(FlashBagInterface $flashBag)
@@ -27,13 +29,13 @@ class CreatePresenter implements CreatePresenterInterface
     }
 
     /**
-     * @param CreateResponse $response
+     * @param UpdateResponse $response
      */
-    public function present(CreateResponse $response): void
+    public function present(UpdateResponse $response): void
     {
         $this->flashBag->add(
             "success",
-            "Article ajouté avec succès"
+            "Article modifié avec succès"
         );
     }
 }

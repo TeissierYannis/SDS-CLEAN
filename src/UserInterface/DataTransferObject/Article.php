@@ -3,6 +3,7 @@
 namespace App\UserInterface\DataTransferObject;
 
 use App\UserInterface\DataTransferObject\Category;
+use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
 
 /**
  * Class Article
@@ -22,6 +23,16 @@ class Article
      * @var Category|null
      */
     private $category = null;
+
+    public static function fromDomainArticle(DomainArticle $article): self
+    {
+        $newArticle = new self();
+        $newArticle->setTitle($article->getTitle());
+        $newArticle->setContent($article->getContent());
+        $newArticle->setCategory(new Category($article->getCategory()));
+
+        return $newArticle;
+    }
 
     /**
      * @return string|null

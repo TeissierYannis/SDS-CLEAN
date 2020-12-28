@@ -87,9 +87,8 @@ class DoctrineArticle
     }
 
     /**
-     * @return string
      */
-    public function getCategory(): string
+    public function getCategory()
     {
         return $this->category;
     }
