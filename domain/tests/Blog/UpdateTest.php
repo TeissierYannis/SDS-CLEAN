@@ -60,7 +60,6 @@ class UpdateTest extends TestCase
         );
 
         $category = $this->presenter->response->getArticle()->getCategory();
-
     }
 
     /**

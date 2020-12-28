@@ -53,8 +53,7 @@ class UpdateController
         FormFactoryInterface $formFactory,
         Environment $twig,
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->formFactory = $formFactory;
         $this->twig = $twig;
         $this->urlGenerator = $urlGenerator;
@@ -76,8 +75,7 @@ class UpdateController
         Request $request,
         UpdateCategory $create,
         UpdateCategoryPresenter $presenter
-    )
-    {
+    ) {
         $category = Category::fromDomainCategory($domainCategory);
 
 
