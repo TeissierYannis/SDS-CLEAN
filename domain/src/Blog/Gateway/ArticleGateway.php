@@ -2,6 +2,7 @@
 
 namespace TYannis\SDS\Domain\Blog\Gateway;
 
+use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Blog\Entity\Article;
 
 /**
@@ -14,4 +15,15 @@ interface ArticleGateway
      * @param Article $article
      */
     public function create(Article $article): void;
+
+    /**
+     * @param Article $article
+     */
+    public function update(Article $article): void;
+
+    /**
+     * @param UuidInterface $id
+     * @return Article
+     */
+    public function getArticleById(UuidInterface $id): ?Article;
 }

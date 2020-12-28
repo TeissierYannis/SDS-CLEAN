@@ -2,7 +2,9 @@
 
 namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
+use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Blog\Entity\Article;
+use TYannis\SDS\Domain\Blog\Entity\Category;
 use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
 
 /**
@@ -16,5 +18,14 @@ class ArticleRepository implements ArticleGateway
      */
     public function create(Article $article): void
     {
+    }
+
+    public function update(Article $article): void
+    {
+    }
+
+    public function getArticleById(UuidInterface $id): ?Article
+    {
+        return new Article($id, 'title', 'content', Category::create('category'));
     }
 }
