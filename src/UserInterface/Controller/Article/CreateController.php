@@ -52,8 +52,7 @@ class CreateController
         FormFactoryInterface $formFactory,
         Environment $twig,
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->formFactory = $formFactory;
         $this->twig = $twig;
         $this->urlGenerator = $urlGenerator;
@@ -83,10 +82,9 @@ class CreateController
             if (is_string($category)) {
                 $category = Category::create($category);
             } else {
-
                 if (!empty($category)) {
                     $category = new Category($category->getId(), $category->getTitle());
-                }else{
+                } else {
                     $form->addError(new FormError('Category cannot be null'));
                     $flashBag = new FlashBag();
                     $flashBag->clear();

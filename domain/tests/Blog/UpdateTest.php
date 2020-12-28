@@ -60,8 +60,6 @@ class UpdateTest extends TestCase
         );
 
         $category = $this->presenter->response->getArticle()->getCategory();
-
-        //$this->assertContainsOnlyInstancesOf(Article::class, $category->getArticles());
     }
 
     /**

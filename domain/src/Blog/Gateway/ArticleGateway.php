@@ -23,7 +23,7 @@ interface ArticleGateway
 
     /**
      * @param UuidInterface $id
-     * @return Article
+     * @return Article|null
      */
     public function getArticleById(UuidInterface $id): ?Article;
 }

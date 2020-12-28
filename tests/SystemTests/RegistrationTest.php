@@ -31,10 +31,11 @@ class RegistrationTest extends WebTestCase
         $client->submit($form);
 
 
-        if(Response::HTTP_OK)
+        if (Response::HTTP_OK) {
             $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        else
+        } else {
             $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
+        }
     }
 
     /**

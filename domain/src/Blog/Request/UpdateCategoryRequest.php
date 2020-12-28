@@ -1,15 +1,16 @@
 <?php
 
-namespace TYannis\SDS\Domain\Blog\Entity;
+namespace TYannis\SDS\Domain\Blog\Request;
 
-use Ramsey\Uuid\Uuid;
+use Assert\Assertion;
+use Assert\AssertionFailedException;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * Class Category
- * @package TYannis\SDS\Domain\Blog\Entity
+ * Class UpdateCategoryRequest
+ * @package TYannis\SDS\Domain\Blog\Request
  */
-class Category
+class UpdateCategoryRequest
 {
     /**
      * @var UuidInterface
@@ -22,16 +23,17 @@ class Category
     private string $title;
 
     /**
+     * @param UuidInterface $id
      * @param string $title
      * @return static
      */
-    public static function create(string $title): self
+    public static function create(UuidInterface $id, string $title): self
     {
-        return new self(Uuid::uuid4(), $title);
+        return new self($id, $title);
     }
 
     /**
-     * Category constructor.
+     * UpdateCategoryRequest constructor.
      * @param UuidInterface $id
      * @param string $title
      */
@@ -58,10 +60,11 @@ class Category
     }
 
     /**
-     * @param string $title
+     * @throws AssertionFailedException
      */
-    public function setTitle(string $title): void
+    public function validate(): void
     {
-        $this->title = $title;
+        Assertion::notBlank($this->title);
+        Assertion::minLength($this->title, 3);
     }
 }
