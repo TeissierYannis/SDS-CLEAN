@@ -2,16 +2,13 @@
 
 namespace App\Infrastructure\Adapter\Repository;
 
-use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
 use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
-use Assert\InvalidArgumentException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\HttpFoundation\Response;
 use TYannis\SDS\Domain\Blog\Entity\Category;
 use TYannis\SDS\Domain\Blog\Gateway\CategoryGateway;
 
@@ -28,16 +25,6 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, DoctrineCategory::class);
-    }
-
-    /**
-     * @param DoctrineCategory $doctrineCategory
-     * @param Category $category
-     */
-    private static function hydrateArticle(DoctrineCategory $doctrineCategory, Category $category): void
-    {
-        $doctrineCategory->setId($category->getId());
-        $doctrineCategory->setTitle($category->getTitle());
     }
 
     /**
@@ -60,6 +47,16 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
 
         $this->_em->persist($doctrineCategory);
         $this->_em->flush();
+    }
+
+    /**
+     * @param DoctrineCategory $doctrineCategory
+     * @param Category $category
+     */
+    private static function hydrateArticle(DoctrineCategory $doctrineCategory, Category $category): void
+    {
+        $doctrineCategory->setId($category->getId());
+        $doctrineCategory->setTitle($category->getTitle());
     }
 
     /**

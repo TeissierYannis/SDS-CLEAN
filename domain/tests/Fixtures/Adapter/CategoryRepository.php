@@ -4,9 +4,7 @@ namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use TYannis\SDS\Domain\Blog\Entity\Article;
 use TYannis\SDS\Domain\Blog\Entity\Category;
-use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
 use TYannis\SDS\Domain\Blog\Gateway\CategoryGateway;
 
 /**

@@ -4,7 +4,7 @@ namespace App\UserInterface\ViewModel\Article;
 
 use App\UserInterface\DataTransferObject\Article;
 use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
-use TYannis\SDS\Domain\Blog\Response\ListingResponse;
+use TYannis\SDS\Domain\Blog\Response\Article\ListingResponse;
 
 class ListingViewModel
 {

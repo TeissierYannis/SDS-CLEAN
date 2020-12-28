@@ -18,8 +18,8 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use TYannis\SDS\Domain\Blog\Entity\Category;
-use TYannis\SDS\Domain\Blog\Request\CreateRequest;
-use TYannis\SDS\Domain\Blog\UseCase\Create;
+use TYannis\SDS\Domain\Blog\Request\Article\CreateRequest;
+use TYannis\SDS\Domain\Blog\UseCase\Article\Create;
 
 /**
  * Class CreateController

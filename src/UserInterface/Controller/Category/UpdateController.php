@@ -4,7 +4,7 @@ namespace App\UserInterface\Controller\Category;
 
 use App\UserInterface\DataTransferObject\Category;
 use App\UserInterface\Form\CategoryType;
-use App\UserInterface\Presenter\Category\UpdateCategoryPresenter;
+use App\UserInterface\Presenter\Category\UpdatePresenter;
 use Assert\AssertionFailedException;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -18,9 +18,8 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use TYannis\SDS\Domain\Blog\Entity\Category as DomainCategory;
-use TYannis\SDS\Domain\Blog\Request\CreateCategoryRequest;
-use TYannis\SDS\Domain\Blog\Request\UpdateCategoryRequest;
-use TYannis\SDS\Domain\Blog\UseCase\UpdateCategory;
+use TYannis\SDS\Domain\Blog\Request\Category\UpdateRequest;
+use TYannis\SDS\Domain\Blog\UseCase\Category\Update;
 
 /**
  * Class UpdateController
@@ -62,8 +61,8 @@ class UpdateController
     /**
      * @param DomainCategory $domainCategory
      * @param Request $request
-     * @param UpdateCategory $create
-     * @param UpdateCategoryPresenter $presenter
+     * @param Update $create
+     * @param UpdatePresenter $presenter
      * @return RedirectResponse|Response
      * @throws AssertionFailedException
      * @throws LoaderError
@@ -73,8 +72,8 @@ class UpdateController
     public function __invoke(
         DomainCategory $domainCategory,
         Request $request,
-        UpdateCategory $create,
-        UpdateCategoryPresenter $presenter
+        Update $create,
+        UpdatePresenter $presenter
     ) {
         $category = Category::fromDomainCategory($domainCategory);
 
@@ -85,7 +84,7 @@ class UpdateController
 
         if ($form->isSubmitted() and $form->isValid()) {
             try {
-                $request = UpdateCategoryRequest::create($category->getId(), $category->getTitle());
+                $request = UpdateRequest::create($category->getId(), $category->getTitle());
                 $create->execute($request, $presenter);
             } catch (\Exception $exception) {
                 $form->addError(new FormError($exception->getMessage()));

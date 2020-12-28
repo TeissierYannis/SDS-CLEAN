@@ -6,8 +6,8 @@ use App\UserInterface\Presenter\Category\ListingPresenter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
-use TYannis\SDS\Domain\Blog\Request\ListingCategoriesRequest;
-use TYannis\SDS\Domain\Blog\UseCase\ListingCategories;
+use TYannis\SDS\Domain\Blog\Request\Category\ListingRequest;
+use TYannis\SDS\Domain\Blog\UseCase\Category\Listing;
 
 /**
  * Class ListingController
@@ -29,12 +29,12 @@ class ListingController
         $this->twig = $twig;
     }
 
-    public function __invoke(Request $request, ListingCategories $listing): Response
+    public function __invoke(Request $request, Listing $listing): Response
     {
         $presenter = new ListingPresenter();
 
         $listing->execute(
-            new ListingCategoriesRequest(
+            new ListingRequest(
                 $request->get('page', 1),
                 $request->get('limit', 10),
                 $request->get('field', 'title'),

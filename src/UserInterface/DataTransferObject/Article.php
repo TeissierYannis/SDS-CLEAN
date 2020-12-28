@@ -2,7 +2,6 @@
 
 namespace App\UserInterface\DataTransferObject;
 
-use App\UserInterface\DataTransferObject\Category;
 use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
 
