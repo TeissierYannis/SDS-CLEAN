@@ -3,14 +3,14 @@
 namespace App\UserInterface\Presenter\Category;
 
 use App\UserInterface\ViewModel\Category\ListingViewModel;
-use TYannis\SDS\Domain\Blog\Presenter\ListingCategoriesPresenterInterface;
-use TYannis\SDS\Domain\Blog\Response\ListingCategoriesResponse;
+use TYannis\SDS\Domain\Blog\Presenter\Category\ListingPresenterInterface;
+use TYannis\SDS\Domain\Blog\Response\Category\ListingResponse;
 
 /**
  * Class ListingPresenter
  * @package App\UserInterface\Presenter\Article
  */
-class ListingPresenter implements ListingCategoriesPresenterInterface
+class ListingPresenter implements ListingPresenterInterface
 {
     /**
      * @var ListingViewModel
@@ -18,9 +18,9 @@ class ListingPresenter implements ListingCategoriesPresenterInterface
     private ListingViewModel $viewModel;
 
     /**
-     * @param ListingCategoriesResponse $response
+     * @param ListingResponse $response
      */
-    public function present(ListingCategoriesResponse $response): void
+    public function present(ListingResponse $response): void
     {
 
         $this->viewModel = ListingViewModel::fromResponse($response);

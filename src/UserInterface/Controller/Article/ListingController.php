@@ -6,8 +6,8 @@ use App\UserInterface\Presenter\Article\ListingPresenter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
-use TYannis\SDS\Domain\Blog\Request\ListingRequest;
-use TYannis\SDS\Domain\Blog\UseCase\Listing;
+use TYannis\SDS\Domain\Blog\Request\Article\ListingRequest;
+use TYannis\SDS\Domain\Blog\UseCase\Article\Listing;
 
 /**
  * Class ListingController

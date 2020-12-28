@@ -22,6 +22,17 @@ class Category
      */
     private $title;
 
+    /**
+     * Category constructor.
+     * @param UuidInterface $id
+     * @param string|null $title
+     */
+    public function __construct(UuidInterface $id, ?string $title)
+    {
+        $this->id = $id;
+        $this->title = $title;
+    }
+
     public static function fromDomainCategory(DomainCategory $category): self
     {
         return new self($category->getId(), $category->getTitle());
@@ -34,17 +45,6 @@ class Category
     public static function create(string $title): self
     {
         return new self(Uuid::uuid4(), $title);
-    }
-
-    /**
-     * Category constructor.
-     * @param UuidInterface $id
-     * @param string|null $title
-     */
-    public function __construct(UuidInterface $id, ?string $title)
-    {
-        $this->id = $id;
-        $this->title = $title;
     }
 
     /**

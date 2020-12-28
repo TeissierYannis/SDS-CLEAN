@@ -1,19 +1,17 @@
 <?php
 
-namespace App\UserInterface\ViewModel\Category;
+namespace TYannis\SDS\Domain\Blog\Response\Category;
 
-use App\UserInterface\DataTransferObject\Article;
-use App\UserInterface\DataTransferObject\Category;
-use TYannis\SDS\Domain\Blog\Entity\Category as DomainCategory;
-use TYannis\SDS\Domain\Blog\Response\Category\ListingResponse;
-
-class ListingViewModel
+/**
+ * Class ListingResponse
+ * @package TYannis\SDS\Domain\Blog\Response\Category
+ */
+class ListingResponse
 {
     /**
-     * @var Category[]
+     * @var array
      */
     private array $categories;
-
     /**
      * @var int
      */
@@ -36,27 +34,8 @@ class ListingViewModel
     private string $order;
 
     /**
-     * @param ListingResponse $response
-     * @return static
-     */
-    public static function fromResponse(ListingResponse $response): self
-    {
-        return new self(
-            array_map(
-                fn (DomainCategory $category) => Category::fromDomainCategory($category),
-                $response->getCategories()
-            ),
-            $response->getCurrentPage(),
-            $response->getPages(),
-            $response->getLimit(),
-            $response->getField(),
-            $response->getOrder()
-        );
-    }
-
-    /**
-     * ListingViewModel constructor.
-     * @param Article[] $categories
+     * ListingResponse constructor.
+     * @param array $categories
      * @param int $currentPage
      * @param int $pages
      * @param int $limit
@@ -80,7 +59,7 @@ class ListingViewModel
     }
 
     /**
-     * @return Category[]
+     * @return array
      */
     public function getCategories(): array
     {

@@ -3,10 +3,8 @@
 namespace App\UserInterface\Presenter\Article;
 
 use App\UserInterface\ViewModel\Article\ListingViewModel;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use TYannis\SDS\Domain\Blog\Presenter\ListingPresenterInterface;
-use TYannis\SDS\Domain\Blog\Response\CreateResponse;
-use TYannis\SDS\Domain\Blog\Response\ListingResponse;
+use TYannis\SDS\Domain\Blog\Presenter\Article\ListingPresenterInterface;
+use TYannis\SDS\Domain\Blog\Response\Article\ListingResponse;
 
 /**
  * Class ListingPresenter

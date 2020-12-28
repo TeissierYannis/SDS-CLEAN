@@ -1,10 +1,10 @@
 <?php
 
-namespace App\UserInterface\Presenter\Article;
+namespace App\UserInterface\Presenter\Category;
 
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use TYannis\SDS\Domain\Blog\Presenter\Article\UpdatePresenterInterface;
-use TYannis\SDS\Domain\Blog\Response\Article\UpdateResponse;
+use TYannis\SDS\Domain\Blog\Presenter\Category\UpdatePresenterInterface;
+use TYannis\SDS\Domain\Blog\Response\Category\UpdateResponse;
 
 /**
  * Class UpdatePresenter
@@ -18,7 +18,7 @@ class UpdatePresenter implements UpdatePresenterInterface
     private FlashBagInterface $flashBag;
 
     /**
-     * UpdatePresenter constructor.
+     * CreatePresenter constructor.
      * @param FlashBagInterface $flashBag
      */
     public function __construct(FlashBagInterface $flashBag)
@@ -33,7 +33,7 @@ class UpdatePresenter implements UpdatePresenterInterface
     {
         $this->flashBag->add(
             "success",
-            "Article modifié avec succès"
+            "Catégorie modifié avec succès"
         );
     }
 }

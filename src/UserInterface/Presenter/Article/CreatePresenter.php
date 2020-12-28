@@ -3,8 +3,8 @@
 namespace App\UserInterface\Presenter\Article;
 
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use TYannis\SDS\Domain\Blog\Presenter\CreatePresenterInterface;
-use TYannis\SDS\Domain\Blog\Response\CreateResponse;
+use TYannis\SDS\Domain\Blog\Presenter\Article\CreatePresenterInterface;
+use TYannis\SDS\Domain\Blog\Response\Article\CreateResponse;
 
 /**
  * Class CreatePresenter

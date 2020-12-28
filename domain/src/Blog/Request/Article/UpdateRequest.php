@@ -1,16 +1,17 @@
 <?php
 
-namespace TYannis\SDS\Domain\Blog\Entity;
+namespace TYannis\SDS\Domain\Blog\Request\Article;
 
-use Ramsey\Uuid\Uuid;
+use Assert\Assertion;
+use Assert\AssertionFailedException;
 use Ramsey\Uuid\UuidInterface;
-use TYannis\SDS\Domain\Blog\Request\Article\CreateRequest;
+use TYannis\SDS\Domain\Blog\Entity\Category;
 
 /**
- * Class Article
- * @package TYannis\SDS\Domain\Blog\Entity
+ * Class UpdateRequest
+ * @package TYannis\SDS\Domain\Blog\Request\Article
  */
-class Article
+class UpdateRequest
 {
     /**
      * @var UuidInterface
@@ -21,31 +22,31 @@ class Article
      * @var string
      */
     private string $title;
+
     /**
      * @var string
      */
     private string $content;
+
     /**
      * @var Category
      */
     private Category $category;
 
     /**
-     * @param CreateRequest $createRequest
+     * @param UuidInterface $id
+     * @param string $title
+     * @param string $content
+     * @param Category $category
      * @return static
      */
-    public static function fromCreate(CreateRequest $createRequest): self
+    public static function create(UuidInterface $id, string $title, string $content, Category $category): self
     {
-        return new self(
-            Uuid::uuid4(),
-            $createRequest->getTitle(),
-            $createRequest->getContent(),
-            $createRequest->getCategory()
-        );
+        return new self($id, $title, $content, $category);
     }
 
     /**
-     * Article constructor.
+     * UpdateRequest constructor.
      * @param UuidInterface $id
      * @param string $title
      * @param string $content
@@ -92,26 +93,17 @@ class Article
     }
 
     /**
-     * @param string $title
+     * @throws AssertionFailedException
      */
-    public function setTitle(string $title): void
+    public function validate(): void
     {
-        $this->title = $title;
-    }
+        Assertion::notBlank($this->title);
+        Assertion::minLength($this->title, 3);
 
-    /**
-     * @param string $content
-     */
-    public function setContent(string $content): void
-    {
-        $this->content = $content;
-    }
+        Assertion::notBlank($this->content);
+        Assertion::minLength($this->content, 3);
 
-    /**
-     * @param Category $category
-     */
-    public function setCategory(Category $category): void
-    {
-        $this->category = $category;
+        Assertion::notBlank($this->category->getTitle());
+        Assertion::minLength($this->category->getTitle(), 3);
     }
 }

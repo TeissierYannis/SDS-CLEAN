@@ -6,7 +6,6 @@ use App\UserInterface\DataTransferObject\Article;
 use App\UserInterface\Form\ArticleType;
 use App\UserInterface\Presenter\Article\UpdatePresenter;
 use Assert\AssertionFailedException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -20,8 +19,8 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
 use TYannis\SDS\Domain\Blog\Entity\Category;
-use TYannis\SDS\Domain\Blog\Request\UpdateRequest;
-use TYannis\SDS\Domain\Blog\UseCase\Update;
+use TYannis\SDS\Domain\Blog\Request\Article\UpdateRequest;
+use TYannis\SDS\Domain\Blog\UseCase\Article\Update;
 
 /**
  * Class UpdateController
