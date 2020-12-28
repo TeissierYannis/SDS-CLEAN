@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Adapter\Repository;
 
+use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
 use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -114,8 +115,32 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
         );
     }
 
+    /**
+     * @return int
+     */
     public function countCategories(): int
     {
         return $this->count([]);
+    }
+
+    /**
+     * @param Category $category
+     * @return bool
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function remove(Category $category): bool
+    {
+        $doctrineCategory = $this->find($category->getId());
+
+        /** @var DoctrineArticle $debug */
+        $isRemovable = count($doctrineCategory->getArticles()->getValues()) <= 0;
+
+        if ($isRemovable) {
+            $this->_em->remove($doctrineCategory);
+            $this->_em->flush();
+        }
+
+        return is_null($this->find($category->getId())) ? true : false;
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\UserInterface\Presenter\Article;
+namespace App\UserInterface\Presenter\Category;
 
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use TYannis\SDS\Domain\Blog\Presenter\Article\RemovePresenterInterface;
-use TYannis\SDS\Domain\Blog\Response\Article\RemoveResponse;
+use TYannis\SDS\Domain\Blog\Presenter\Category\RemovePresenterInterface;
+use TYannis\SDS\Domain\Blog\Response\Category\RemoveResponse;
 
 /**
  * Class UpdatePresenter
- * @package App\UserInterface\Presenter\Article
+ * @package App\UserInterface\Presenter\Category
  */
 class RemovePresenter implements RemovePresenterInterface
 {
@@ -31,15 +31,15 @@ class RemovePresenter implements RemovePresenterInterface
      */
     public function present(RemoveResponse $response): void
     {
-        if (is_null($response->getArticle())) {
+        if (is_null($response->getCategory())) {
             $this->flashBag->add(
                 "success",
-                "Article supprimé avec succès"
+                "Catégorie supprimé avec succès"
             );
         } else {
             $this->flashBag->add(
                 "error",
-                "Une erreur est survenue lors de la suppression de l'article"
+                "Impossible de supprimer la catégorie."
             );
         }
     }

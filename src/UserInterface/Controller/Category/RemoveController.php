@@ -1,19 +1,19 @@
 <?php
 
-namespace App\UserInterface\Controller\Article;
+namespace App\UserInterface\Controller\Category;
 
-use App\UserInterface\Presenter\Article\RemovePresenter;
+use App\UserInterface\Presenter\Category\RemovePresenter;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
-use TYannis\SDS\Domain\Blog\Request\Article\RemoveRequest;
-use TYannis\SDS\Domain\Blog\UseCase\Article\Remove;
+use TYannis\SDS\Domain\Blog\Entity\Category as DomainCategory;
+use TYannis\SDS\Domain\Blog\Request\Category\RemoveRequest;
+use TYannis\SDS\Domain\Blog\UseCase\Category\Remove;
 
 /**
  * Class RemoveController
- * @package App\UserInterface\Controller\Article
+ * @package App\UserInterface\Controller\Category
  */
 class RemoveController
 {
@@ -32,14 +32,14 @@ class RemoveController
     }
 
     /**
-     * @param DomainArticle $domainArticle
+     * @param DomainCategory $domainCategory
      * @param Request $request
      * @param Remove $remove
      * @param RemovePresenter $presenter
      * @return Response
      */
     public function __invoke(
-        DomainArticle $domainArticle,
+        DomainCategory $domainCategory,
         Request $request,
         Remove $remove,
         RemovePresenter $presenter
@@ -47,10 +47,8 @@ class RemoveController
 
         $remove->execute(
             new RemoveRequest(
-                $domainArticle->getId(),
-                $domainArticle->getTitle(),
-                $domainArticle->getContent(),
-                $domainArticle->getCategory()
+                $domainCategory->getId(),
+                $domainCategory->getTitle(),
             ),
             $presenter
         );
