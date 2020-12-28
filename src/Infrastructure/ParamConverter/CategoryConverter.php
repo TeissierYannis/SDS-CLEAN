@@ -28,9 +28,17 @@ class CategoryConverter implements ParamConverterInterface
 
     /**
      * @inheritDoc
+     * @throws \Exception
      */
     public function apply(Request $request, ParamConverter $configuration)
     {
+        $id = $this->categoryGateway->getCategoryById(Uuid::fromString($request->get('id')));
+
+        if(is_null($id))
+        {
+            throw new \Exception('Unknown UUID');
+        }
+
         $request->attributes
             ->set(
                 'domainCategory',

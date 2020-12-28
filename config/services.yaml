@@ -29,3 +29,7 @@ services:
     App\UserInterface\Controller\:
         resource: '../src/UserInterface/Controller'
         tags: ['controller.service_arguments']
+
+    App\Infrastructure\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
