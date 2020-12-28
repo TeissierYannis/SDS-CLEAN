@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\UserInterface\Controller\Article;
 
 use App\UserInterface\Presenter\Article\ListingPresenter;

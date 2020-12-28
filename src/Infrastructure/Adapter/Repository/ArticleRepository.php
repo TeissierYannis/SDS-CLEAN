@@ -149,7 +149,8 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
                 $article->getContent(),
                 new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
             ),
-            $articles);
+            $articles
+        );
     }
 
     /**

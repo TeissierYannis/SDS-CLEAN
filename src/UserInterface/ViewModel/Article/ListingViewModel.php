@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\UserInterface\ViewModel\Article;
-
 
 use App\UserInterface\DataTransferObject\Article;
 use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
