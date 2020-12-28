@@ -41,7 +41,7 @@ class RegistrationPresenter implements RegistrationPresenterInterface
 
         $this->flashBag->add(
             "success",
-            "Bienvenue sur Code Challenge ! Votre inscription a été effectuée avec succès !"
+            "Bienvenue sur Ma salle ! Votre inscription a été effectuée avec succès !"
         );
     }
 }

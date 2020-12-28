@@ -13,7 +13,7 @@ class RemoveResponse
     /**
      * @var Article|null
      */
-    private ?Article $article;
+    private ? Article $article;
 
     /**
      * RemoveResponse constructor.
@@ -27,7 +27,7 @@ class RemoveResponse
     /**
      * @return Article|null
      */
-    public function getArticle(): ?Article
+    public function getArticle() : ?Article
     {
         return $this->article;
     }
