@@ -30,7 +30,7 @@ class ListingTest extends TestCase
 
     protected function setUp()
     {
-        $this->presenter = new class() implements ListingPresenterInterface {
+        $this->presenter = new class () implements ListingPresenterInterface {
             public ListingResponse $response;
 
             public function present(ListingResponse $response): void
@@ -40,7 +40,6 @@ class ListingTest extends TestCase
         };
 
         $this->useCase = new Listing(new ArticleRepository());
-
     }
 
     /**
