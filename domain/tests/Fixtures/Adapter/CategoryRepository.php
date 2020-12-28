@@ -47,4 +47,9 @@ class CategoryRepository implements CategoryGateway
     {
         return 25;
     }
+
+    public function remove(Category $category): bool
+    {
+        return true;
+    }
 }

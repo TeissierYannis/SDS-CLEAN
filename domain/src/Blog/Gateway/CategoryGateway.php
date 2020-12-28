@@ -22,6 +22,12 @@ interface CategoryGateway
     public function update(Category $category): void;
 
     /**
+     * @param Category $category
+     * @return bool
+     */
+    public function remove(Category $category): bool;
+
+    /**
      * @param UuidInterface $id
      * @return Category|null
      */

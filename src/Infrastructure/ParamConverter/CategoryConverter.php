@@ -34,8 +34,7 @@ class CategoryConverter implements ParamConverterInterface
     {
         $id = $this->categoryGateway->getCategoryById(Uuid::fromString($request->get('id')));
 
-        if(is_null($id))
-        {
+        if (is_null($id)) {
             throw new \Exception('Unknown UUID');
         }
 

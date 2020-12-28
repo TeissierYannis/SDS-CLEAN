@@ -1,15 +1,14 @@
 <?php
 
-namespace TYannis\SDS\Domain\Tests\Blog\Article;
+namespace TYannis\SDS\Domain\Tests\Blog\Category;
 
-use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
-use TYannis\SDS\Domain\Blog\Entity\Category;
-use TYannis\SDS\Domain\Blog\Presenter\Article\RemovePresenterInterface;
-use TYannis\SDS\Domain\Blog\Request\Article\RemoveRequest;
-use TYannis\SDS\Domain\Blog\Response\Article\RemoveResponse;
-use TYannis\SDS\Domain\Blog\UseCase\Article\Remove;
-use TYannis\SDS\Domain\Tests\Fixtures\Adapter\ArticleRepository;
+use TYannis\SDS\Domain\Blog\Presenter\Category\RemovePresenterInterface;
+use TYannis\SDS\Domain\Blog\Request\Category\RemoveRequest;
+use TYannis\SDS\Domain\Blog\Response\Category\RemoveResponse;
+use TYannis\SDS\Domain\Blog\UseCase\Category\Remove;
+use PHPUnit\Framework\TestCase;
+use TYannis\SDS\Domain\Tests\Fixtures\Adapter\CategoryRepository;
 
 /**
  * Class RemoveTest
@@ -38,7 +37,7 @@ class RemoveTest extends TestCase
             }
         };
 
-        $this->useCase = new Remove(new ArticleRepository());
+        $this->useCase = new Remove(new CategoryRepository());
     }
 
     public function test(): void
@@ -47,15 +46,12 @@ class RemoveTest extends TestCase
 
         $request = RemoveRequest::create(
             $id,
-            'Article title',
-            'My content',
-            Category::create('My category')
+            'Category title'
         );
 
         $this->useCase->execute($request, $this->presenter);
 
         $this->assertInstanceOf(RemoveResponse::class, $this->presenter->response);
-
-        $this->assertEquals(null, $this->presenter->response->getArticle());
+        $this->assertEquals(null, $this->presenter->response->getCategory());
     }
 }

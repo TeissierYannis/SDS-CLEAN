@@ -59,6 +59,10 @@ class ArticleRepository implements ArticleGateway
         return 25;
     }
 
+    /**
+     * @param Article $article
+     * @return bool
+     */
     public function remove(Article $article): bool
     {
         return true;

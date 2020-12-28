@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Infrastructure\EventListener;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -36,7 +35,12 @@ class ExceptionListener
     {
         $exception = $event->getThrowable();
 
-        if ($exception->getMessage() === 'Unknown UUID' or str_contains($exception->getMessage(), 'Invalid UUID string:')) {
+        if (
+            $exception->getMessage() === 'Unknown UUID' or str_contains(
+                $exception->getMessage(),
+                'Invalid UUID string:'
+            )
+        ) {
             $session = new Session();
             $session->getFlashBag()->set('error', 'Impossible de répondre à la demande');
 

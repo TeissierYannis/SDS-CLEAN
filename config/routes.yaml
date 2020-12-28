@@ -43,6 +43,11 @@ category_listing:
     methods: GET
     controller: App\UserInterface\Controller\Category\ListingController
 
+category_remove:
+    path: /categories/{id}/remove
+    methods: GET
+    controller: App\UserInterface\Controller\Category\RemoveController
+
 logout:
     path: /logout
     methods: GET
