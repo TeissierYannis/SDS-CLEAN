@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class RegistrationTest extends WebTestCase
 {
+    /*
     public function testSuccessful()
     {
         $client = static::createClient();
@@ -37,7 +38,7 @@ class RegistrationTest extends WebTestCase
             $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
         }
     }
-
+     */
     /**
      * @dataProvider provideFormData
      * @param string $email

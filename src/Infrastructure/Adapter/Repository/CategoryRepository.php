@@ -108,8 +108,8 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
 
         return array_map(
             fn(DoctrineCategory $article) => new Category(
-                $article->getId(),
-                $article->getTitle(),
+            $article->getId(),
+            $article->getTitle(),
             ),
             $categories
         );

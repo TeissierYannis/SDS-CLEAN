@@ -22,7 +22,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
 {
     /**
      * ArticleRepository constructor.
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -30,7 +30,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
-     * @param Article $article
+     * @param  Article  $article
      * @throws ORMException
      */
     public function create(Article $article): void
@@ -45,8 +45,8 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
-     * @param DoctrineArticle $doctrineArticle
-     * @param Article $article
+     * @param  DoctrineArticle  $doctrineArticle
+     * @param  Article  $article
      */
     private static function hydrateArticle(DoctrineArticle $doctrineArticle, Article $article): void
     {
@@ -56,8 +56,8 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
-     * @param Article $article
-     * @param DoctrineArticle $doctrineArticle
+     * @param  Article  $article
+     * @param  DoctrineArticle  $doctrineArticle
      * @throws ORMException
      * @throws OptimisticLockException
      * @throws TransactionRequiredException
@@ -80,7 +80,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
-     * @param Article $article
+     * @param  Article  $article
      * @throws ORMException
      * @throws OptimisticLockException
      */
@@ -97,7 +97,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
-     * @param UuidInterface $id
+     * @param  UuidInterface  $id
      * @return Article|null
      */
     public function getArticleById(UuidInterface $id): ?Article
@@ -122,10 +122,10 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
-     * @param int $page
-     * @param int $limit
-     * @param string $field
-     * @param string $order
+     * @param  int  $page
+     * @param  int  $limit
+     * @param  string  $field
+     * @param  string  $order
      * @return Article[]
      */
     public function getArticles(int $page, int $limit, string $field, string $order): array
@@ -144,10 +144,10 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
 
         return array_map(
             fn(DoctrineArticle $article) => new Article(
-                $article->getId(),
-                $article->getTitle(),
-                $article->getContent(),
-                new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
+            $article->getId(),
+            $article->getTitle(),
+            $article->getContent(),
+            new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
             ),
             $articles
         );
@@ -162,7 +162,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
     }
 
     /**
-     * @param Article $article
+     * @param  Article  $article
      * @return bool
      * @throws ORMException
      */

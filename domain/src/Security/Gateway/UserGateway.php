@@ -13,7 +13,6 @@ interface UserGateway
 {
     /**
      * @param string $email
-     *
      * @return User|null
      */
     public function getUserByEmail(string $email): ?User;
@@ -34,4 +33,9 @@ interface UserGateway
      * @param User $user
      */
     public function register(User $user): void;
+
+    /**
+     * @param User $user
+     */
+    public function update(User $user): void;
 }

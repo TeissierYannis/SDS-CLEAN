@@ -2,8 +2,11 @@
 
 namespace TYannis\SDS\Domain\Security\Entity;
 
+use DateTimeImmutable;
+use DateTimeInterface;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use TYannis\SDS\Domain\Security\Request\RecoverPasswordRequest;
 use TYannis\SDS\Domain\Security\Request\RegistrationRequest;
 
 /**
@@ -34,10 +37,20 @@ class User
     private string $password;
 
     /**
+     * @var string|null
+     */
+    private ? string $passwordResetToken = null;
+
+    /**
+     * @var DateTimeInterface|null
+     */
+    private ? DateTimeInterface $passwordResetRequestedAt = null;
+
+    /**
      * @param  RegistrationRequest $request
      * @return static
      */
-    public static function fromRegistration(RegistrationRequest $request): self
+    public static function fromRegistration(RegistrationRequest $request) : self
     {
         return new self(
             Uuid::uuid4(),
@@ -54,13 +67,49 @@ class User
      * @param string $email
      * @param string $pseudo
      * @param string $password
+     * @param string|null $passwordResetToken
+     * @param DateTimeInterface|null $passwordResetRequestedAt
      */
-    public function __construct(UuidInterface $id, string $email, string $pseudo, string $password)
-    {
+    public function __construct(
+        UuidInterface $id,
+        string $email,
+        string $pseudo,
+        string $password,
+        ?string $passwordResetToken = null,
+        ?DateTimeInterface $passwordResetRequestedAt = null
+    ) {
         $this->id = $id;
         $this->email = $email;
         $this->pseudo = $pseudo;
         $this->password = $password;
+        $this->passwordResetToken = $passwordResetToken;
+        $this->passwordResetRequestedAt = $passwordResetRequestedAt;
+    }
+
+    /**
+     * @param User $user
+     * @param RecoverPasswordRequest $request
+     */
+    public static function resetPassword(self $user, RecoverPasswordRequest $request) : void
+    {
+        $password = password_hash($request->getNewPlainPassword(), PASSWORD_ARGON2I);
+
+        if ($password) {
+            $user->password = $password;
+        }
+
+        $user->passwordResetToken = null;
+        $user->passwordResetRequestedAt = null;
+    }
+
+    /**
+     * @param User $user
+     * @param string $token
+     */
+    public static function requestPasswordReset(self $user, string $token): void
+    {
+        $user->passwordResetToken = $token;
+        $user->passwordResetRequestedAt = new DateTimeImmutable();
     }
 
     /**
@@ -93,5 +142,21 @@ class User
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPasswordResetToken(): ?string
+    {
+        return $this->passwordResetToken;
+    }
+
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getPasswordResetRequestedAt(): ?DateTimeInterface
+    {
+        return $this->passwordResetRequestedAt;
     }
 }

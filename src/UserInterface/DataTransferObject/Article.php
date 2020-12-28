@@ -14,7 +14,7 @@ class Article
     /**
      * @var UuidInterface|null
      */
-    private ?UuidInterface $id;
+    private ? UuidInterface $id;
 
     /**
      * @var string|null
@@ -33,7 +33,7 @@ class Article
      * @param DomainArticle $article
      * @return static
      */
-    public static function fromDomainArticle(DomainArticle $article): self
+    public static function fromDomainArticle(DomainArticle $article) : self
     {
         $newArticle = new self();
         $newArticle->setId($article->getId());

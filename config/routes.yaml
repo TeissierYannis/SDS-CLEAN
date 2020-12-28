@@ -1,13 +1,3 @@
-registration:
-    path: /registration
-    methods: GET|POST
-    controller: App\UserInterface\Controller\RegistrationController
-
-login:
-    path: /login
-    methods: GET|POST
-    controller: App\UserInterface\Controller\LoginController
-
 article_create:
     path: /articles/create
     methods: GET|POST
@@ -47,6 +37,26 @@ category_remove:
     path: /categories/{id}/remove
     methods: GET
     controller: App\UserInterface\Controller\Category\RemoveController
+
+registration:
+    path: /registration
+    methods: GET|POST
+    controller: App\UserInterface\Controller\RegistrationController
+
+login:
+    path: /login
+    methods: GET|POST
+    controller: App\UserInterface\Controller\LoginController
+
+ask_password_reset:
+    path: /reset-password
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Security\AskPasswordResetController
+
+recover_password:
+    path: /handle-reset-password/{email}/{token}
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Security\RecoverPasswordController
 
 logout:
     path: /logout
