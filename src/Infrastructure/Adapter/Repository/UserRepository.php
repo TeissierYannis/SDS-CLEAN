@@ -71,7 +71,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
             $doctrineUser->getEmail(),
             $doctrineUser->getPseudo(),
             $doctrineUser->getPassword(),
-            $doctrineUser->setIsNewsletterRegistered(),
+            $doctrineUser->getIsNewsletterRegistered(),
             $doctrineUser->getPasswordResetToken(),
             $doctrineUser->getPasswordResetRequestedAt()
         );
@@ -105,7 +105,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
         $doctrineUser->setEmail($user->getEmail());
         $doctrineUser->setPassword($user->getPassword());
         $doctrineUser->setPseudo($user->getPseudo());
-        $doctrineUser->setIsNewsletterRegistered($user->isNewsletterRegistered());
+        $doctrineUser->setIsNewsletterRegistered($user->getIsNewsletterRegistered());
         $doctrineUser->setPasswordResetToken($user->getPasswordResetToken());
         $doctrineUser->setPasswordResetRequestedAt($user->getPasswordResetRequestedAt());
     }
