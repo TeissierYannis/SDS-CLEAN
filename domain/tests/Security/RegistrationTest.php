@@ -56,7 +56,7 @@ class RegistrationTest extends TestCase
         $this->assertEquals("email@email.com", $this->presenter->response->getUser()->getEmail());
         $this->assertEquals("pseudo", $this->presenter->response->getUser()->getPseudo());
         $this->assertTrue(password_verify("password", $this->presenter->response->getUser()->getPassword()));
-        $this->assertTrue($this->presenter->response->getUser()->isNewsletterRegistered());
+        $this->assertTrue($this->presenter->response->getUser()->getIsNewsletterRegistered());
     }
 
     /**

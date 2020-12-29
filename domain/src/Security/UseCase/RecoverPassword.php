@@ -3,15 +3,14 @@
 namespace TYannis\SDS\Domain\Security\UseCase;
 
 use Assert\AssertionFailedException;
-use Assert\InvalidArgumentException;
 use DateTimeImmutable;
 use TYannis\SDS\Domain\Security\Entity\User;
-use TYannis\SDS\Domain\Security\Exception\UserNotFoundException;
 use TYannis\SDS\Domain\Security\Exception\PasswordRecoveryInvalidTokenException;
+use TYannis\SDS\Domain\Security\Exception\UserNotFoundException;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
+use TYannis\SDS\Domain\Security\Presenter\RecoverPasswordPresenterInterface;
 use TYannis\SDS\Domain\Security\Request\RecoverPasswordRequest;
 use TYannis\SDS\Domain\Security\Response\RecoverPasswordResponse;
-use TYannis\SDS\Domain\Security\Presenter\RecoverPasswordPresenterInterface;
 
 /**
  * Class RecoverPassword
@@ -28,7 +27,7 @@ class RecoverPassword
 
     /**
      * RecoverPassword constructor.
-     * @param UserGateway $gateway
+     * @param  UserGateway  $gateway
      */
     public function __construct(UserGateway $gateway)
     {
@@ -36,8 +35,8 @@ class RecoverPassword
     }
 
     /**
-     * @param RecoverPasswordRequest $request
-     * @param RecoverPasswordPresenterInterface $presenter
+     * @param  RecoverPasswordRequest  $request
+     * @param  RecoverPasswordPresenterInterface  $presenter
      * @throws AssertionFailedException
      * @throws UserNotFoundException
      * @throws PasswordRecoveryInvalidTokenException
@@ -69,9 +68,10 @@ class RecoverPassword
 
     private function isTokenValid(RecoverPasswordRequest $request, User $user): bool
     {
+        /*
         if (!$user->getPasswordResetRequestedAt()) {
             return false;
-        }
+        }*/
         $interval =
             (new DateTimeImmutable())->getTimestamp() - $user->getPasswordResetRequestedAt()->getTimestamp();
 

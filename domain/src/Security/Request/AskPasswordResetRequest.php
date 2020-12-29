@@ -18,17 +18,21 @@ class AskPasswordResetRequest
     private string $email;
 
     /**
+     * @param  string  $email
+     * @return static
+     */
+    public static function create(string $email): self
+    {
+        return new self($email);
+    }
+
+    /**
      * AskPasswordResetRequest constructor.
      * @param string $email
      */
     public function __construct(string $email)
     {
         $this->email = $email;
-    }
-
-    public static function create(string $email): self
-    {
-        return new self($email);
     }
 
     /**

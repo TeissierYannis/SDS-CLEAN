@@ -74,7 +74,6 @@ class RecoverPasswordTest extends TestCase
     {
         $request = new RecoverPasswordRequest($email, $newPlainPassword, $token);
 
-        // TODO Verifier exceptions
         $this->expectException(InvalidArgumentException::class);
 
         $this->useCase->execute($request, $this->presenter);
@@ -97,7 +96,7 @@ class RecoverPasswordTest extends TestCase
      */
     public function testInvalidToken(): void
     {
-        $request = new RecoverPasswordRequest('used@email.com', 'new_password', 'aa4b5730-6057-4fa1-a27b-692b9ba8c14a');
+        $request = new RecoverPasswordRequest('used@email.com', 'new_password', 'a4b5730-6057-4fa1-a27b-692b9ba8c14a');
 
         $this->expectException(PasswordRecoveryInvalidTokenException::class);
 

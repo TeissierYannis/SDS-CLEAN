@@ -35,7 +35,7 @@ class AskPasswordResetTest extends TestCase
      */
     public function testSuccess(): void
     {
-        $request = new AskPasswordResetRequest('used@email.com');
+        $request = AskPasswordResetRequest::create('used@email.com');
 
         $this->useCase->execute($request, $this->presenter);
 
