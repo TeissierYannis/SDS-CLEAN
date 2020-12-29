@@ -43,7 +43,8 @@ class WebAuthenticator extends AbstractFormLoginAuthenticator implements LoginPr
 
     /**
      * WebAuthenticator constructor.
-     * @param Login $login
+     * @param  Login  $login
+     * @param  FlashBagInterface  $flashBag
      */
     public function __construct(Login $login, FlashBagInterface $flashBag)
     {

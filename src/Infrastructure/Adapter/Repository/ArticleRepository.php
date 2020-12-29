@@ -144,10 +144,10 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
 
         return array_map(
             fn(DoctrineArticle $article) => new Article(
-            $article->getId(),
-            $article->getTitle(),
-            $article->getContent(),
-            new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
+                $article->getId(),
+                $article->getTitle(),
+                $article->getContent(),
+                new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
             ),
             $articles
         );

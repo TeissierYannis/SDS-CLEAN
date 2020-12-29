@@ -6,6 +6,7 @@ use App\Infrastructure\Validator\NonUniqueEmail;
 use App\Infrastructure\Validator\NonUniquePseudo;
 use App\UserInterface\DataTransferObject\Registration;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -56,6 +57,10 @@ class RegistrationType extends AbstractType
                     new NotBlank(),
                     new Length(["min" => 8])
                 ]
+            ])
+            ->add('isNewsletterRegistered', CheckboxType::class, [
+                'label' => 'Inscription à la newsletter',
+                'required' => false
             ])
         ;
     }

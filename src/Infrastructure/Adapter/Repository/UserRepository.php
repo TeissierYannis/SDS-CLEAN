@@ -51,6 +51,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
         $doctrineUser->setEmail($user->getEmail());
         $doctrineUser->setPassword($user->getPassword());
         $doctrineUser->setPseudo($user->getPseudo());
+        $doctrineUser->setIsNewsletterRegistered($user->getIsNewsletterRegistered());
 
         $this->_em->persist($doctrineUser);
         $this->_em->flush();
@@ -70,6 +71,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
             $doctrineUser->getEmail(),
             $doctrineUser->getPseudo(),
             $doctrineUser->getPassword(),
+            $doctrineUser->setIsNewsletterRegistered(),
             $doctrineUser->getPasswordResetToken(),
             $doctrineUser->getPasswordResetRequestedAt()
         );
@@ -95,15 +97,16 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
     }
 
     /**
-     * @param DoctrineUser $doctrineUser
-     * @param User $participant
+     * @param  DoctrineUser  $doctrineUser
+     * @param  User  $user
      */
-    private function hydrateUser(DoctrineUser $doctrineUser, User $participant): void
+    private function hydrateUser(DoctrineUser $doctrineUser, User $user): void
     {
-        $doctrineUser->setEmail($participant->getEmail());
-        $doctrineUser->setPassword($participant->getPassword());
-        $doctrineUser->setPseudo($participant->getPseudo());
-        $doctrineUser->setPasswordResetToken($participant->getPasswordResetToken());
-        $doctrineUser->setPasswordResetRequestedAt($participant->getPasswordResetRequestedAt());
+        $doctrineUser->setEmail($user->getEmail());
+        $doctrineUser->setPassword($user->getPassword());
+        $doctrineUser->setPseudo($user->getPseudo());
+        $doctrineUser->setIsNewsletterRegistered($user->isNewsletterRegistered());
+        $doctrineUser->setPasswordResetToken($user->getPasswordResetToken());
+        $doctrineUser->setPasswordResetRequestedAt($user->getPasswordResetRequestedAt());
     }
 }

@@ -39,6 +39,12 @@ class DoctrineUser
     private string $pseudo;
 
     /**
+     * @var bool
+     * @ORM\Column
+     */
+    private bool $isNewsletterRegistered = true;
+
+    /**
      * @var string|null
      * @ORM\Column(type="string", nullable=true)
      */
@@ -144,5 +150,21 @@ class DoctrineUser
     public function setPasswordResetRequestedAt(?DateTimeInterface $passwordResetRequestedAt): void
     {
         $this->passwordResetRequestedAt = $passwordResetRequestedAt;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsNewsletterRegistered(): bool
+    {
+        return $this->isNewsletterRegistered;
+    }
+
+    /**
+     * @param  bool  $isNewsletterRegistered
+     */
+    public function setIsNewsletterRegistered(bool $isNewsletterRegistered): void
+    {
+        $this->isNewsletterRegistered = $isNewsletterRegistered;
     }
 }

@@ -72,7 +72,8 @@ class RegistrationController
             $request = RegistrationRequest::create(
                 $form->getData()->getEmail(),
                 $form->getData()->getPseudo(),
-                $form->getData()->getPlainPassword()
+                $form->getData()->getPlainPassword(),
+                $form->getData()->getIsNewsletterRegistered()
             );
             $registration->execute($request, $presenter);
 
