@@ -69,6 +69,9 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
+        "mailer": [
+            "php bin/console messenger:consume -vv"
+        ],
         "clean-code": [
             "phpcbf --standard=PSR12 tests src domain",
             "phpcs --standard=PSR12 tests src domain"
