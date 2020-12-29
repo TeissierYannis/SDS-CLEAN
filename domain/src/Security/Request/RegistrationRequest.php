@@ -29,14 +29,20 @@ class RegistrationRequest
     private string $plainPassword;
 
     /**
-     * @param  string $email
-     * @param  string $pseudo
-     * @param  string $plainPassword
+     * @var bool
+     */
+    private bool $isNewsletterRegistered;
+
+    /**
+     * @param  string  $email
+     * @param  string  $pseudo
+     * @param  string  $plainPassword
+     * @param  bool  $isNewsletterRegistered
      * @return static
      */
-    public static function create(string $email, string $pseudo, string $plainPassword): self
+    public static function create(string $email, string $pseudo, string $plainPassword, bool $isNewsletterRegistered): self
     {
-        return new self($email, $pseudo, $plainPassword);
+        return new self($email, $pseudo, $plainPassword, $isNewsletterRegistered);
     }
 
     /**
@@ -46,11 +52,12 @@ class RegistrationRequest
      * @param string $pseudo
      * @param string $plainPassword
      */
-    public function __construct(string $email, string $pseudo, string $plainPassword)
+    public function __construct(string $email, string $pseudo, string $plainPassword, bool $isNewsletterRegistered)
     {
         $this->email = $email;
         $this->pseudo = $pseudo;
         $this->plainPassword = $plainPassword;
+        $this->isNewsletterRegistered = $isNewsletterRegistered;
     }
 
     /**
@@ -75,6 +82,14 @@ class RegistrationRequest
     public function getPlainPassword(): string
     {
         return $this->plainPassword;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsNewsletterRegistered(): bool
+    {
+        return $this->isNewsletterRegistered;
     }
 
     /**

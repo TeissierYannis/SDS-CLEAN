@@ -37,6 +37,11 @@ class User
     private string $password;
 
     /**
+     * @var bool
+     */
+    private bool $isNewsletterRegistered;
+
+    /**
      * @var string|null
      */
     private ? string $passwordResetToken = null;
@@ -56,25 +61,28 @@ class User
             Uuid::uuid4(),
             $request->getEmail(),
             $request->getPseudo(),
-            password_hash($request->getPlainPassword(), PASSWORD_ARGON2I)
+            password_hash($request->getPlainPassword(), PASSWORD_ARGON2I),
+            $request->getIsNewsletterRegistered()
         );
     }
 
     /**
      * User constructor.
      *
-     * @param UuidInterface $id
-     * @param string $email
-     * @param string $pseudo
-     * @param string $password
-     * @param string|null $passwordResetToken
-     * @param DateTimeInterface|null $passwordResetRequestedAt
+     * @param  UuidInterface  $id
+     * @param  string  $email
+     * @param  string  $pseudo
+     * @param  string  $password
+     * @param  bool  $isNewsletterRegistered
+     * @param  string|null  $passwordResetToken
+     * @param  DateTimeInterface|null  $passwordResetRequestedAt
      */
     public function __construct(
         UuidInterface $id,
         string $email,
         string $pseudo,
         string $password,
+        bool $isNewsletterRegistered,
         ?string $passwordResetToken = null,
         ?DateTimeInterface $passwordResetRequestedAt = null
     ) {
@@ -82,6 +90,7 @@ class User
         $this->email = $email;
         $this->pseudo = $pseudo;
         $this->password = $password;
+        $this->isNewsletterRegistered = $isNewsletterRegistered;
         $this->passwordResetToken = $passwordResetToken;
         $this->passwordResetRequestedAt = $passwordResetRequestedAt;
     }
@@ -142,6 +151,14 @@ class User
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsNewsletterRegistered(): bool
+    {
+        return $this->isNewsletterRegistered;
     }
 
     /**

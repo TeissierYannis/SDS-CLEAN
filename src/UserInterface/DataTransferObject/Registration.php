@@ -24,6 +24,11 @@ class Registration
     private ? string $plainPassword = null;
 
     /**
+     * @var bool|null
+     */
+    private ? bool $isNewsletterRegistered = null;
+
+    /**
      * @return string|null
      */
     public function getEmail() : ?string
@@ -50,7 +55,7 @@ class Registration
     /**
      * @param string|null $pseudo
      */
-    public function setPseudo(?string $pseudo): void
+    public function setPseudo(?string $pseudo) : void
     {
         $this->pseudo = $pseudo;
     }
@@ -69,5 +74,21 @@ class Registration
     public function setPlainPassword(?string $plainPassword): void
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsNewsletterRegistered(): ?bool
+    {
+        return $this->isNewsletterRegistered;
+    }
+
+    /**
+     * @param  bool|null  $isNewsletterRegistered
+     */
+    public function setIsNewsletterRegistered(?bool $isNewsletterRegistered): void
+    {
+        $this->isNewsletterRegistered = $isNewsletterRegistered;
     }
 }
