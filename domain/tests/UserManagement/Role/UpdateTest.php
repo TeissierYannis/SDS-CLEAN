@@ -8,21 +8,22 @@ use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\RoleRepository;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\UserRepository;
+use TYannis\SDS\Domain\UserManagement\Entity\Role;
 use TYannis\SDS\Domain\UserManagement\Presenter\Role\UpdatePresenterInterface;
 use TYannis\SDS\Domain\UserManagement\Request\Role\UpdateRequest;
 use TYannis\SDS\Domain\UserManagement\Response\Role\UpdateResponse;
-use TYannis\SDS\Domain\UserManagement\UseCase\Role\Role;
+use TYannis\SDS\Domain\UserManagement\UseCase\Role\Update;
 
 /**
  * Class UpdateRoleTest
  * @package TYannis\SDS\Domain\Tests\UserManagement
  */
-class UpdateRoleTest extends TestCase
+class UpdateTest extends TestCase
 {
     /**
-     * @var Role
+     * @var Update
      */
-    private Role $useCase;
+    private Update $useCase;
     /**
      * @var UpdatePresenterInterface
      */
@@ -40,13 +41,16 @@ class UpdateRoleTest extends TestCase
             }
         };
 
-        $this->useCase = new Role(new UserRepository(), new RoleRepository());
+        $this->useCase = new Update(new UserRepository(), new RoleRepository());
     }
 
     public function testSuccessful(): void
     {
         $user = new User(Uuid::uuid4(), 'used@email.com', 'pseudo', 'password', false);
 
+        $role = Role::create('ROLE_USER');
+
+        $this->assertEquals('ROLE_USER', $role->getName());
         $this->assertEquals('ROLE_USER', $user->getRole());
 
         $request = UpdateRequest::create($user, 'ROLE_ADMIN');
