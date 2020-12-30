@@ -1,6 +1,6 @@
 <?php
 
-namespace TYannis\SDS\Domain\Tests\UserManagement;
+namespace TYannis\SDS\Domain\Tests\UserManagement\Role;
 
 use Assert\AssertionFailedException;
 use PHPUnit\Framework\TestCase;
@@ -8,52 +8,56 @@ use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\RoleRepository;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\UserRepository;
-use TYannis\SDS\Domain\UserManagement\Presenter\UpdateRolePresenterInterface;
-use TYannis\SDS\Domain\UserManagement\Request\UpdateRoleRequest;
-use TYannis\SDS\Domain\UserManagement\Response\UpdateRoleResponse;
-use TYannis\SDS\Domain\UserManagement\UseCase\UpdateRole;
+use TYannis\SDS\Domain\UserManagement\Entity\Role;
+use TYannis\SDS\Domain\UserManagement\Presenter\Role\UpdatePresenterInterface;
+use TYannis\SDS\Domain\UserManagement\Request\Role\UpdateRequest;
+use TYannis\SDS\Domain\UserManagement\Response\Role\UpdateResponse;
+use TYannis\SDS\Domain\UserManagement\UseCase\Role\Update;
 
 /**
  * Class UpdateRoleTest
  * @package TYannis\SDS\Domain\Tests\UserManagement
  */
-class UpdateRoleTest extends TestCase
+class UpdateTest extends TestCase
 {
     /**
-     * @var UpdateRole
+     * @var Update
      */
-    private UpdateRole $useCase;
+    private Update $useCase;
     /**
-     * @var UpdateRolePresenterInterface
+     * @var UpdatePresenterInterface
      */
-    private UpdateRolePresenterInterface $presenter;
+    private UpdatePresenterInterface $presenter;
 
 
     protected function setUp(): void
     {
-        $this->presenter = new class () implements UpdateRolePresenterInterface {
-            public UpdateRoleResponse $response;
+        $this->presenter = new class () implements UpdatePresenterInterface {
+            public UpdateResponse $response;
 
-            public function present(UpdateRoleResponse $response): void
+            public function present(UpdateResponse $response): void
             {
                 $this->response = $response;
             }
         };
 
-        $this->useCase = new UpdateRole(new UserRepository(), new RoleRepository());
+        $this->useCase = new Update(new UserRepository(), new RoleRepository());
     }
 
     public function testSuccessful(): void
     {
         $user = new User(Uuid::uuid4(), 'used@email.com', 'pseudo', 'password', false);
 
+        $role = Role::create('ROLE_USER');
+
+        $this->assertEquals('ROLE_USER', $role->getName());
         $this->assertEquals('ROLE_USER', $user->getRole());
 
-        $request = UpdateRoleRequest::create($user, 'ROLE_ADMIN');
+        $request = UpdateRequest::create($user, 'ROLE_ADMIN');
 
         $this->useCase->execute($request, $this->presenter);
 
-        $this->assertInstanceOf(UpdateRoleResponse::class, $this->presenter->response);
+        $this->assertInstanceOf(UpdateResponse::class, $this->presenter->response);
 
         $this->assertInstanceOf(User::class, $this->presenter->response->getUser());
 
@@ -61,11 +65,12 @@ class UpdateRoleTest extends TestCase
     }
 
 
-    public function testFailed(){
+    public function testFailed()
+    {
         $user = new User(Uuid::uuid4(), 'used@email.com', 'pseudo', 'password', false);
 
 
-        $request = UpdateRoleRequest::create($user, 'ROLE_UNKNOWN');
+        $request = UpdateRequest::create($user, 'ROLE_UNKNOWN');
 
         $this->expectException(AssertionFailedException::class);
 

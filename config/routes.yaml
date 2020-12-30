@@ -63,6 +63,11 @@ logout:
     methods: GET
     controller: App\UserInterface\Controller\LogoutController
 
+role_create:
+    path: /users/management/role/create
+    methods: GET|POST
+    controller: App\UserInterface\Controller\UserManagement\Role\CreateController
+
 home:
     path: /
     methods: GET

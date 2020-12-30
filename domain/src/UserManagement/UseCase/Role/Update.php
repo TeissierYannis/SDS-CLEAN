@@ -1,19 +1,19 @@
 <?php
 
-namespace TYannis\SDS\Domain\UserManagement\UseCase;
+namespace TYannis\SDS\Domain\UserManagement\UseCase\Role;
 
 use Assert\AssertionFailedException;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 use TYannis\SDS\Domain\UserManagement\Gateway\RoleGateway;
-use TYannis\SDS\Domain\UserManagement\Presenter\UpdateRolePresenterInterface;
-use TYannis\SDS\Domain\UserManagement\Request\UpdateRoleRequest;
-use TYannis\SDS\Domain\UserManagement\Response\UpdateRoleResponse;
+use TYannis\SDS\Domain\UserManagement\Presenter\Role\UpdatePresenterInterface;
+use TYannis\SDS\Domain\UserManagement\Request\Role\UpdateRequest;
+use TYannis\SDS\Domain\UserManagement\Response\Role\UpdateResponse;
 
 /**
- * Class UpdateRole
- * @package TYannis\SDS\Domain\UserManagement\UseCase
+ * Class Update
+ * @package TYannis\SDS\Domain\UserManagement\UseCase\Update
  */
-class UpdateRole
+class Update
 {
     /**
      * @var UserGateway
@@ -26,7 +26,7 @@ class UpdateRole
     private RoleGateway $roleGateway;
 
     /**
-     * UpdateRole constructor.
+     * Role constructor.
      * @param  UserGateway  $userGateway
      * @param  RoleGateway  $roleGateway
      */
@@ -37,11 +37,11 @@ class UpdateRole
     }
 
     /**
-     * @param  UpdateRoleRequest  $request
-     * @param  UpdateRolePresenterInterface  $presenter
+     * @param  UpdateRequest  $request
+     * @param  UpdatePresenterInterface  $presenter
      * @throws AssertionFailedException
      */
-    public function execute(UpdateRoleRequest $request, UpdateRolePresenterInterface $presenter)
+    public function execute(UpdateRequest $request, UpdatePresenterInterface $presenter)
     {
         $request->validate($this->roleGateway->getRoles());
 
@@ -51,6 +51,6 @@ class UpdateRole
 
         $this->userGateway->update($user);
 
-        $presenter->present(new UpdateRoleResponse($user));
+        $presenter->present(new UpdateResponse($user));
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace TYannis\SDS\Domain\UserManagement\Response;
+namespace TYannis\SDS\Domain\UserManagement\Response\Role;
 
 use TYannis\SDS\Domain\Security\Entity\User;
 
 /**
- * Class UpdateRoleResponse
+ * Class UpdateResponse
  * @package TYannis\SDS\Domain\UserManagement\Response
  */
-class UpdateRoleResponse
+class UpdateResponse
 {
     /**
      * @var User
@@ -16,7 +16,7 @@ class UpdateRoleResponse
     private User $user;
 
     /**
-     * UpdateRoleResponse constructor.
+     * UpdateResponse constructor.
      * @param  User  $user
      */
     public function __construct(User $user)
