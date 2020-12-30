@@ -1,7 +1,8 @@
 <?php
 
-
 namespace TYannis\SDS\Domain\UserManagement\Gateway;
+
+use TYannis\SDS\Domain\UserManagement\Entity\Role;
 
 /**
  * Interface RoleGateway
@@ -13,4 +14,9 @@ interface RoleGateway
      * @return array
      */
     public function getRoles(): array;
+
+    /**
+     * @param  Role  $role
+     */
+    public function create(Role $role): void;
 }
