@@ -1,14 +1,14 @@
 <?php
 
-namespace TYannis\SDS\Domain\UserManagement\Response;
+namespace TYannis\SDS\Domain\UserManagement\Response\Role;
 
 use TYannis\SDS\Domain\UserManagement\Entity\Role;
 
 /**
- * Class CreateRoleResponse
+ * Class CreateResponse
  * @package TYannis\SDS\Domain\UserManagement\Response
  */
-class CreateRoleResponse
+class CreateResponse
 {
     /**
      * @var Role
@@ -16,7 +16,7 @@ class CreateRoleResponse
     private Role $role;
 
     /**
-     * CreateRoleResponse constructor.
+     * CreateResponse constructor.
      * @param  Role  $role
      */
     public function __construct(Role $role)

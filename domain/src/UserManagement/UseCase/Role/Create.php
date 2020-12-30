@@ -1,19 +1,19 @@
 <?php
 
-namespace TYannis\SDS\Domain\UserManagement\UseCase;
+namespace TYannis\SDS\Domain\UserManagement\UseCase\Role;
 
 use Assert\AssertionFailedException;
 use TYannis\SDS\Domain\UserManagement\Entity\Role;
 use TYannis\SDS\Domain\UserManagement\Gateway\RoleGateway;
-use TYannis\SDS\Domain\UserManagement\Request\CreateRoleRequest;
-use TYannis\SDS\Domain\UserManagement\Response\CreateRoleResponse;
-use TYannis\SDS\Domain\UserManagement\Presenter\CreateRolePresenterInterface;
+use TYannis\SDS\Domain\UserManagement\Request\Role\CreateRequest;
+use TYannis\SDS\Domain\UserManagement\Response\Role\CreateResponse;
+use TYannis\SDS\Domain\UserManagement\Presenter\Role\CreatePresenterInterface;
 
 /**
- * Class CreateRole
+ * Class Create
  * @package TYannis\SDS\Domain\UserManagement\UseCase
  */
-class CreateRole
+class Create
 {
     /**
      * @var RoleGateway
@@ -30,11 +30,11 @@ class CreateRole
     }
 
     /**
-     * @param  CreateRoleRequest  $request
-     * @param  CreateRolePresenterInterface  $presenter
+     * @param  CreateRequest  $request
+     * @param  CreatePresenterInterface  $presenter
      * @throws AssertionFailedException
      */
-    public function execute(CreateRoleRequest $request, CreateRolePresenterInterface $presenter)
+    public function execute(CreateRequest $request, CreatePresenterInterface $presenter)
     {
         $request->validate($this->roleGateway->getRoles());
 
@@ -42,6 +42,6 @@ class CreateRole
 
         $this->roleGateway->create($role);
 
-        $presenter->present(new CreateRoleResponse($role));
+        $presenter->present(new CreateResponse($role));
     }
 }

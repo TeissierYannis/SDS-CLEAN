@@ -1,11 +1,10 @@
 <?php
 
-
 namespace TYannis\SDS\Domain\UserManagement\Entity;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use TYannis\SDS\Domain\UserManagement\Request\CreateRoleRequest;
+use TYannis\SDS\Domain\UserManagement\Request\Role\CreateRequest;
 
 /**
  * Class Role
@@ -23,15 +22,24 @@ class Role
     private string $name;
 
     /**
-     * @param  CreateRoleRequest  $createRequest
+     * @param  CreateRequest  $createRequest
      * @return static
      */
-    public static function fromCreate(CreateRoleRequest $createRequest): self
+    public static function fromCreate(CreateRequest $createRequest): self
     {
         return new self(
             Uuid::uuid4(),
             $createRequest->getName()
         );
+    }
+
+    /**
+     * @param  string  $name
+     * @return static
+     */
+    public static function create(string $name): self
+    {
+        return new self(Uuid::uuid4(), $name);
     }
 
     /**

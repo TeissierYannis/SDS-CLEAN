@@ -1,15 +1,15 @@
 <?php
 
-namespace TYannis\SDS\Domain\UserManagement\Request;
+namespace TYannis\SDS\Domain\UserManagement\Request\Role;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 
 /**
- * Class CreateRoleRequest
+ * Class CreateRequest
  * @package TYannis\SDS\Domain\UserManagement\Request
  */
-class CreateRoleRequest
+class CreateRequest
 {
     /**
      * @var string
@@ -26,7 +26,7 @@ class CreateRoleRequest
     }
 
     /**
-     * CreateRoleRequest constructor.
+     * CreateRequest constructor.
      * @param  string  $name
      */
     public function __construct(string $name)

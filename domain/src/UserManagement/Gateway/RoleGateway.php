@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TYannis\SDS\Domain\UserManagement\Gateway;
 
 use TYannis\SDS\Domain\UserManagement\Entity\Role;

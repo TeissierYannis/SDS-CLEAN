@@ -1,16 +1,16 @@
 <?php
 
-namespace TYannis\SDS\Domain\Tests\UserManagement;
+namespace TYannis\SDS\Domain\Tests\UserManagement\Role;
 
 use Assert\AssertionFailedException;
 use Generator;
 use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\RoleRepository;
 use TYannis\SDS\Domain\UserManagement\Entity\Role;
-use TYannis\SDS\Domain\UserManagement\Presenter\CreateRolePresenterInterface;
-use TYannis\SDS\Domain\UserManagement\Request\CreateRoleRequest;
-use TYannis\SDS\Domain\UserManagement\Response\CreateRoleResponse;
-use TYannis\SDS\Domain\UserManagement\UseCase\CreateRole;
+use TYannis\SDS\Domain\UserManagement\Presenter\Role\CreatePresenterInterface;
+use TYannis\SDS\Domain\UserManagement\Request\Role\CreateRequest;
+use TYannis\SDS\Domain\UserManagement\Response\Role\CreateResponse;
+use TYannis\SDS\Domain\UserManagement\UseCase\Role\Create;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,36 +20,36 @@ use PHPUnit\Framework\TestCase;
 class CreateRoleTest extends TestCase
 {
     /**
-     * @var CreateRolePresenterInterface
+     * @var CreatePresenterInterface
      */
     private $presenter;
     /**
-     * @var CreateRole
+     * @var Create
      */
-    private CreateRole $useCase;
+    private Create $useCase;
 
     protected function setUp(): void
     {
-        $this->presenter = new class () implements CreateRolePresenterInterface {
-            public CreateRoleResponse $response;
+        $this->presenter = new class () implements CreatePresenterInterface {
+            public CreateResponse $response;
 
-            public function present(CreateRoleResponse $response): void
+            public function present(CreateResponse $response): void
             {
                 $this->response = $response;
             }
         };
 
-        $this->useCase = new CreateRole(new RoleRepository());
+        $this->useCase = new Create(new RoleRepository());
     }
 
 
     public function testSuccessful(): void
     {
-        $request = CreateRoleRequest::create('ROLE_TEST');
+        $request = CreateRequest::create('ROLE_TEST');
 
         $this->useCase->execute($request, $this->presenter);
 
-        $this->assertInstanceOf(CreateRoleResponse::class, $this->presenter->response);
+        $this->assertInstanceOf(CreateResponse::class, $this->presenter->response);
         $this->assertInstanceOf(Role::class, $this->presenter->response->getRole());
 
         $this->assertEquals('ROLE_TEST', $this->presenter->response->getRole()->getName());
@@ -62,7 +62,7 @@ class CreateRoleTest extends TestCase
      */
     public function testFailed(string $role): void
     {
-        $request = CreateRoleRequest::create($role);
+        $request = CreateRequest::create($role);
 
         $this->expectException(AssertionFailedException::class);
 
