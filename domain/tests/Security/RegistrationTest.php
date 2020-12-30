@@ -47,7 +47,12 @@ class RegistrationTest extends TestCase
 
     public function testSuccessful(): void
     {
-        $request = RegistrationRequest::create("email@email.com", "pseudo", "password", true);
+        $request = RegistrationRequest::create(
+            "email@email.com",
+            "pseudo",
+            "password",
+            true
+        );
 
         $this->useCase->execute($request, $this->presenter);
 
@@ -67,8 +72,12 @@ class RegistrationTest extends TestCase
      * @param  bool  $isNewsletterRegistered
      * @throws AssertionFailedException
      */
-    public function testFailedRequest(string $email, string $pseudo, string $plainPassword, bool $isNewsletterRegistered): void
-    {
+    public function testFailedRequest(
+        string $email,
+        string $pseudo,
+        string $plainPassword,
+        bool $isNewsletterRegistered
+    ): void {
         $request = RegistrationRequest::create($email, $pseudo, $plainPassword, $isNewsletterRegistered);
 
         $this->expectException(AssertionFailedException::class);

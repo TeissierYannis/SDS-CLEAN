@@ -42,20 +42,57 @@ class User
     private bool $isNewsletterRegistered;
 
     /**
+     * @var string
+     */
+    private string $role = 'ROLE_USER';
+
+    /**
      * @var string|null
      */
-    private ? string $passwordResetToken = null;
+    private ?string $passwordResetToken = null;
 
     /**
      * @var DateTimeInterface|null
      */
-    private ? DateTimeInterface $passwordResetRequestedAt = null;
+    private ?DateTimeInterface $passwordResetRequestedAt = null;
 
     /**
-     * @param  RegistrationRequest $request
+     * User constructor.
+     *
+     * @param  UuidInterface  $id
+     * @param  string  $email
+     * @param  string  $pseudo
+     * @param  string  $password
+     * @param  bool  $isNewsletterRegistered
+     * @param  string  $role
+     * @param  string|null  $passwordResetToken
+     * @param  DateTimeInterface|null  $passwordResetRequestedAt
+     */
+    public function __construct(
+        UuidInterface $id,
+        string $email,
+        string $pseudo,
+        string $password,
+        bool $isNewsletterRegistered,
+        ?string $passwordResetToken = null,
+        ?DateTimeInterface $passwordResetRequestedAt = null,
+        string $role = 'ROLE_USER'
+    ) {
+        $this->id = $id;
+        $this->email = $email;
+        $this->pseudo = $pseudo;
+        $this->password = $password;
+        $this->isNewsletterRegistered = $isNewsletterRegistered;
+        $this->passwordResetToken = $passwordResetToken;
+        $this->passwordResetRequestedAt = $passwordResetRequestedAt;
+        $this->role = $role;
+    }
+
+    /**
+     * @param  RegistrationRequest  $request
      * @return static
      */
-    public static function fromRegistration(RegistrationRequest $request) : self
+    public static function fromRegistration(RegistrationRequest $request): self
     {
         return new self(
             Uuid::uuid4(),
@@ -67,39 +104,10 @@ class User
     }
 
     /**
-     * User constructor.
-     *
-     * @param  UuidInterface  $id
-     * @param  string  $email
-     * @param  string  $pseudo
-     * @param  string  $password
-     * @param  bool  $isNewsletterRegistered
-     * @param  string|null  $passwordResetToken
-     * @param  DateTimeInterface|null  $passwordResetRequestedAt
+     * @param  User  $user
+     * @param  RecoverPasswordRequest  $request
      */
-    public function __construct(
-        UuidInterface $id,
-        string $email,
-        string $pseudo,
-        string $password,
-        bool $isNewsletterRegistered,
-        ?string $passwordResetToken = null,
-        ?DateTimeInterface $passwordResetRequestedAt = null
-    ) {
-        $this->id = $id;
-        $this->email = $email;
-        $this->pseudo = $pseudo;
-        $this->password = $password;
-        $this->isNewsletterRegistered = $isNewsletterRegistered;
-        $this->passwordResetToken = $passwordResetToken;
-        $this->passwordResetRequestedAt = $passwordResetRequestedAt;
-    }
-
-    /**
-     * @param User $user
-     * @param RecoverPasswordRequest $request
-     */
-    public static function resetPassword(self $user, RecoverPasswordRequest $request) : void
+    public static function resetPassword(self $user, RecoverPasswordRequest $request): void
     {
         $password = password_hash($request->getNewPlainPassword(), PASSWORD_ARGON2I);
 
@@ -112,8 +120,8 @@ class User
     }
 
     /**
-     * @param User $user
-     * @param string $token
+     * @param  User  $user
+     * @param  string  $token
      */
     public static function requestPasswordReset(self $user, string $token): void
     {
@@ -175,5 +183,21 @@ class User
     public function getPasswordResetRequestedAt(): ?DateTimeInterface
     {
         return $this->passwordResetRequestedAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param  string  $role
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 }

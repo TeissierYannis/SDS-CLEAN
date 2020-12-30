@@ -11,27 +11,27 @@ class Registration
     /**
      * @var string|null
      */
-    private ? string $email = null;
+    private ?string $email = null;
 
     /**
      * @var string|null
      */
-    private ? string $pseudo = null;
+    private ?string $pseudo = null;
 
     /**
      * @var string|null
      */
-    private ? string $plainPassword = null;
+    private ?string $plainPassword = null;
 
     /**
      * @var bool|null
      */
-    private ? bool $isNewsletterRegistered = null;
+    private ?bool $isNewsletterRegistered = null;
 
     /**
      * @return string|null
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -39,7 +39,7 @@ class Registration
     /**
      * @param string|null $email
      */
-    public function setEmail(?string $email) : void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
@@ -47,7 +47,7 @@ class Registration
     /**
      * @return string|null
      */
-    public function getPseudo() : ?string
+    public function getPseudo(): ?string
     {
         return $this->pseudo;
     }
@@ -55,7 +55,7 @@ class Registration
     /**
      * @param string|null $pseudo
      */
-    public function setPseudo(?string $pseudo) : void
+    public function setPseudo(?string $pseudo): void
     {
         $this->pseudo = $pseudo;
     }

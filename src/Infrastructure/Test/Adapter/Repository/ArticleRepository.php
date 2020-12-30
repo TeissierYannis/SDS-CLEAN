@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Infrastructure\Test\Adapter\Repository;
 
 use App\Infrastructure\Doctrine\Entity\DoctrineCategory;

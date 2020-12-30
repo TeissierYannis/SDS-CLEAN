@@ -13,7 +13,7 @@ class RemoveResponse
     /**
      * @var Category|null
      */
-    private ? Category $category;
+    private ?Category $category;
 
     /**
      * RemoveResponse constructor.
@@ -27,7 +27,7 @@ class RemoveResponse
     /**
      * @return Category|null
      */
-    public function getCategory() : ?Category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
