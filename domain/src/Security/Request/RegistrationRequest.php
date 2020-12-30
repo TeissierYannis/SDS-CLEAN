@@ -40,17 +40,22 @@ class RegistrationRequest
      * @param  bool  $isNewsletterRegistered
      * @return static
      */
-    public static function create(string $email, string $pseudo, string $plainPassword, bool $isNewsletterRegistered): self
-    {
+    public static function create(
+        string $email,
+        string $pseudo,
+        string $plainPassword,
+        bool $isNewsletterRegistered
+    ): self {
         return new self($email, $pseudo, $plainPassword, $isNewsletterRegistered);
     }
 
     /**
      * RegistrationRequest constructor.
      *
-     * @param string $email
-     * @param string $pseudo
-     * @param string $plainPassword
+     * @param  string  $email
+     * @param  string  $pseudo
+     * @param  string  $plainPassword
+     * @param  bool  $isNewsletterRegistered
      */
     public function __construct(string $email, string $pseudo, string $plainPassword, bool $isNewsletterRegistered)
     {

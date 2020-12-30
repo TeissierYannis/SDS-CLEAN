@@ -19,9 +19,9 @@ class LoginViewModel
     /**
      * @var string|null
      */
-    private ? string $errorMessage;
+    private ?string $errorMessage;
 
-    public static function fromAuthenticationUtils(AuthenticationUtils $authenticationUtils) : self
+    public static function fromAuthenticationUtils(AuthenticationUtils $authenticationUtils): self
     {
         return new self(
             $authenticationUtils->getLastUsername(),

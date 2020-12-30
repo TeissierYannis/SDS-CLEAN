@@ -14,7 +14,7 @@ class LoginResponse
     /**
      * @var User|null
      */
-    private ? User $user;
+    private ?User $user;
 
     /**
      * @var bool
@@ -35,7 +35,7 @@ class LoginResponse
     /**
      * @return User|null
      */
-    public function getUser() : ?User
+    public function getUser(): ?User
     {
         return $this->user;
     }

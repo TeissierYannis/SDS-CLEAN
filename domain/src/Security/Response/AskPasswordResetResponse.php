@@ -13,7 +13,7 @@ class AskPasswordResetResponse
     /**
      * @var User|null
      */
-    private ? User $user;
+    private ?User $user;
 
     /**
      * AskPasswordResetResponse constructor.
@@ -27,7 +27,7 @@ class AskPasswordResetResponse
     /**
      * @return User
      */
-    public function getUser() : User
+    public function getUser(): User
     {
         return $this->user;
     }

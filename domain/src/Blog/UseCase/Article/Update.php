@@ -21,7 +21,7 @@ class Update
 
     /**
      * Update constructor.
-     * @param ArticleGateway $articleGateway
+     * @param  ArticleGateway  $articleGateway
      */
     public function __construct(ArticleGateway $articleGateway)
     {
@@ -29,8 +29,8 @@ class Update
     }
 
     /**
-     * @param UpdateRequest $request
-     * @param UpdatePresenterInterface $presenter
+     * @param  UpdateRequest  $request
+     * @param  UpdatePresenterInterface  $presenter
      * @throws AssertionFailedException
      */
     public function execute(UpdateRequest $request, UpdatePresenterInterface $presenter)

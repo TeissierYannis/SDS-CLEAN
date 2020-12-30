@@ -48,18 +48,18 @@ class DoctrineUser
      * @var string|null
      * @ORM\Column(type="string", nullable=true)
      */
-    private ? string $passwordResetToken = null;
+    private ?string $passwordResetToken = null;
 
     /**
      * @var DateTimeInterface|null
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private ? DateTimeInterface $passwordResetRequestedAt = null;
+    private ?DateTimeInterface $passwordResetRequestedAt = null;
 
     /**
      * @return UuidInterface
      */
-    public function getId() : UuidInterface
+    public function getId(): UuidInterface
     {
         return $this->id;
     }
@@ -67,7 +67,7 @@ class DoctrineUser
     /**
      * @param UuidInterface $id
      */
-    public function setId(UuidInterface $id) : void
+    public function setId(UuidInterface $id): void
     {
         $this->id = $id;
     }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Infrastructure\Test\Adapter;
 
 use TYannis\SDS\Domain\Security\Provider\MailProviderInterface;
