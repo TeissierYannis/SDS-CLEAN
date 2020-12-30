@@ -133,6 +133,7 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryGate
     {
         $doctrineCategory = $this->find($category->getId());
 
+        /** @var DoctrineArticle $debug */
         $isRemovable = count($doctrineCategory->getArticles()->getValues()) <= 0;
 
         if ($isRemovable) {

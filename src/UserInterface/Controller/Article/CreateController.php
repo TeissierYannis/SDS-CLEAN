@@ -68,7 +68,7 @@ class CreateController
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function __invoke(Request $request, CreatePresenter $presenter)
+    public function __invoke(Request $request, Create $create, CreatePresenter $presenter)
     {
         $article = new Article();
 

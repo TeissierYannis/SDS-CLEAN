@@ -1,16 +1,16 @@
 <?php
 
-namespace TYannis\SDS\Domain\UserManagement\Request\Role;
+namespace TYannis\SDS\Domain\UserManagement\Request;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 use TYannis\SDS\Domain\Security\Entity\User;
 
 /**
- * Class UpdateRequest
+ * Class UpdateRoleRequest
  * @package TYannis\SDS\Domain\UserManagement\Request
  */
-class UpdateRequest
+class UpdateRoleRequest
 {
     /**
      * @var User
@@ -23,7 +23,7 @@ class UpdateRequest
     private string $role;
 
     /**
-     * UpdateRequest constructor.
+     * UpdateRoleRequest constructor.
      * @param  User  $user
      * @param  string  $role
      */
