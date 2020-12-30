@@ -1,14 +1,14 @@
 <?php
 
 
-namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
+namespace App\Infrastructure\Adapter\Repository;
+
 
 use TYannis\SDS\Domain\UserManagement\Entity\Role;
 use TYannis\SDS\Domain\UserManagement\Gateway\RoleGateway;
 
 class RoleRepository implements RoleGateway
 {
-
     /**
      * @inheritDoc
      */
