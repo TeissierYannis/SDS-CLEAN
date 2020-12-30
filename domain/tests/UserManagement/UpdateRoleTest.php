@@ -2,9 +2,11 @@
 
 namespace TYannis\SDS\Domain\Tests\UserManagement;
 
+use Assert\AssertionFailedException;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
+use TYannis\SDS\Domain\Tests\Fixtures\Adapter\RoleRepository;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\UserRepository;
 use TYannis\SDS\Domain\UserManagement\Presenter\UpdateRolePresenterInterface;
 use TYannis\SDS\Domain\UserManagement\Request\UpdateRoleRequest;
@@ -26,7 +28,22 @@ class UpdateRoleTest extends TestCase
      */
     private UpdateRolePresenterInterface $presenter;
 
-    public function test(): void
+
+    protected function setUp(): void
+    {
+        $this->presenter = new class () implements UpdateRolePresenterInterface {
+            public UpdateRoleResponse $response;
+
+            public function present(UpdateRoleResponse $response): void
+            {
+                $this->response = $response;
+            }
+        };
+
+        $this->useCase = new UpdateRole(new UserRepository(), new RoleRepository());
+    }
+
+    public function testSuccessful(): void
     {
         $user = new User(Uuid::uuid4(), 'used@email.com', 'pseudo', 'password', false);
 
@@ -43,17 +60,15 @@ class UpdateRoleTest extends TestCase
         $this->assertEquals('ROLE_ADMIN', $this->presenter->response->getUser()->getRole());
     }
 
-    protected function setUp(): void
-    {
-        $this->presenter = new class () implements UpdateRolePresenterInterface {
-            public UpdateRoleResponse $response;
 
-            public function present(UpdateRoleResponse $response): void
-            {
-                $this->response = $response;
-            }
-        };
+    public function testFailed(){
+        $user = new User(Uuid::uuid4(), 'used@email.com', 'pseudo', 'password', false);
 
-        $this->useCase = new UpdateRole(new UserRepository());
+
+        $request = UpdateRoleRequest::create($user, 'ROLE_UNKNOWN');
+
+        $this->expectException(AssertionFailedException::class);
+
+        $this->useCase->execute($request, $this->presenter);
     }
 }

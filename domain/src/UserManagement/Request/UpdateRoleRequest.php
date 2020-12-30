@@ -2,6 +2,8 @@
 
 namespace TYannis\SDS\Domain\UserManagement\Request;
 
+use Assert\Assertion;
+use Assert\AssertionFailedException;
 use TYannis\SDS\Domain\Security\Entity\User;
 
 /**
@@ -55,5 +57,14 @@ class UpdateRoleRequest
     public function getRole(): string
     {
         return $this->role;
+    }
+
+    /**
+     * @param  array  $roles
+     * @throws AssertionFailedException
+     */
+    public function validate(array $roles)
+    {
+        Assertion::inArray($this->role, $roles);
     }
 }
