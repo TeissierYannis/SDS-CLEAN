@@ -58,4 +58,36 @@ class UserRepository implements UserGateway
     public function update(User $user): void
     {
     }
+
+    /**
+     * @param  int  $page
+     * @param  int  $limit
+     * @param  string  $field
+     * @param  string  $order
+     * @return User[]
+     */
+    public function getUsers(int $page, int $limit, string $field, string $order): array
+    {
+        $users = array_fill(
+            0,
+            25,
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true
+            )
+        );
+
+        return array_slice($users, ($page - 1) * $limit, $limit);
+    }
+
+    /**
+     * @return int
+     */
+    public function countUsers(): int
+    {
+        return 25;
+    }
 }

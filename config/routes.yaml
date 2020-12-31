@@ -68,6 +68,11 @@ role_create:
     methods: GET|POST
     controller: App\UserInterface\Controller\Security\Role\CreateController
 
+user_listing:
+    path: /dashboard/users
+    methods: GET
+    controller: App\UserInterface\Controller\Security\User\ListingController
+
 home:
     path: /
     methods: GET

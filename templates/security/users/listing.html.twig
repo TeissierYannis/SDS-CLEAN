@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>Pseudo</th>
+            <th>Email</th>
+            <th>Newsletter</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for user in vm.users %}
+
+                <tr>
+                    <td>{{ user.pseudo }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.isNewsletterRegistered ? 'Inscrit' : 'Non Inscrit'}}</td>
+                    <td>
+
+                        <a href="#">Modifier</a>
+
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
