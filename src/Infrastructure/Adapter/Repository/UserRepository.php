@@ -109,4 +109,47 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
         $doctrineUser->setPasswordResetToken($user->getPasswordResetToken());
         $doctrineUser->setPasswordResetRequestedAt($user->getPasswordResetRequestedAt());
     }
+
+    /**
+     * @param  int  $page
+     * @param  int  $limit
+     * @param  string  $field
+     * @param  string  $order
+     * @return User[]
+     */
+    public function getUsers(int $page, int $limit, string $field, string $order): array
+    {
+        $fields = [
+            'email' => 'q.email',
+            'pseudo' => 'q.pseudo'
+        ];
+
+        $users = $this->createQueryBuilder('q')
+            ->orderBy($fields[$field], $order)
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return array_map(
+            fn(DoctrineUser $user) => new User(
+                $user->getId(),
+                $user->getEmail(),
+                $user->getPseudo(),
+                $user->getPassword(),
+                $user->getIsNewsletterRegistered(),
+                $user->getPasswordResetToken(),
+                $user->getPasswordResetRequestedAt()
+            ),
+            $users
+        );
+    }
+
+    /**
+     * @return int
+     */
+    public function countUsers(): int
+    {
+        return $this->count([]);
+    }
 }
