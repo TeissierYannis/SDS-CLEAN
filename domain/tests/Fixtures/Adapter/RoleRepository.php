@@ -2,8 +2,8 @@
 
 namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
-use TYannis\SDS\Domain\UserManagement\Entity\Role;
-use TYannis\SDS\Domain\UserManagement\Gateway\RoleGateway;
+use TYannis\SDS\Domain\Security\Entity\Role;
+use TYannis\SDS\Domain\Security\Gateway\RoleGateway;
 
 class RoleRepository implements RoleGateway
 {
@@ -18,5 +18,14 @@ class RoleRepository implements RoleGateway
 
     public function create(Role $role): void
     {
+    }
+
+    /**
+     * @param  string  $name
+     * @return bool
+     */
+    public function isRoleUnique(string $name): bool
+    {
+        return !in_array($name, ["ROLE_USED"]);
     }
 }

@@ -3,8 +3,8 @@
 namespace TYannis\SDS\Domain\UserManagement\UseCase\Role;
 
 use Assert\AssertionFailedException;
+use TYannis\SDS\Domain\Security\Gateway\RoleGateway;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
-use TYannis\SDS\Domain\UserManagement\Gateway\RoleGateway;
 use TYannis\SDS\Domain\UserManagement\Presenter\Role\UpdatePresenterInterface;
 use TYannis\SDS\Domain\UserManagement\Request\Role\UpdateRequest;
 use TYannis\SDS\Domain\UserManagement\Response\Role\UpdateResponse;

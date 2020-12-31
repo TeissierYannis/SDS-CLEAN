@@ -8,7 +8,7 @@ use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\RoleRepository;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\UserRepository;
-use TYannis\SDS\Domain\UserManagement\Entity\Role;
+use TYannis\SDS\Domain\Security\Entity\Role;
 use TYannis\SDS\Domain\UserManagement\Presenter\Role\UpdatePresenterInterface;
 use TYannis\SDS\Domain\UserManagement\Request\Role\UpdateRequest;
 use TYannis\SDS\Domain\UserManagement\Response\Role\UpdateResponse;

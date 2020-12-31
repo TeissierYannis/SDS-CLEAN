@@ -3,7 +3,7 @@
 namespace App\UserInterface\DataTransferObject;
 
 use Ramsey\Uuid\UuidInterface;
-use TYannis\SDS\Domain\UserManagement\Entity\Role as DomainRole;
+use TYannis\SDS\Domain\Security\Entity\Role as DomainRole;
 
 /**
  * Class Article

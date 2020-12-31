@@ -64,9 +64,9 @@ logout:
     controller: App\UserInterface\Controller\LogoutController
 
 role_create:
-    path: /users/management/role/create
+    path: /dashboard/role/create
     methods: GET|POST
-    controller: App\UserInterface\Controller\UserManagement\Role\CreateController
+    controller: App\UserInterface\Controller\Security\Role\CreateController
 
 home:
     path: /
