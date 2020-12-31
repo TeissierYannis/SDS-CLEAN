@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use TYannis\SDS\Domain\Security\Request\RegistrationRequest;
 use TYannis\SDS\Domain\Security\UseCase\Registration;
-use Twig\Environment;
 
 /**
  * Class RegistrationController
@@ -73,7 +73,8 @@ class RegistrationController
                 $form->getData()->getEmail(),
                 $form->getData()->getPseudo(),
                 $form->getData()->getPlainPassword(),
-                $form->getData()->getIsNewsletterRegistered()
+                $form->getData()->getIsNewsletterRegistered(),
+                ['ROLE_USER']
             );
             $registration->execute($request, $presenter);
 

@@ -51,7 +51,8 @@ class RegistrationTest extends TestCase
             "email@email.com",
             "pseudo",
             "password",
-            true
+            true,
+            ['ROLE_USER']
         );
 
         $this->useCase->execute($request, $this->presenter);
@@ -62,6 +63,7 @@ class RegistrationTest extends TestCase
         $this->assertEquals("pseudo", $this->presenter->response->getUser()->getPseudo());
         $this->assertTrue(password_verify("password", $this->presenter->response->getUser()->getPassword()));
         $this->assertTrue($this->presenter->response->getUser()->getIsNewsletterRegistered());
+        $this->assertEquals(['ROLE_USER'], $this->presenter->response->getUser()->getRoles());
     }
 
     /**
@@ -76,9 +78,10 @@ class RegistrationTest extends TestCase
         string $email,
         string $pseudo,
         string $plainPassword,
-        bool $isNewsletterRegistered
+        bool $isNewsletterRegistered,
+        array $role
     ): void {
-        $request = RegistrationRequest::create($email, $pseudo, $plainPassword, $isNewsletterRegistered);
+        $request = RegistrationRequest::create($email, $pseudo, $plainPassword, $isNewsletterRegistered, $role);
 
         $this->expectException(AssertionFailedException::class);
 
@@ -90,12 +93,13 @@ class RegistrationTest extends TestCase
      */
     public function provideFailedRequestData(): Generator
     {
-        yield ["", "pseudo", "password", true];
-        yield ["email", "pseudo", "password", true];
-        yield ["email@email.com", "", "password", true];
-        yield ["email@email.com", "pseudo", "", true];
-        yield ["email@email.com", "pseudo", "fail", false];
-        yield ["used@email.com", "pseudo", "password", false];
-        yield ["email@email.com", "used_pseudo", "password", false];
+        yield ["", "pseudo", "password", true, ['ROLE_USER']];
+        yield ["email", "pseudo", "password", true, ['ROLE_USER']];
+        yield ["email@email.com", "", "password", true, ['ROLE_USER']];
+        yield ["email@email.com", "pseudo", "", true, ['ROLE_USER']];
+        yield ["email@email.com", "pseudo", "fail", false, ['ROLE_USER']];
+        yield ["used@email.com", "pseudo", "password", false, ['ROLE_USER']];
+        yield ["email@email.com", "used_pseudo", "password", false, ['ROLE_USER']];
+        yield ["email@email.com", "pseudo", "password", false, ['']];
     }
 }

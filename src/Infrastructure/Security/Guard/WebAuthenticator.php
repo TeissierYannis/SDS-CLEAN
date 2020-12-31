@@ -6,7 +6,6 @@ use App\Infrastructure\Security\User;
 use Assert\AssertionFailedException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -94,9 +93,11 @@ class WebAuthenticator extends AbstractFormLoginAuthenticator implements LoginPr
         } catch (AssertionFailedException $exception) {
             throw new AuthenticationException($exception->getMessage());
         }
+
         if ($this->response->getUser() === null) {
             throw new UsernameNotFoundException('User not found !');
         }
+
         return new User($this->response->getUser());
     }
 

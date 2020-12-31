@@ -31,8 +31,8 @@ class LoginController
     }
 
     /**
-     * @param AuthenticationUtils $authenticationUtils
-     * @return string
+     * @param  AuthenticationUtils  $authenticationUtils
+     * @return Response
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError

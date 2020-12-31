@@ -33,6 +33,11 @@ class User
     private ?string $pseudo = null;
 
     /**
+     * @var array|null
+     */
+    private ?array $roles = null;
+
+    /**
      * @var bool
      */
     private bool $isNewsletterRegistered = true;
@@ -48,7 +53,8 @@ class User
     private ?DateTimeInterface $passwordResetRequestedAt = null;
 
     /**
-     * @param DomainUser $user
+     * @param  DomainUser  $user
+     * @return User
      */
     public static function fromDomainArticle(DomainUser $user): self
     {
@@ -60,6 +66,7 @@ class User
         $newUser->setIsNewsletterRegistered($user->getIsNewsletterRegistered());
         $newUser->setPasswordResetToken($user->getPasswordResetToken());
         $newUser->setPasswordResetRequestedAt($user->getPasswordResetRequestedAt());
+        $newUser->setRoles($user->getRoles());
 
         return $newUser;
     }
@@ -174,5 +181,21 @@ class User
     public function setPasswordResetRequestedAt(?DateTimeInterface $passwordResetRequestedAt): void
     {
         $this->passwordResetRequestedAt = $passwordResetRequestedAt;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getRoles(): ?array
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param  array|null  $roles
+     */
+    public function setRoles(?array $roles): void
+    {
+        $this->roles = $roles;
     }
 }

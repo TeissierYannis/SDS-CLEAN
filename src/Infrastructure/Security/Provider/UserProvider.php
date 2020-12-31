@@ -3,9 +3,9 @@
 namespace App\Infrastructure\Security\Provider;
 
 use App\Infrastructure\Security\User;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 
 /**
@@ -13,7 +13,7 @@ use TYannis\SDS\Domain\Security\Gateway\UserGateway;
  *
  * @package App\Infrastructure\Security\Provider
  */
-class UserProvider implements \Symfony\Component\Security\Core\User\UserProviderInterface
+class UserProvider implements UserProviderInterface
 {
     /**
      * @var UserGateway
@@ -23,7 +23,7 @@ class UserProvider implements \Symfony\Component\Security\Core\User\UserProvider
     /**
      * UserProvider constructor.
      *
-     * @param UserGateway $userGateway
+     * @param  UserGateway  $userGateway
      */
     public function __construct(UserGateway $userGateway)
     {
@@ -62,7 +62,6 @@ class UserProvider implements \Symfony\Component\Security\Core\User\UserProvider
     private function getUserByUsername(string $username): User
     {
         $user = $this->userGateway->getUserByEmail($username);
-
         if ($user === null) {
             throw new UsernameNotFoundException();
         }

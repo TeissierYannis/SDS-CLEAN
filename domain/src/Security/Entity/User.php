@@ -42,9 +42,9 @@ class User
     private bool $isNewsletterRegistered;
 
     /**
-     * @var string
+     * @var array
      */
-    private string $role = 'ROLE_USER';
+    private array $roles;
 
     /**
      * @var string|null
@@ -64,7 +64,7 @@ class User
      * @param  string  $pseudo
      * @param  string  $password
      * @param  bool  $isNewsletterRegistered
-     * @param  string  $role
+     * @param  array  $roles
      * @param  string|null  $passwordResetToken
      * @param  DateTimeInterface|null  $passwordResetRequestedAt
      */
@@ -74,9 +74,9 @@ class User
         string $pseudo,
         string $password,
         bool $isNewsletterRegistered,
+        array $roles,
         ?string $passwordResetToken = null,
-        ?DateTimeInterface $passwordResetRequestedAt = null,
-        string $role = 'ROLE_USER'
+        ?DateTimeInterface $passwordResetRequestedAt = null
     ) {
         $this->id = $id;
         $this->email = $email;
@@ -85,7 +85,7 @@ class User
         $this->isNewsletterRegistered = $isNewsletterRegistered;
         $this->passwordResetToken = $passwordResetToken;
         $this->passwordResetRequestedAt = $passwordResetRequestedAt;
-        $this->role = $role;
+        $this->roles = $roles;
     }
 
     /**
@@ -99,7 +99,8 @@ class User
             $request->getEmail(),
             $request->getPseudo(),
             password_hash($request->getPlainPassword(), PASSWORD_ARGON2I),
-            $request->getIsNewsletterRegistered()
+            $request->getIsNewsletterRegistered(),
+            $request->getRoles()
         );
     }
 
@@ -186,18 +187,18 @@ class User
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getRole(): string
+    public function getRoles(): array
     {
-        return $this->role;
+        return $this->roles;
     }
 
     /**
-     * @param  string  $role
+     * @param  array  $roles
      */
-    public function setRole(string $role): void
+    public function setRoles(array $roles): void
     {
-        $this->role = $role;
+        $this->roles = $roles;
     }
 }
