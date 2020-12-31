@@ -5,8 +5,8 @@ namespace App\Infrastructure\Adapter\Repository;
 use App\Infrastructure\Doctrine\Entity\DoctrineRole;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\ORMException;
-use TYannis\SDS\Domain\UserManagement\Entity\Role;
-use TYannis\SDS\Domain\UserManagement\Gateway\RoleGateway;
+use TYannis\SDS\Domain\Security\Entity\Role;
+use TYannis\SDS\Domain\Security\Gateway\RoleGateway;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -29,7 +29,7 @@ class RoleRepository extends ServiceEntityRepository implements RoleGateway
      */
     public function getRoles(): array
     {
-        return ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_TEST'];
+        return ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_TEST', 'ROLE_USED'];
     }
 
     /**
@@ -53,5 +53,14 @@ class RoleRepository extends ServiceEntityRepository implements RoleGateway
 
         $this->_em->persist($doctrineRole);
         $this->_em->flush();
+    }
+
+    /**
+     * @param  string  $name
+     * @return bool
+     */
+    public function isRoleUnique(string $name): bool
+    {
+        return !in_array($name, ["ROLE_USED"]);
     }
 }
