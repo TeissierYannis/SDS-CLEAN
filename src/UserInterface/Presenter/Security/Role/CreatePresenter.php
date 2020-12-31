@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UserInterface\Presenter\Role;
+namespace App\UserInterface\Presenter\Security\Role;
 
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use TYannis\SDS\Domain\Security\Presenter\Role\CreatePresenterInterface;
