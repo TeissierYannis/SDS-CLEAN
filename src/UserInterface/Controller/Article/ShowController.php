@@ -1,0 +1,39 @@
+<?php
+
+namespace App\UserInterface\Controller\Article;
+
+use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
+use TYannis\SDS\Domain\Blog\Entity\Article;
+
+/**
+ * Class ShowController
+ * @package App\UserInterface\Controller\Article
+ */
+class ShowController
+{
+    private Environment $twig;
+
+    /**
+     * ShowController constructor.
+     * @param  Environment  $twig
+     */
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
+    /**
+     * @param  Article  $domainArticle
+     * @return Response
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function __invoke(Article $domainArticle)
+    {
+        return new Response($this->twig->render('public/article/show.html.twig', [
+            'article' => $domainArticle
+        ]));
+    }
+}
