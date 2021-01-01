@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Gestion utilistateurs{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1 class="mt-5 mb-2">Gestion des utilisateurs</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Newsletter</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in vm.users %}
+                <tr>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {{ user.pseudo }}
+                    </td>
+                    <td>
+                        {{ user.roles[0] }}
+                    </td>
+                    <td>
+                        {{ user.isNewsletterRegistered ? 'Inscrit' : 'Non Inscrit' }}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('user_update', {'id': user.id}) }}">Editer</a>
+                        <a class="btn btn-danger" href="{{ path('ask_password_reset') }}">Reset MDP</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

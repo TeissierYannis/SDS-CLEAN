@@ -29,3 +29,7 @@ services:
     App\Infrastructure\EventListener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
+
+    App\Infrastructure\EventSubscriber\TwigEventSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }

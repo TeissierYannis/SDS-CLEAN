@@ -111,7 +111,7 @@ class UpdateController
 
         return new Response(
             $this->twig->render(
-                'security/users/update.html.twig',
+                'dashboard/administrator/users/update.html.twig',
                 [
                     'form' => $form->createView()
                 ]
