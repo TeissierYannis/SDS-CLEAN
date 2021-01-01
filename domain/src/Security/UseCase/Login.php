@@ -2,11 +2,10 @@
 
 namespace TYannis\SDS\Domain\Security\UseCase;
 
-use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
+use TYannis\SDS\Domain\Security\Presenter\LoginPresenterInterface;
 use TYannis\SDS\Domain\Security\Request\LoginRequest;
 use TYannis\SDS\Domain\Security\Response\LoginResponse;
-use TYannis\SDS\Domain\Security\Presenter\LoginPresenterInterface;
 
 /**
  * Class Login
@@ -42,7 +41,6 @@ class Login
         if ($user) {
             $passwordValid = password_verify($request->getPassword(), $user->getPassword());
         }
-
         $presenter->present(new LoginResponse($user, $passwordValid ?? false));
     }
 }

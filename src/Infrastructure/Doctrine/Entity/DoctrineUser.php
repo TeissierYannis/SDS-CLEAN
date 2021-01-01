@@ -39,6 +39,12 @@ class DoctrineUser
     private string $pseudo;
 
     /**
+     * @var array
+     * @ORM\Column(type="json")
+     */
+    private array $roles;
+
+    /**
      * @var bool
      * @ORM\Column
      */
@@ -113,11 +119,27 @@ class DoctrineUser
     }
 
     /**
-     * @param string $pseudo
+     * @param  string  $pseudo
      */
     public function setPseudo(string $pseudo): void
     {
         $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param  array  $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 
     /**

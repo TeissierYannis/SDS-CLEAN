@@ -2,7 +2,6 @@
 
 namespace App\Infrastructure\Doctrine\DataFixtures;
 
-use App\Infrastructure\Doctrine\Entity\DoctrineRole;
 use App\Infrastructure\Doctrine\Entity\DoctrineUser;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -25,16 +24,10 @@ class UserFixtures extends Fixture
         $user->setEmail("used@email.com");
         $user->setPassword(password_hash("password", PASSWORD_ARGON2I));
         $user->setIsNewsletterRegistered(true);
+        $user->setRoles(['ROLE_USER']);
         // $user->setPasswordResetToken('bb4b5730-6057-4fa1-a27b-692b9ba8c14a');
         // $user->setPasswordResetRequestedAt(new \DateTimeImmutable());
         $manager->persist($user);
-        $manager->flush();
-
-        $role = new DoctrineRole();
-        $role->setId(Uuid::uuid4());
-        $role->setName('ROLE_USER');
-
-        $manager->persist($role);
         $manager->flush();
     }
 }

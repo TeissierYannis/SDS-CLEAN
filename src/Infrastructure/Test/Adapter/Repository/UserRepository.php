@@ -27,6 +27,8 @@ class UserRepository implements UserGateway
             "used@email.com",
             "pseudo",
             password_hash("password", PASSWORD_ARGON2I),
+            true,
+            ['ROLE_USER'],
             'bb4b5730-6057-4fa1-a27b-692b9ba8c14a',
             new DateTimeImmutable()
         );
@@ -76,7 +78,8 @@ class UserRepository implements UserGateway
                 'email@email.com',
                 'pseudo',
                 'password',
-                true
+                true,
+                ['ROLE_USER']
             )
         );
 

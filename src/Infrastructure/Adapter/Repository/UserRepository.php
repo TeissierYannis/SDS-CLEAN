@@ -52,6 +52,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
         $doctrineUser->setPassword($user->getPassword());
         $doctrineUser->setPseudo($user->getPseudo());
         $doctrineUser->setIsNewsletterRegistered($user->getIsNewsletterRegistered());
+        $doctrineUser->setRoles($user->getRoles());
 
         $this->_em->persist($doctrineUser);
         $this->_em->flush();
@@ -72,6 +73,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
             $doctrineUser->getPseudo(),
             $doctrineUser->getPassword(),
             $doctrineUser->getIsNewsletterRegistered(),
+            $doctrineUser->getRoles(),
             $doctrineUser->getPasswordResetToken(),
             $doctrineUser->getPasswordResetRequestedAt()
         );
@@ -106,6 +108,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
         $doctrineUser->setPassword($user->getPassword());
         $doctrineUser->setPseudo($user->getPseudo());
         $doctrineUser->setIsNewsletterRegistered($user->getIsNewsletterRegistered());
+        $doctrineUser->setRoles($user->getRoles());
         $doctrineUser->setPasswordResetToken($user->getPasswordResetToken());
         $doctrineUser->setPasswordResetRequestedAt($user->getPasswordResetRequestedAt());
     }
@@ -138,6 +141,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
                 $user->getPseudo(),
                 $user->getPassword(),
                 $user->getIsNewsletterRegistered(),
+                $user->getRoles(),
                 $user->getPasswordResetToken(),
                 $user->getPasswordResetRequestedAt()
             ),
