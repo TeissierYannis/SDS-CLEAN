@@ -27,7 +27,7 @@ class DoctrineArticle
 
     /**
      * @var string
-     * @ORM\Column
+     * @ORM\Column(type="text")
      */
     private string $content;
 

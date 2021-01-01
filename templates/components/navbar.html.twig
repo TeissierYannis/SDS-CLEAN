@@ -34,7 +34,7 @@
                                 {% for article in category.articles %}
 
                                     <a class="dropdown-item"
-                                       href="#">{{ article.title }}</a>
+                                       href="{{ path('article_show', { id: article.id }) }}">{{ article.title }}</a>
 
                                 {% endfor %}
 

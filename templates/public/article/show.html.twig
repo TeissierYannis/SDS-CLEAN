@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - {{ article.title }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5 mb-2">{{ article.title }}</h1>
+
+    <div class="d-flex">
+        <div class="text-uppercase text-primary small">
+        {{ article.category.title }}
+        </div>
+        <span class="text-black-50 mx-1">/</span>
+        <div class="text-black-50 small">
+        12 nov. 2020
+        </div>
+        <span class="text-black-50 mx-1">/</span>
+        <div class="text-black-50 small">
+        by AUTEUR
+        </div>
+    </div>
+    <hr>
+
+    <p class="text-justify">{{ article.content }}</p>
+
+{% endblock %}

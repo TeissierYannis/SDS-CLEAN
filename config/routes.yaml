@@ -18,6 +18,11 @@ article_remove:
     methods: GET
     controller: App\UserInterface\Controller\Article\RemoveController
 
+article_show:
+    path: /article/{id}/show
+    methods: GET
+    controller: App\UserInterface\Controller\Article\ShowController
+
 category_create:
     path: /dashboard/redactor/categories/create
     methods: GET|POST
