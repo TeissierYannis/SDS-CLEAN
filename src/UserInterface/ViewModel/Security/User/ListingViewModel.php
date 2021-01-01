@@ -42,7 +42,7 @@ class ListingViewModel
     {
         return new self(
             array_map(
-                fn (DomainUser $user) => User::fromDomainArticle($user),
+                fn (DomainUser $user) => User::fromDomainUser($user),
                 $response->getUsers()
             ),
             $response->getCurrentPage(),

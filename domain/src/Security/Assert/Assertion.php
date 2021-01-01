@@ -23,7 +23,7 @@ class Assertion extends BaseAssertion
     public static function nonUniquePseudo(string $pseudo, UserGateway $userGateway): void
     {
         if (!$userGateway->isPseudoUnique($pseudo)) {
-            throw new NonUniquePseudoException("This email should be unique !", self::EXISTING_PSEUDO);
+            throw new NonUniquePseudoException("This pseudo should be unique !", self::EXISTING_PSEUDO);
         }
     }
 

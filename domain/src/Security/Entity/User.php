@@ -201,4 +201,28 @@ class User
     {
         $this->roles = $roles;
     }
+
+    /**
+     * @param  string  $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @param  string  $pseudo
+     */
+    public function setPseudo(string $pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @param  bool  $isNewsletterRegistered
+     */
+    public function setIsNewsletterRegistered(bool $isNewsletterRegistered): void
+    {
+        $this->isNewsletterRegistered = $isNewsletterRegistered;
+    }
 }

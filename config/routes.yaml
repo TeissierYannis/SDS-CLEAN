@@ -63,15 +63,15 @@ logout:
     methods: GET
     controller: App\UserInterface\Controller\LogoutController
 
-role_create:
-    path: /dashboard/role/create
-    methods: GET|POST
-    controller: App\UserInterface\Controller\Security\Role\CreateController
-
 user_listing:
     path: /dashboard/users
     methods: GET
     controller: App\UserInterface\Controller\Security\User\ListingController
+
+user_update:
+    path: /dashboard/users/{id}/update
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Security\User\UpdateController
 
 home:
     path: /
