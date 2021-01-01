@@ -29,6 +29,11 @@ class RegistrationRequest
     private string $plainPassword;
 
     /**
+     * @var array
+     */
+    private array $roles;
+
+    /**
      * @var bool
      */
     private bool $isNewsletterRegistered;
@@ -38,15 +43,17 @@ class RegistrationRequest
      * @param  string  $pseudo
      * @param  string  $plainPassword
      * @param  bool  $isNewsletterRegistered
+     * @param  array  $roles
      * @return static
      */
     public static function create(
         string $email,
         string $pseudo,
         string $plainPassword,
-        bool $isNewsletterRegistered
+        bool $isNewsletterRegistered,
+        array $roles
     ): self {
-        return new self($email, $pseudo, $plainPassword, $isNewsletterRegistered);
+        return new self($email, $pseudo, $plainPassword, $isNewsletterRegistered, $roles);
     }
 
     /**
@@ -56,13 +63,20 @@ class RegistrationRequest
      * @param  string  $pseudo
      * @param  string  $plainPassword
      * @param  bool  $isNewsletterRegistered
+     * @param  array  $roles
      */
-    public function __construct(string $email, string $pseudo, string $plainPassword, bool $isNewsletterRegistered)
-    {
+    public function __construct(
+        string $email,
+        string $pseudo,
+        string $plainPassword,
+        bool $isNewsletterRegistered,
+        array $roles
+    ) {
         $this->email = $email;
         $this->pseudo = $pseudo;
         $this->plainPassword = $plainPassword;
         $this->isNewsletterRegistered = $isNewsletterRegistered;
+        $this->roles = $roles;
     }
 
     /**
@@ -98,7 +112,15 @@ class RegistrationRequest
     }
 
     /**
-     * @param  UserGateway $userGateway
+     * @return array
+     */
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param  UserGateway  $userGateway
      *
      * @throws AssertionFailedException
      */
@@ -111,5 +133,9 @@ class RegistrationRequest
         Assertion::nonUniquePseudo($this->pseudo, $userGateway);
         Assertion::notBlank($this->plainPassword);
         Assertion::minLength($this->plainPassword, 8);
+
+        foreach ($this->roles as $role) {
+            Assertion::notBlank($role);
+        }
     }
 }

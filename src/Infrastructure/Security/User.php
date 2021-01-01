@@ -2,8 +2,8 @@
 
 namespace App\Infrastructure\Security;
 
-use TYannis\SDS\Domain\Security\Entity\User as UserDomain;
 use Symfony\Component\Security\Core\User\UserInterface;
+use TYannis\SDS\Domain\Security\Entity\User as UserDomain;
 
 class User implements UserInterface
 {
@@ -24,7 +24,7 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return [$this->user->getRoles()[0]];
     }
 
     public function getPassword()

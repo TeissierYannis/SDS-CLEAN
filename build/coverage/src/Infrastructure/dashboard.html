@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for E:\Documents\Sites\SDS-CLEAN\src\Infrastructure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../../index.html">E:\Documents\Sites\SDS-CLEAN</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">src</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Infrastructure</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Adapter/Provider/MailProvider.php.html#16">App\Infrastructure\Adapter\Provider\MailProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/ArticleConverter.php.html#13">App\Infrastructure\ParamConverter\ArticleConverter</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Validator/NonUniqueEmailValidator.php.html#13">App\Infrastructure\Validator\NonUniqueEmailValidator</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/IntegrationTestCase.php.html#12">App\Infrastructure\Test\IntegrationTestCase</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#14">App\Infrastructure\Test\Adapter\Repository\UserRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#13">App\Infrastructure\Test\Adapter\Repository\ArticleRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/MailProvider.php.html#7">App\Infrastructure\Test\Adapter\MailProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/User.php.html#8">App\Infrastructure\Security\User</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#16">App\Infrastructure\Security\Provider\UserProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#27">App\Infrastructure\Security\Guard\WebAuthenticator</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/CategoryConverter.php.html#12">App\Infrastructure\ParamConverter\CategoryConverter</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/ExceptionListener.php.html#14">App\Infrastructure\EventListener\ExceptionListener</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#21">App\Infrastructure\Adapter\Repository\ArticleRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#14">App\Infrastructure\Doctrine\Entity\DoctrineUser</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineRole.php.html#13">App\Infrastructure\Doctrine\Entity\DoctrineRole</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineCategory.php.html#13">App\Infrastructure\Doctrine\Entity\DoctrineCategory</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#13">App\Infrastructure\Doctrine\Entity\DoctrineArticle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/DataFixtures/UserFixtures.php.html#15">App\Infrastructure\Doctrine\DataFixtures\UserFixtures</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/DataFixtures/ArticleFixtures.php.html#15">App\Infrastructure\Doctrine\DataFixtures\ArticleFixtures</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#17">App\Infrastructure\Adapter\Repository\UserRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/RoleRepository.php.html#16">App\Infrastructure\Adapter\Repository\RoleRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#20">App\Infrastructure\Adapter\Repository\CategoryRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Validator/NonUniquePseudoValidator.php.html#13">App\Infrastructure\Validator\NonUniquePseudoValidator</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#14">App\Infrastructure\Doctrine\Entity\DoctrineUser</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#17">App\Infrastructure\Adapter\Repository\UserRepository</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#21">App\Infrastructure\Adapter\Repository\ArticleRepository</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#20">App\Infrastructure\Adapter\Repository\CategoryRepository</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#27">App\Infrastructure\Security\Guard\WebAuthenticator</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#14">App\Infrastructure\Test\Adapter\Repository\UserRepository</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#13">App\Infrastructure\Test\Adapter\Repository\ArticleRepository</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#16">App\Infrastructure\Security\Provider\UserProvider</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="EventListener/ExceptionListener.php.html#14">App\Infrastructure\EventListener\ExceptionListener</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ParamConverter/ArticleConverter.php.html#13">App\Infrastructure\ParamConverter\ArticleConverter</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="ParamConverter/CategoryConverter.php.html#12">App\Infrastructure\ParamConverter\CategoryConverter</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Validator/NonUniqueEmailValidator.php.html#13">App\Infrastructure\Validator\NonUniqueEmailValidator</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Validator/NonUniquePseudoValidator.php.html#13">App\Infrastructure\Validator\NonUniquePseudoValidator</a></td><td class="text-right">12</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Adapter/Provider/MailProvider.php.html#39"><abbr title="App\Infrastructure\Adapter\Provider\MailProvider::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/CategoryConverter.php.html#33"><abbr title="App\Infrastructure\ParamConverter\CategoryConverter::apply">apply</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#36"><abbr title="App\Infrastructure\Security\Provider\UserProvider::loadUserByUsername">loadUserByUsername</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#28"><abbr title="App\Infrastructure\Security\Provider\UserProvider::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#118"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::present">present</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#112"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::onAuthenticationSuccess">onAuthenticationSuccess</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#103"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::checkCredentials">checkCredentials</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#90"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::getUser">getUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#77"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::getCredentials">getCredentials</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#68"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::supports">supports</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#59"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::getLoginUrl">getLoginUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#49"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/CategoryConverter.php.html#56"><abbr title="App\Infrastructure\ParamConverter\CategoryConverter::supports">supports</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/CategoryConverter.php.html#23"><abbr title="App\Infrastructure\ParamConverter\CategoryConverter::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#52"><abbr title="App\Infrastructure\Security\Provider\UserProvider::supportsClass">supportsClass</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/ArticleConverter.php.html#52"><abbr title="App\Infrastructure\ParamConverter\ArticleConverter::supports">supports</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/ArticleConverter.php.html#34"><abbr title="App\Infrastructure\ParamConverter\ArticleConverter::apply">apply</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ParamConverter/ArticleConverter.php.html#25"><abbr title="App\Infrastructure\ParamConverter\ArticleConverter::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/ExceptionListener.php.html#34"><abbr title="App\Infrastructure\EventListener\ExceptionListener::onKernelException">onKernelException</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EventListener/ExceptionListener.php.html#25"><abbr title="App\Infrastructure\EventListener\ExceptionListener::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#166"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setIsNewsletterRegistered">setIsNewsletterRegistered</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#158"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getIsNewsletterRegistered">getIsNewsletterRegistered</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#150"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setPasswordResetRequestedAt">setPasswordResetRequestedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#142"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getPasswordResetRequestedAt">getPasswordResetRequestedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#134"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setPasswordResetToken">setPasswordResetToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#126"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getPasswordResetToken">getPasswordResetToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#118"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setPseudo">setPseudo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#44"><abbr title="App\Infrastructure\Security\Provider\UserProvider::refreshUser">refreshUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#62"><abbr title="App\Infrastructure\Security\Provider\UserProvider::getUserByUsername">getUserByUsername</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#102"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setPassword">setPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#94"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::countArticles">countArticles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Validator/NonUniquePseudoValidator.php.html#24"><abbr title="App\Infrastructure\Validator\NonUniquePseudoValidator::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Validator/NonUniqueEmailValidator.php.html#32"><abbr title="App\Infrastructure\Validator\NonUniqueEmailValidator::validate">validate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Validator/NonUniqueEmailValidator.php.html#24"><abbr title="App\Infrastructure\Validator\NonUniqueEmailValidator::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/IntegrationTestCase.php.html#17"><abbr title="App\Infrastructure\Test\IntegrationTestCase::createClient">createClient</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#89"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::countUsers">countUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#69"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::getUsers">getUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#58"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#54"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#46"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::isPseudoUnique">isPseudoUnique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#38"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::isEmailUnique">isEmailUnique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#19"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::getUserByEmail">getUserByEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#90"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::getArticles">getArticles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/User.php.html#20"><abbr title="App\Infrastructure\Security\User::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#86"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#64"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::getArticleById">getArticleById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#51"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#37"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#27"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::hydrateArticle">hydrateArticle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#18"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Test/Adapter/MailProvider.php.html#9"><abbr title="App\Infrastructure\Test\Adapter\MailProvider::sendPasswordResetLink">sendPasswordResetLink</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/User.php.html#44"><abbr title="App\Infrastructure\Security\User::eraseCredentials">eraseCredentials</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/User.php.html#39"><abbr title="App\Infrastructure\Security\User::getUsername">getUsername</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/User.php.html#35"><abbr title="App\Infrastructure\Security\User::getSalt">getSalt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/User.php.html#30"><abbr title="App\Infrastructure\Security\User::getPassword">getPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/User.php.html#25"><abbr title="App\Infrastructure\Security\User::getRoles">getRoles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#110"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getPseudo">getPseudo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#94"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getPassword">getPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Provider/MailProvider.php.html#52"><abbr title="App\Infrastructure\Adapter\Provider\MailProvider::sendPasswordResetLink">sendPasswordResetLink</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#82"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::getCategoryById">getCategoryById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#39"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::isPseudoUnique">isPseudoUnique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#31"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::isEmailUnique">isEmailUnique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#23"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/RoleRepository.php.html#62"><abbr title="App\Infrastructure\Adapter\Repository\RoleRepository::isRoleUnique">isRoleUnique</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/RoleRepository.php.html#49"><abbr title="App\Infrastructure\Adapter\Repository\RoleRepository::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/RoleRepository.php.html#39"><abbr title="App\Infrastructure\Adapter\Repository\RoleRepository::hydrateRole">hydrateRole</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/RoleRepository.php.html#30"><abbr title="App\Infrastructure\Adapter\Repository\RoleRepository::getRoles">getRoles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/RoleRepository.php.html#22"><abbr title="App\Infrastructure\Adapter\Repository\RoleRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#132"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#121"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::countCategories">countCategories</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#96"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::getCategories">getCategories</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#68"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#60"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::getUserByEmail">getUserByEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#57"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::hydrateArticle">hydrateArticle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#37"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#26"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#169"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#159"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::countArticles">countArticles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#131"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::getArticles">getArticles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#103"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::getArticleById">getArticleById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#87"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#65"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::findCategoryFromArticle">findCategoryFromArticle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#51"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::hydrateArticle">hydrateArticle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#36"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#27"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#47"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#85"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#86"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setEmail">setEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineCategory.php.html#44"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineCategory::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#78"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getEmail">getEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#70"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#62"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineRole.php.html#55"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineRole::setName">setName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineRole.php.html#47"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineRole::getName">getName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineRole.php.html#39"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineRole::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineRole.php.html#31"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineRole::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineCategory.php.html#76"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineCategory::setArticles">setArticles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineCategory.php.html#68"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineCategory::getArticles">getArticles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineCategory.php.html#60"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineCategory::setTitle">setTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineCategory.php.html#52"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineCategory::getTitle">getTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineCategory.php.html#36"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineCategory::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#103"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::hydrateUser">hydrateUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#98"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::setCategory">setCategory</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#90"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::getCategory">getCategory</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#83"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::setContent">setContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#75"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::getContent">getContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#67"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::setTitle">setTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#59"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::getTitle">getTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#51"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineArticle.php.html#43"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineArticle::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/DataFixtures/UserFixtures.php.html#20"><abbr title="App\Infrastructure\Doctrine\DataFixtures\UserFixtures::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Doctrine/DataFixtures/ArticleFixtures.php.html#20"><abbr title="App\Infrastructure\Doctrine\DataFixtures\ArticleFixtures::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#151"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::countUsers">countUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#120"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::getUsers">getUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Validator/NonUniquePseudoValidator.php.html#32"><abbr title="App\Infrastructure\Validator\NonUniquePseudoValidator::validate">validate</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#82"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::getCategoryById">getCategoryById</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#132"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::remove">remove</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#19"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::getUserByEmail">getUserByEmail</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#60"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::getUserByEmail">getUserByEmail</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/ArticleRepository.php.html#64"><abbr title="App\Infrastructure\Test\Adapter\Repository\ArticleRepository::getArticleById">getArticleById</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#90"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::getUser">getUser</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#103"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::getArticleById">getArticleById</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="EventListener/ExceptionListener.php.html#34"><abbr title="App\Infrastructure\EventListener\ExceptionListener::onKernelException">onKernelException</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#65"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::findCategoryFromArticle">findCategoryFromArticle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#68"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::supports">supports</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Validator/NonUniqueEmailValidator.php.html#32"><abbr title="App\Infrastructure\Validator\NonUniqueEmailValidator::validate">validate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#46"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::isPseudoUnique">isPseudoUnique</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Test/Adapter/Repository/UserRepository.php.html#38"><abbr title="App\Infrastructure\Test\Adapter\Repository\UserRepository::isEmailUnique">isEmailUnique</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Security/Provider/UserProvider.php.html#62"><abbr title="App\Infrastructure\Security\Provider\UserProvider::getUserByUsername">getUserByUsername</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Security/Guard/WebAuthenticator.php.html#103"><abbr title="App\Infrastructure\Security\Guard\WebAuthenticator::checkCredentials">checkCredentials</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#150"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setPasswordResetRequestedAt">setPasswordResetRequestedAt</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ParamConverter/CategoryConverter.php.html#33"><abbr title="App\Infrastructure\ParamConverter\CategoryConverter::apply">apply</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ParamConverter/ArticleConverter.php.html#34"><abbr title="App\Infrastructure\ParamConverter\ArticleConverter::apply">apply</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#142"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getPasswordResetRequestedAt">getPasswordResetRequestedAt</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#134"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::setPasswordResetToken">setPasswordResetToken</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Doctrine/Entity/DoctrineUser.php.html#126"><abbr title="App\Infrastructure\Doctrine\Entity\DoctrineUser::getPasswordResetToken">getPasswordResetToken</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#85"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#39"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::isPseudoUnique">isPseudoUnique</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Adapter/Repository/UserRepository.php.html#31"><abbr title="App\Infrastructure\Adapter\Repository\UserRepository::isEmailUnique">isEmailUnique</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Adapter/Repository/CategoryRepository.php.html#37"><abbr title="App\Infrastructure\Adapter\Repository\CategoryRepository::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Adapter/Repository/ArticleRepository.php.html#169"><abbr title="App\Infrastructure\Adapter\Repository\ArticleRepository::remove">remove</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Validator/NonUniquePseudoValidator.php.html#32"><abbr title="App\Infrastructure\Validator\NonUniquePseudoValidator::validate">validate</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.4.6</a> with <a href="https://xdebug.org/">Xdebug 3.0.1</a> and <a href="https://phpunit.de/">PHPUnit 7.5.20</a> at Thu Dec 31 12:38:45 UTC 2020.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([23,0,0,0,0,0,0,0,0,0,0,2], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([115,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"Adapter\/Provider\/MailProvider.php.html#16\">App\\Infrastructure\\Adapter\\Provider\\MailProvider<\/a>"],[0,13,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#21\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository<\/a>"],[0,13,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#20\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository<\/a>"],[0,5,"<a href=\"Adapter\/Repository\/RoleRepository.php.html#16\">App\\Infrastructure\\Adapter\\Repository\\RoleRepository<\/a>"],[0,14,"<a href=\"Adapter\/Repository\/UserRepository.php.html#17\">App\\Infrastructure\\Adapter\\Repository\\UserRepository<\/a>"],[0,1,"<a href=\"Doctrine\/DataFixtures\/ArticleFixtures.php.html#15\">App\\Infrastructure\\Doctrine\\DataFixtures\\ArticleFixtures<\/a>"],[0,1,"<a href=\"Doctrine\/DataFixtures\/UserFixtures.php.html#15\">App\\Infrastructure\\Doctrine\\DataFixtures\\UserFixtures<\/a>"],[0,8,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#13\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle<\/a>"],[0,6,"<a href=\"Doctrine\/Entity\/DoctrineCategory.php.html#13\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineCategory<\/a>"],[0,4,"<a href=\"Doctrine\/Entity\/DoctrineRole.php.html#13\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineRole<\/a>"],[0,18,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#14\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser<\/a>"],[0,4,"<a href=\"EventListener\/ExceptionListener.php.html#14\">App\\Infrastructure\\EventListener\\ExceptionListener<\/a>"],[0,4,"<a href=\"ParamConverter\/ArticleConverter.php.html#13\">App\\Infrastructure\\ParamConverter\\ArticleConverter<\/a>"],[0,4,"<a href=\"ParamConverter\/CategoryConverter.php.html#12\">App\\Infrastructure\\ParamConverter\\CategoryConverter<\/a>"],[0,12,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#27\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator<\/a>"],[0,6,"<a href=\"Security\/Provider\/UserProvider.php.html#16\">App\\Infrastructure\\Security\\Provider\\UserProvider<\/a>"],[0,6,"<a href=\"Security\/User.php.html#8\">App\\Infrastructure\\Security\\User<\/a>"],[0,1,"<a href=\"Test\/Adapter\/MailProvider.php.html#7\">App\\Infrastructure\\Test\\Adapter\\MailProvider<\/a>"],[0,10,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#13\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository<\/a>"],[0,11,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#14\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository<\/a>"],[0,1,"<a href=\"Test\/IntegrationTestCase.php.html#12\">App\\Infrastructure\\Test\\IntegrationTestCase<\/a>"],[100,0,"<a href=\"Validator\/NonUniqueEmail.php.html#11\">App\\Infrastructure\\Validator\\NonUniqueEmail<\/a>"],[0,3,"<a href=\"Validator\/NonUniqueEmailValidator.php.html#13\">App\\Infrastructure\\Validator\\NonUniqueEmailValidator<\/a>"],[100,0,"<a href=\"Validator\/NonUniquePseudo.php.html#11\">App\\Infrastructure\\Validator\\NonUniquePseudo<\/a>"],[0,3,"<a href=\"Validator\/NonUniquePseudoValidator.php.html#13\">App\\Infrastructure\\Validator\\NonUniquePseudoValidator<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Adapter\/Provider\/MailProvider.php.html#39\">App\\Infrastructure\\Adapter\\Provider\\MailProvider::__construct<\/a>"],[0,1,"<a href=\"Adapter\/Provider\/MailProvider.php.html#52\">App\\Infrastructure\\Adapter\\Provider\\MailProvider::sendPasswordResetLink<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#27\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::__construct<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#36\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::create<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#51\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::hydrateArticle<\/a>"],[0,2,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#65\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::findCategoryFromArticle<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#87\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::update<\/a>"],[0,3,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#103\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::getArticleById<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#131\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::getArticles<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#159\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::countArticles<\/a>"],[0,2,"<a href=\"Adapter\/Repository\/ArticleRepository.php.html#169\">App\\Infrastructure\\Adapter\\Repository\\ArticleRepository::remove<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#26\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::__construct<\/a>"],[0,2,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#37\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::create<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#57\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::hydrateArticle<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#68\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::update<\/a>"],[0,3,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#82\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::getCategoryById<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#96\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::getCategories<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#121\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::countCategories<\/a>"],[0,3,"<a href=\"Adapter\/Repository\/CategoryRepository.php.html#132\">App\\Infrastructure\\Adapter\\Repository\\CategoryRepository::remove<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/RoleRepository.php.html#22\">App\\Infrastructure\\Adapter\\Repository\\RoleRepository::__construct<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/RoleRepository.php.html#30\">App\\Infrastructure\\Adapter\\Repository\\RoleRepository::getRoles<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/RoleRepository.php.html#39\">App\\Infrastructure\\Adapter\\Repository\\RoleRepository::hydrateRole<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/RoleRepository.php.html#49\">App\\Infrastructure\\Adapter\\Repository\\RoleRepository::create<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/RoleRepository.php.html#62\">App\\Infrastructure\\Adapter\\Repository\\RoleRepository::isRoleUnique<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/UserRepository.php.html#23\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::__construct<\/a>"],[0,2,"<a href=\"Adapter\/Repository\/UserRepository.php.html#31\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::isEmailUnique<\/a>"],[0,2,"<a href=\"Adapter\/Repository\/UserRepository.php.html#39\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::isPseudoUnique<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/UserRepository.php.html#47\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::register<\/a>"],[0,3,"<a href=\"Adapter\/Repository\/UserRepository.php.html#60\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::getUserByEmail<\/a>"],[0,2,"<a href=\"Adapter\/Repository\/UserRepository.php.html#85\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::update<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/UserRepository.php.html#103\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::hydrateUser<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/UserRepository.php.html#120\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::getUsers<\/a>"],[0,1,"<a href=\"Adapter\/Repository\/UserRepository.php.html#151\">App\\Infrastructure\\Adapter\\Repository\\UserRepository::countUsers<\/a>"],[0,1,"<a href=\"Doctrine\/DataFixtures\/ArticleFixtures.php.html#20\">App\\Infrastructure\\Doctrine\\DataFixtures\\ArticleFixtures::load<\/a>"],[0,1,"<a href=\"Doctrine\/DataFixtures\/UserFixtures.php.html#20\">App\\Infrastructure\\Doctrine\\DataFixtures\\UserFixtures::load<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#43\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::getId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#51\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::setId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#59\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::getTitle<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#67\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::setTitle<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#75\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::getContent<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#83\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::setContent<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#90\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::getCategory<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineArticle.php.html#98\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineArticle::setCategory<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineCategory.php.html#36\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineCategory::getId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineCategory.php.html#44\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineCategory::setId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineCategory.php.html#52\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineCategory::getTitle<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineCategory.php.html#60\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineCategory::setTitle<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineCategory.php.html#68\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineCategory::getArticles<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineCategory.php.html#76\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineCategory::setArticles<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineRole.php.html#31\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineRole::getId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineRole.php.html#39\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineRole::setId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineRole.php.html#47\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineRole::getName<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineRole.php.html#55\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineRole::setName<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#62\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::getId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#70\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::setId<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#78\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::getEmail<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#86\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::setEmail<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#94\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::getPassword<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#102\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::setPassword<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#110\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::getPseudo<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#118\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::setPseudo<\/a>"],[0,2,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#126\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::getPasswordResetToken<\/a>"],[0,2,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#134\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::setPasswordResetToken<\/a>"],[0,2,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#142\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::getPasswordResetRequestedAt<\/a>"],[0,2,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#150\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::setPasswordResetRequestedAt<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#158\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::getIsNewsletterRegistered<\/a>"],[0,1,"<a href=\"Doctrine\/Entity\/DoctrineUser.php.html#166\">App\\Infrastructure\\Doctrine\\Entity\\DoctrineUser::setIsNewsletterRegistered<\/a>"],[0,1,"<a href=\"EventListener\/ExceptionListener.php.html#25\">App\\Infrastructure\\EventListener\\ExceptionListener::__construct<\/a>"],[0,3,"<a href=\"EventListener\/ExceptionListener.php.html#34\">App\\Infrastructure\\EventListener\\ExceptionListener::onKernelException<\/a>"],[0,1,"<a href=\"ParamConverter\/ArticleConverter.php.html#25\">App\\Infrastructure\\ParamConverter\\ArticleConverter::__construct<\/a>"],[0,2,"<a href=\"ParamConverter\/ArticleConverter.php.html#34\">App\\Infrastructure\\ParamConverter\\ArticleConverter::apply<\/a>"],[0,1,"<a href=\"ParamConverter\/ArticleConverter.php.html#52\">App\\Infrastructure\\ParamConverter\\ArticleConverter::supports<\/a>"],[0,1,"<a href=\"ParamConverter\/CategoryConverter.php.html#23\">App\\Infrastructure\\ParamConverter\\CategoryConverter::__construct<\/a>"],[0,2,"<a href=\"ParamConverter\/CategoryConverter.php.html#33\">App\\Infrastructure\\ParamConverter\\CategoryConverter::apply<\/a>"],[0,1,"<a href=\"ParamConverter\/CategoryConverter.php.html#56\">App\\Infrastructure\\ParamConverter\\CategoryConverter::supports<\/a>"],[0,1,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#49\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::__construct<\/a>"],[0,1,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#59\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::getLoginUrl<\/a>"],[0,2,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#68\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::supports<\/a>"],[0,1,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#77\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::getCredentials<\/a>"],[0,3,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#90\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::getUser<\/a>"],[0,2,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#103\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::checkCredentials<\/a>"],[0,1,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#112\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::onAuthenticationSuccess<\/a>"],[0,1,"<a href=\"Security\/Guard\/WebAuthenticator.php.html#118\">App\\Infrastructure\\Security\\Guard\\WebAuthenticator::present<\/a>"],[0,1,"<a href=\"Security\/Provider\/UserProvider.php.html#28\">App\\Infrastructure\\Security\\Provider\\UserProvider::__construct<\/a>"],[0,1,"<a href=\"Security\/Provider\/UserProvider.php.html#36\">App\\Infrastructure\\Security\\Provider\\UserProvider::loadUserByUsername<\/a>"],[0,1,"<a href=\"Security\/Provider\/UserProvider.php.html#44\">App\\Infrastructure\\Security\\Provider\\UserProvider::refreshUser<\/a>"],[0,1,"<a href=\"Security\/Provider\/UserProvider.php.html#52\">App\\Infrastructure\\Security\\Provider\\UserProvider::supportsClass<\/a>"],[0,2,"<a href=\"Security\/Provider\/UserProvider.php.html#62\">App\\Infrastructure\\Security\\Provider\\UserProvider::getUserByUsername<\/a>"],[0,1,"<a href=\"Security\/User.php.html#20\">App\\Infrastructure\\Security\\User::__construct<\/a>"],[0,1,"<a href=\"Security\/User.php.html#25\">App\\Infrastructure\\Security\\User::getRoles<\/a>"],[0,1,"<a href=\"Security\/User.php.html#30\">App\\Infrastructure\\Security\\User::getPassword<\/a>"],[0,1,"<a href=\"Security\/User.php.html#35\">App\\Infrastructure\\Security\\User::getSalt<\/a>"],[0,1,"<a href=\"Security\/User.php.html#39\">App\\Infrastructure\\Security\\User::getUsername<\/a>"],[0,1,"<a href=\"Security\/User.php.html#44\">App\\Infrastructure\\Security\\User::eraseCredentials<\/a>"],[0,1,"<a href=\"Test\/Adapter\/MailProvider.php.html#9\">App\\Infrastructure\\Test\\Adapter\\MailProvider::sendPasswordResetLink<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#18\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::__construct<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#27\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::hydrateArticle<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#37\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::create<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#51\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::update<\/a>"],[0,3,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#64\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::getArticleById<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#86\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::remove<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#90\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::getArticles<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/ArticleRepository.php.html#94\">App\\Infrastructure\\Test\\Adapter\\Repository\\ArticleRepository::countArticles<\/a>"],[0,3,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#19\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository::getUserByEmail<\/a>"],[0,2,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#38\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository::isEmailUnique<\/a>"],[0,2,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#46\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository::isPseudoUnique<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#54\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository::register<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#58\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository::update<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#69\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository::getUsers<\/a>"],[0,1,"<a href=\"Test\/Adapter\/Repository\/UserRepository.php.html#89\">App\\Infrastructure\\Test\\Adapter\\Repository\\UserRepository::countUsers<\/a>"],[0,1,"<a href=\"Test\/IntegrationTestCase.php.html#17\">App\\Infrastructure\\Test\\IntegrationTestCase::createClient<\/a>"],[0,1,"<a href=\"Validator\/NonUniqueEmailValidator.php.html#24\">App\\Infrastructure\\Validator\\NonUniqueEmailValidator::__construct<\/a>"],[0,2,"<a href=\"Validator\/NonUniqueEmailValidator.php.html#32\">App\\Infrastructure\\Validator\\NonUniqueEmailValidator::validate<\/a>"],[0,1,"<a href=\"Validator\/NonUniquePseudoValidator.php.html#24\">App\\Infrastructure\\Validator\\NonUniquePseudoValidator::__construct<\/a>"],[0,2,"<a href=\"Validator\/NonUniquePseudoValidator.php.html#32\">App\\Infrastructure\\Validator\\NonUniquePseudoValidator::validate<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

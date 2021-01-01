@@ -3,7 +3,6 @@
 namespace TYannis\SDS\Domain\Security\UseCase;
 
 use Assert\AssertionFailedException;
-use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 use TYannis\SDS\Domain\Security\Presenter\RegistrationPresenterInterface;
@@ -41,8 +40,10 @@ class Registration
     public function execute(RegistrationRequest $request, RegistrationPresenterInterface $presenter)
     {
         $request->validate($this->userGateway);
+
         $user = User::fromRegistration($request);
         $this->userGateway->register($user);
+
         $presenter->present(new RegistrationResponse($user));
     }
 }
