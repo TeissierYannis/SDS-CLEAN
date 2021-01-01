@@ -176,7 +176,6 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
                     $doctrineUser->getPasswordResetRequestedAt()
                 );
                 return new Article(
-
                     $article->getId(),
                     $article->getTitle(),
                     $article->getContent(),

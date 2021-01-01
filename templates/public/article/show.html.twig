@@ -12,11 +12,11 @@
         </div>
         <span class="text-black-50 mx-1">/</span>
         <div class="text-black-50 small">
-        12 nov. 2020
+            {{ article.createdAt|date("m/d/Y", "Europe/Paris") }}
         </div>
         <span class="text-black-50 mx-1">/</span>
         <div class="text-black-50 small">
-        by AUTEUR
+            rédigé par {{ article.redactor.pseudo }}
         </div>
     </div>
     <hr>

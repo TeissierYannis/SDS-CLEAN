@@ -40,19 +40,6 @@ class CreateRequest
     private User $redactor;
 
     /**
-     * @param  string  $title
-     * @param  string  $content
-     * @param  Category  $category
-     * @param  DateTimeInterface  $createdAt
-     * @param  User  $redactor
-     * @return static
-     */
-    public static function create(string $title, string $content, Category $category, DateTimeInterface $createdAt, User $redactor): self
-    {
-        return new self($title, $content, $category, $createdAt, $redactor);
-    }
-
-    /**
      * CreateRequest constructor.
      * @param  string  $title
      * @param  string  $content
@@ -60,13 +47,36 @@ class CreateRequest
      * @param  DateTimeInterface  $createdAt
      * @param  User  $redactor
      */
-    public function __construct(string $title, string $content, Category $category, DateTimeInterface $createdAt, User $redactor)
-    {
+    public function __construct(
+        string $title,
+        string $content,
+        Category $category,
+        DateTimeInterface $createdAt,
+        User $redactor
+    ) {
         $this->title = $title;
         $this->content = $content;
         $this->category = $category;
         $this->createdAt = $createdAt;
         $this->redactor = $redactor;
+    }
+
+    /**
+     * @param  string  $title
+     * @param  string  $content
+     * @param  Category  $category
+     * @param  DateTimeInterface  $createdAt
+     * @param  User  $redactor
+     * @return static
+     */
+    public static function create(
+        string $title,
+        string $content,
+        Category $category,
+        DateTimeInterface $createdAt,
+        User $redactor
+    ): self {
+        return new self($title, $content, $category, $createdAt, $redactor);
     }
 
     /**

@@ -117,17 +117,21 @@ class UpdateRequest
 
         Assertion::nullOrNotBlank($this->newsletter);
 
-        if($this->newsletter !== null) Assertion::boolean($this->newsletter);
+        if ($this->newsletter !== null) {
+            Assertion::boolean($this->newsletter);
+        }
 
-        if($this->email !== null) Assertion::nonUniqueEmail($this->email, $userGateway);
-        if($this->pseudo !== null) Assertion::nonUniquePseudo($this->pseudo, $userGateway);
+        if ($this->email !== null) {
+            Assertion::nonUniqueEmail($this->email, $userGateway);
+        }
+        if ($this->pseudo !== null) {
+            Assertion::nonUniquePseudo($this->pseudo, $userGateway);
+        }
 
-        if($this->roles !== null)
-        {
+        if ($this->roles !== null) {
             foreach ($this->roles as $role) {
                 Assertion::notBlank($role);
             }
         }
-
     }
 }

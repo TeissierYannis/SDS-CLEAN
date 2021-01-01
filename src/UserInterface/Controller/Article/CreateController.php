@@ -112,7 +112,6 @@ class CreateController
             }
 
             if ($form->getErrors(true)->count() === 0) {
-
                 $request = CreateRequest::create(
                     $article->getTitle(),
                     $article->getContent(),

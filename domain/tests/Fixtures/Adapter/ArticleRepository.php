@@ -29,14 +29,19 @@ class ArticleRepository implements ArticleGateway
     public function getArticleById(UuidInterface $id): ?Article
     {
         return new Article(
-            $id, 'title', 'content', Category::create('category'), new \DateTime(), new User(
-            Uuid::uuid4(),
-            'email@email.com',
-            'pseudo',
-            'password',
-            true,
-            ['ROLE_REDACTOR']
-        )
+            $id,
+            'title',
+            'content',
+            Category::create('category'),
+            new \DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
         );
     }
 
