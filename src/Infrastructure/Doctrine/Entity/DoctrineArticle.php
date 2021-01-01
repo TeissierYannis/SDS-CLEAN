@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Doctrine\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
@@ -36,6 +37,12 @@ class DoctrineArticle
      * @ORM\JoinColumn()
      */
     private $category;
+
+    /**
+     * @var DateTimeInterface
+     * @ORM\Column(type="datetime")
+     */
+    private DateTimeInterface $createdAt;
 
     /**
      * @return UuidInterface
@@ -98,5 +105,21 @@ class DoctrineArticle
     public function setCategory($category): void
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getCreatedAt(): DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param  DateTimeInterface  $createdAt
+     */
+    public function setCreatedAt(DateTimeInterface $createdAt): void
+    {
+        $this->createdAt = $createdAt;
     }
 }

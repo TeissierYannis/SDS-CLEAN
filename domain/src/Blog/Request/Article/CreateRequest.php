@@ -4,6 +4,7 @@ namespace TYannis\SDS\Domain\Blog\Request\Article;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
+use DateTimeInterface;
 use TYannis\SDS\Domain\Blog\Entity\Category;
 
 /**
@@ -28,27 +29,35 @@ class CreateRequest
     private Category $category;
 
     /**
-     * @param string $title
-     * @param string $content
-     * @param Category $category
+     * @var DateTimeInterface
+     */
+    private DateTimeInterface $createdAt;
+
+    /**
+     * @param  string  $title
+     * @param  string  $content
+     * @param  Category  $category
+     * @param  DateTimeInterface  $createdAt
      * @return static
      */
-    public static function create(string $title, string $content, Category $category): self
+    public static function create(string $title, string $content, Category $category, DateTimeInterface $createdAt): self
     {
-        return new self($title, $content, $category);
+        return new self($title, $content, $category, $createdAt);
     }
 
     /**
      * CreateRequest constructor.
-     * @param string $title
-     * @param string $content
-     * @param Category $category
+     * @param  string  $title
+     * @param  string  $content
+     * @param  Category  $category
+     * @param  DateTimeInterface  $createdAt
      */
-    public function __construct(string $title, string $content, Category $category)
+    public function __construct(string $title, string $content, Category $category, DateTimeInterface $createdAt)
     {
         $this->title = $title;
         $this->content = $content;
         $this->category = $category;
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -73,6 +82,14 @@ class CreateRequest
     public function getCategory(): Category
     {
         return $this->category;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getCreatedAt(): DateTimeInterface
+    {
+        return $this->createdAt;
     }
 
     /**

@@ -4,6 +4,9 @@ namespace App\UserInterface\Controller\Article;
 
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use TYannis\SDS\Domain\Blog\Entity\Article;
 
 /**
@@ -26,9 +29,9 @@ class ShowController
     /**
      * @param  Article  $domainArticle
      * @return Response
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function __invoke(Article $domainArticle)
     {

@@ -4,6 +4,7 @@ namespace App\Infrastructure\Test\Adapter\Repository;
 
 use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
 use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
@@ -29,6 +30,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
         $doctrineArticle->setTitle($article->getTitle());
         $doctrineArticle->setContent($article->getContent());
         $doctrineArticle->setCategory($article->getCategory());
+        $doctrineArticle->setCreatedAt($article->getCreatedAt());
     }
 
     /**
@@ -36,7 +38,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
      */
     public function create(Article $article): void
     {
-        $doctrineArticle = new DoctrineRole();
+        $doctrineArticle = new DoctrineArticle();
         $doctrineArticle->setId($article->getId());
 
         $this->hydrateArticle($doctrineArticle, $article);
@@ -63,7 +65,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
      */
     public function getArticleById(UuidInterface $id): ?Article
     {
-        /** @var DoctrineRole $doctrineArticle */
+        /** @var DoctrineArticle $doctrineArticle */
         $doctrineArticle = $this->find($id);
 
         if ($doctrineArticle === null) {
@@ -79,7 +81,8 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
                     $doctrineCategory->getTitle(),
                     $doctrineCategory->isGood()
                 );
-            })->toArray()
+            })->toArray(),
+            new DateTime()
         );
     }
 

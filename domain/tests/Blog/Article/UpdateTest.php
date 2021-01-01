@@ -38,7 +38,7 @@ class UpdateTest extends TestCase
             $id,
             'Article title',
             'My content',
-            Category::create('My category')
+            Category::create('My category'),
         );
 
         $this->useCase->execute($request, $this->presenter);

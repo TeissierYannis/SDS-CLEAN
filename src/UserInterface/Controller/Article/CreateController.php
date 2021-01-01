@@ -6,6 +6,7 @@ use App\UserInterface\DataTransferObject\Article;
 use App\UserInterface\Form\ArticleType;
 use App\UserInterface\Presenter\Article\CreatePresenter;
 use Assert\AssertionFailedException;
+use DateTime;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -92,7 +93,7 @@ class CreateController
             }
 
             if ($form->getErrors(true)->count() === 0) {
-                $request = CreateRequest::create($article->getTitle(), $article->getContent(), $category);
+                $request = CreateRequest::create($article->getTitle(), $article->getContent(), $category, new DateTime());
                 $create->execute($request, $presenter);
 
                 return new RedirectResponse($this->urlGenerator->generate('article_listing'));

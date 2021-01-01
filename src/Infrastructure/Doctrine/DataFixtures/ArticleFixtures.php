@@ -4,6 +4,7 @@ namespace App\Infrastructure\Doctrine\DataFixtures;
 
 use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
 use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
@@ -31,6 +32,7 @@ class ArticleFixtures extends Fixture
         $article->setTitle('My article');
         $article->setContent('My content');
         $article->setCategory($category);
+        $article->setCreatedAt(new DateTime());
 
         $manager->persist($article);
         $manager->flush();

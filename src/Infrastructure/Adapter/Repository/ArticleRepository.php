@@ -53,6 +53,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
         $doctrineArticle->setId($article->getId());
         $doctrineArticle->setTitle($article->getTitle());
         $doctrineArticle->setContent($article->getContent());
+        $doctrineArticle->setCreatedAt($article->getCreatedAt());
     }
 
     /**
@@ -117,7 +118,8 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
             $doctrineArticle->getId(),
             $doctrineArticle->getTitle(),
             $doctrineArticle->getContent(),
-            $category
+            $category,
+            $doctrineArticle->getCreatedAt()
         );
     }
 
@@ -147,7 +149,8 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
                 $article->getId(),
                 $article->getTitle(),
                 $article->getContent(),
-                new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
+                new Category($article->getCategory()->getId(), $article->getCategory()->getTitle()),
+                $article->getCreatedAt()
             ),
             $articles
         );

@@ -50,7 +50,8 @@ class RemoveController
                 $domainArticle->getId(),
                 $domainArticle->getTitle(),
                 $domainArticle->getContent(),
-                $domainArticle->getCategory()
+                $domainArticle->getCategory(),
+                $domainArticle->getCreatedAt()
             ),
             $presenter
         );

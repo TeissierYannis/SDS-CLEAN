@@ -27,7 +27,7 @@ class ArticleRepository implements ArticleGateway
 
     public function getArticleById(UuidInterface $id): ?Article
     {
-        return new Article($id, 'title', 'content', Category::create('category'));
+        return new Article($id, 'title', 'content', Category::create('category'), new \DateTime());
     }
 
     /**
@@ -44,7 +44,8 @@ class ArticleRepository implements ArticleGateway
                 Uuid::uuid4(),
                 'Title',
                 'Content',
-                new Category(Uuid::uuid4(), 'Category')
+                new Category(Uuid::uuid4(), 'Category'),
+                new \DateTime()
             )
         );
 

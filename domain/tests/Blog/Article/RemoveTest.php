@@ -2,6 +2,7 @@
 
 namespace TYannis\SDS\Domain\Tests\Blog\Article;
 
+use DateTime;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Blog\Entity\Category;
@@ -49,7 +50,8 @@ class RemoveTest extends TestCase
             $id,
             'Article title',
             'My content',
-            Category::create('My category')
+            Category::create('My category'),
+            new DateTime()
         );
 
         $this->useCase->execute($request, $this->presenter);
