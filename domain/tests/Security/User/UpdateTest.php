@@ -3,6 +3,7 @@
 namespace TYannis\SDS\Domain\Tests\Security\User;
 
 use Assert\AssertionFailedException;
+use Generator;
 use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Security\Presenter\User\UpdatePresenterInterface;
@@ -55,20 +56,28 @@ class UpdateTest extends TestCase
             ['ROLE_USER']
         );
 
-        $request = new UpdateRequest($user, ['ROLE_REDACTOR']);
+        $request = new UpdateRequest($user, 'new_used@email.com', 'new_used_pseudo', true, ['ROLE_REDACTOR']);
 
         $this->useCase->execute($request, $this->presenter);
 
         $this->assertInstanceOf(UpdateResponse::class, $this->presenter->response);
         $this->assertInstanceOf(User::class, $this->presenter->response->getUser());
 
+        $this->assertEquals('new_used@email.com', $this->presenter->response->getUser()->getEmail());
+        $this->assertEquals('new_used_pseudo', $this->presenter->response->getUser()->getPseudo());
+        $this->assertTrue($this->presenter->response->getUser()->getIsNewsletterRegistered());
         $this->assertContains('ROLE_REDACTOR', $this->presenter->response->getUser()->getRoles());
     }
 
     /**
+     * @dataProvider provideFailedData
+     * @param  string|null  $email
+     * @param  string|null  $pseudo
+     * @param  bool|null  $newsletter
+     * @param  array|null  $roles
      * @throws AssertionFailedException
      */
-    public function testFailed(): void
+    public function testFailed(?string $email, ?string $pseudo, ?bool $newsletter, ?array $roles): void
     {
         $user = new User(
             Uuid::uuid4(),
@@ -79,11 +88,19 @@ class UpdateTest extends TestCase
             ['ROLE_USER']
         );
 
-        $request = new UpdateRequest($user, ['']);
+        $request = new UpdateRequest($user, $email, $pseudo, $newsletter, $roles);
 
         $this->expectException(AssertionFailedException::class);
 
         $this->useCase->execute($request, $this->presenter);
+    }
+
+    public function provideFailedData(): Generator
+    {
+        yield ['', null, null, null];
+        yield [null, '', null, null];
+        yield [null, null, '', null];
+        yield [null, null, null, ['']];
     }
 
 }

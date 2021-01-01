@@ -2,9 +2,11 @@
 
 namespace TYannis\SDS\Domain\Security\Request\User;
 
-use Assert\Assertion;
+use Assert\Assert;
 use Assert\AssertionFailedException;
+use TYannis\SDS\Domain\Security\Assert\Assertion;
 use TYannis\SDS\Domain\Security\Entity\User;
+use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 
 /**
  * Class UpdateRequest
@@ -18,18 +20,36 @@ class UpdateRequest
     private User $user;
 
     /**
-     * @var array
+     * @var string|null
      */
-    private array $roles;
+    private ?string $email;
+    /**
+     * @var string|null
+     */
+    private ?string $pseudo;
+    /**
+     * @var bool|null
+     */
+    private ?bool $newsletter;
+    /**
+     * @var array|null
+     */
+    private ?array $roles;
 
     /**
      * UpdateRequest constructor.
      * @param  User  $user
-     * @param  array  $roles
+     * @param  string|null  $email
+     * @param  string|null  $pseudo
+     * @param  bool|null  $newsletter
+     * @param  array|null  $roles
      */
-    public function __construct(User $user, array $roles)
+    public function __construct(User $user, ?string $email, ?string $pseudo, ?bool $newsletter, ?array $roles)
     {
         $this->user = $user;
+        $this->email = $email;
+        $this->pseudo = $pseudo;
+        $this->newsletter = $newsletter;
         $this->roles = $roles;
     }
 
@@ -42,20 +62,59 @@ class UpdateRequest
     }
 
     /**
-     * @return array
+     * @return string|null
      */
-    public function getRoles(): array
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getNewsletter(): ?bool
+    {
+        return $this->newsletter;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getRoles(): ?array
     {
         return $this->roles;
     }
 
     /**
+     * @param  UserGateway  $userGateway
      * @throws AssertionFailedException
      */
-    public function validate()
+    public function validate(UserGateway $userGateway)
     {
-        foreach ($this->roles as $role) {
-            Assertion::notBlank($role);
+        Assertion::nullOrNotBlank($this->email);
+        Assertion::nullOrNotBlank($this->pseudo);
+
+        Assertion::nullOrNotBlank($this->newsletter);
+        Assertion::boolean($this->newsletter);
+
+
+        if($this->email !== null) Assertion::nonUniqueEmail($this->email, $userGateway);
+        if($this->pseudo !== null) Assertion::nonUniquePseudo($this->pseudo, $userGateway);
+
+        if($this->roles !== null)
+        {
+            foreach ($this->roles as $role) {
+                Assertion::notBlank($role);
+            }
         }
+
     }
 }
