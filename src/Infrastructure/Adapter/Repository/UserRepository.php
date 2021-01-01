@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
+use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Security\Gateway\UserGateway;
 
@@ -155,5 +156,30 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
     public function countUsers(): int
     {
         return $this->count([]);
+    }
+
+    /**
+     * @param  UuidInterface  $id
+     * @return User|null
+     */
+    public function getUserById(UuidInterface $id): ?User
+    {
+        /** @var DoctrineUser $doctrineUser */
+        $doctrineUser = $this->find($id);
+
+        if ($doctrineUser === null) {
+            return null;
+        }
+
+        return new User(
+            $doctrineUser->getId(),
+            $doctrineUser->getEmail(),
+            $doctrineUser->getPseudo(),
+            $doctrineUser->getPassword(),
+            $doctrineUser->getIsNewsletterRegistered(),
+            $doctrineUser->getRoles(),
+            $doctrineUser->getPasswordResetToken(),
+            $doctrineUser->getPasswordResetRequestedAt()
+        );
     }
 }

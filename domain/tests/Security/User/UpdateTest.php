@@ -56,7 +56,7 @@ class UpdateTest extends TestCase
             ['ROLE_USER']
         );
 
-        $request = new UpdateRequest($user, 'new_used@email.com', 'new_used_pseudo', true, ['ROLE_REDACTOR']);
+        $request = UpdateRequest::create($user, 'new_used@email.com', 'new_used_pseudo', true, ['ROLE_REDACTOR']);
 
         $this->useCase->execute($request, $this->presenter);
 

@@ -77,7 +77,6 @@ class UpdateController
     ) {
         $category = Category::fromDomainCategory($domainCategory);
 
-
         $form = $this->formFactory
             ->create(CategoryType::class, $category)
             ->handleRequest($request);

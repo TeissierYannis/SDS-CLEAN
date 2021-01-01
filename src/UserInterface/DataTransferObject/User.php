@@ -56,7 +56,7 @@ class User
      * @param  DomainUser  $user
      * @return User
      */
-    public static function fromDomainArticle(DomainUser $user): self
+    public static function fromDomainUser(DomainUser $user): self
     {
         $newUser = new self();
         $newUser->setId($user->getId());

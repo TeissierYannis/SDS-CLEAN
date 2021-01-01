@@ -37,6 +37,19 @@ class UpdateRequest
     private ?array $roles;
 
     /**
+     * @param  User  $user
+     * @param  string|null  $email
+     * @param  string|null  $pseudo
+     * @param  bool|null  $newsletter
+     * @param  array|null  $roles
+     * @return static
+     */
+    public static function create(User $user, ?string $email, ?string $pseudo, ?bool $newsletter, ?array $roles): self
+    {
+        return new self($user, $email, $pseudo, $newsletter, $roles);
+    }
+
+    /**
      * UpdateRequest constructor.
      * @param  User  $user
      * @param  string|null  $email
@@ -103,8 +116,8 @@ class UpdateRequest
         Assertion::nullOrNotBlank($this->pseudo);
 
         Assertion::nullOrNotBlank($this->newsletter);
-        Assertion::boolean($this->newsletter);
 
+        if($this->newsletter !== null) Assertion::boolean($this->newsletter);
 
         if($this->email !== null) Assertion::nonUniqueEmail($this->email, $userGateway);
         if($this->pseudo !== null) Assertion::nonUniquePseudo($this->pseudo, $userGateway);
