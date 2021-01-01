@@ -33,7 +33,7 @@ class CreatePresenter implements CreatePresenterInterface
     {
         $this->flashBag->add(
             "success",
-            "Catégorie ajouté avec succès"
+            "Catégorie ajoutée avec succès"
         );
     }
 }

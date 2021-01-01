@@ -68,7 +68,7 @@ class CreateController
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function __invoke(Request $request, CreatePresenter $presenter)
+    public function __invoke(Request $request, Create $create, CreatePresenter $presenter)
     {
         $article = new Article();
 
@@ -95,10 +95,10 @@ class CreateController
                 $request = CreateRequest::create($article->getTitle(), $article->getContent(), $category);
                 $create->execute($request, $presenter);
 
-                return new RedirectResponse($this->urlGenerator->generate('home'));
+                return new RedirectResponse($this->urlGenerator->generate('article_listing'));
             }
         }
-        return new Response($this->twig->render('article/create.html.twig', [
+        return new Response($this->twig->render('dashboard/redactor/articles/create.html.twig', [
             'form' => $form->createView()
         ]));
     }

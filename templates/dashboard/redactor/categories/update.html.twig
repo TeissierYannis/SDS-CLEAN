@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}MaSalle - Edition d'une catégorie{% endblock %}
+
+
+{% block body %}
+    <h1 class="mt-5 mb-3">Edition d'une catégorie</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+
+        <a class="btn btn-secondary mr-2" href="{{ path('category_listing') }}">Retour</a>
+
+    </div>
+
+    {{ form_start(form) }}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.title) }}
+    
+    {{ form_rest(form) }}
+    <button class="btn btn-primary">Sauvegarder</button>
+    {{ form_end(form) }}
+{% endblock %}

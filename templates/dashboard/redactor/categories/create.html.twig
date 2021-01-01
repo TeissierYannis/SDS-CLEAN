@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MaSalle - Création d'un article{% endblock %}
+{% block title %}MaSalle - Création d'une catégorie{% endblock %}
 
 {% block body %}
-    <h1 class="mt-5 mb-3">Création d'un article</h1>
+    <h1 class="mt-5 mb-3">Création d'une catégorie</h1>
 
     <div class="d-flex justify-content-end mb-3">
 
-        <a class="btn btn-secondary mr-2" href="{{ path('article_listing') }}">Retour</a>
+        <a class="btn btn-secondary mr-2" href="{{ path('category_listing') }}">Retour</a>
 
     </div>
 
@@ -15,8 +15,6 @@
     {{ form_errors(form) }}
 
     {{ form_row(form.title) }}
-    {{ form_row(form.content) }}
-    {{ form_row(form.category) }}
 
     {{ form_rest(form) }}
     <button class="btn btn-primary">Sauvegarder</button>

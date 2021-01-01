@@ -43,7 +43,7 @@ class ListingController
             $presenter
         );
 
-        return new Response($this->twig->render('category/listing.html.twig', [
+        return new Response($this->twig->render('dashboard/redactor/categories/listing.html.twig', [
             'vm' => $presenter->getViewModel()
         ]));
     }

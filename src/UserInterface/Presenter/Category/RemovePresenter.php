@@ -34,7 +34,7 @@ class RemovePresenter implements RemovePresenterInterface
         if (is_null($response->getCategory())) {
             $this->flashBag->add(
                 "success",
-                "Catégorie supprimé avec succès"
+                "Catégorie supprimée avec succès"
             );
         } else {
             $this->flashBag->add(

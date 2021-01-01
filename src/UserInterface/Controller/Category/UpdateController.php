@@ -91,10 +91,10 @@ class UpdateController
                 $flashBag->clear();
             }
             if ($form->getErrors(true)->count() === 0) {
-                return new RedirectResponse($this->urlGenerator->generate('home'));
+                return new RedirectResponse($this->urlGenerator->generate('category_listing'));
             }
         }
-        return new Response($this->twig->render('category/update.html.twig', [
+        return new Response($this->twig->render('dashboard/redactor/categories/update.html.twig', [
             'form' => $form->createView()
         ]));
     }

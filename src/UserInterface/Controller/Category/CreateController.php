@@ -86,10 +86,10 @@ class CreateController
                 $flashBag->clear();
             }
             if ($form->getErrors(true)->count() === 0) {
-                return new RedirectResponse($this->urlGenerator->generate('home'));
+                return new RedirectResponse($this->urlGenerator->generate('category_listing'));
             }
         }
-        return new Response($this->twig->render('category/create.html.twig', [
+        return new Response($this->twig->render('dashboard/redactor/categories/create.html.twig', [
             'form' => $form->createView()
         ]));
     }

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Gestion des article{% endblock %}
+
+{% block body %}
+    <h1 class="mt-5 mb-2">Gestion des articles</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a class="btn btn-success" href="{{ path('article_create') }}">Nouvel article</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Titre</td>
+            <th>Catégorie</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in vm.articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>{{ article.category.title }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('article_update', { id: article.id }) }}">Editer</a>
+                    <a class="btn btn-danger" href="{{ path('article_remove', { id: article.id }) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Il n'y a aucun article pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
