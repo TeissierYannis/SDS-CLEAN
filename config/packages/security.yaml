@@ -19,4 +19,11 @@ security:
             guard:
                 authenticators:
                     - App\Infrastructure\Security\Guard\WebAuthenticator
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_REDACTOR
+        ROLE_REDACTOR: ROLE_USER
+
     access_control:
+        - { path: ^/dashboard/administrator, roles: ROLE_ADMIN }
+        - { path: ^/dashboard/redactor, roles: ROLE_REDACTOR }
+        - { path: ^/user, roles: ROLE_USER }

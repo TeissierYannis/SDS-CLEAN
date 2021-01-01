@@ -75,9 +75,9 @@
 
         {% if app.user %}
 
-            {% if is_granted('ROLE_ADMIN') %}
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_REDACTOR') %}
 
-                <a class="nav-link" href="{{ path('user_listing') }}">Dashboard</a>
+                <a class="nav-link" href="{{ path('category_listing') }}">Dashboard</a>
 
             {% endif %}
 

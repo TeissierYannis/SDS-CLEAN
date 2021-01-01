@@ -64,7 +64,7 @@ recover_password:
     controller: App\UserInterface\Controller\Security\RecoverPasswordController
 
 logout:
-    path: /users/logout
+    path: /user/logout
     methods: GET
     controller: App\UserInterface\Controller\LogoutController
 

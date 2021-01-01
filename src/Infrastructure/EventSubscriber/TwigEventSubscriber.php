@@ -4,7 +4,6 @@ namespace App\Infrastructure\EventSubscriber;
 
 use App\Infrastructure\Adapter\Repository\ArticleRepository;
 use App\Infrastructure\Adapter\Repository\CategoryRepository;
-use App\Kernel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -31,20 +30,14 @@ class TwigEventSubscriber implements EventSubscriberInterface
      */
     private CategoryRepository $categoryRepository;
 
-    public function __construct(Environment $twig, ArticleRepository $articleRepositiory, CategoryRepository $categoryRepository)
-    {
+    public function __construct(
+        Environment $twig,
+        ArticleRepository $articleRepositiory,
+        CategoryRepository $categoryRepository
+    ) {
         $this->twig = $twig;
         $this->articleRepositiory = $articleRepositiory;
         $this->categoryRepository = $categoryRepository;
-    }
-
-    /**
-     * @param  ControllerEvent  $event
-     */
-    public function onKernerController(ControllerEvent $event)
-    {
-        $this->twig->addGlobal('articles', $this->articleRepositiory->findAll());
-        $this->twig->addGlobal('categories', $this->categoryRepository->findAll());
     }
 
     /**
@@ -55,5 +48,14 @@ class TwigEventSubscriber implements EventSubscriberInterface
         return [
             KernelEvents::CONTROLLER => 'onKernerController'
         ];
+    }
+
+    /**
+     * @param  ControllerEvent  $event
+     */
+    public function onKernerController(ControllerEvent $event)
+    {
+        $this->twig->addGlobal('articles', $this->articleRepositiory->findAll());
+        $this->twig->addGlobal('categories', $this->categoryRepository->findAll());
     }
 }

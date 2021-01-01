@@ -2,6 +2,7 @@
 
 namespace App\UserInterface\DataTransferObject;
 
+use DateTimeInterface;
 use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Blog\Entity\Article as DomainArticle;
 
@@ -30,6 +31,16 @@ class Article
     private $category = null;
 
     /**
+     * @var ?DateTimeInterface
+     */
+    private ?DateTimeInterface $createdAt = null;
+
+    /**
+     * @var ?User
+     */
+    private ?User $redactor = null;
+
+    /**
      * @param DomainArticle $article
      * @return static
      */
@@ -40,6 +51,8 @@ class Article
         $newArticle->setTitle($article->getTitle());
         $newArticle->setContent($article->getContent());
         $newArticle->setCategory(new Category($article->getCategory()->getId(), $article->getCategory()->getTitle()));
+        $newArticle->setCreatedAt($article->getCreatedAt());
+        $newArticle->setRedactor(User::fromDomainUser($article->getRedactor()));
 
         return $newArticle;
     }
@@ -106,5 +119,37 @@ class Article
     public function setCategory(?Category $category): void
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getCreatedAt(): DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param  DateTimeInterface  $createdAt
+     */
+    public function setCreatedAt(DateTimeInterface $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return User
+     */
+    public function getRedactor(): User
+    {
+        return $this->redactor;
+    }
+
+    /**
+     * @param  User  $redactor
+     */
+    public function setRedactor(User $redactor): void
+    {
+        $this->redactor = $redactor;
     }
 }

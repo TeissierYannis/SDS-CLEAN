@@ -2,6 +2,7 @@
 
 namespace TYannis\SDS\Domain\Tests\Blog\Article;
 
+use DateTime;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use TYannis\SDS\Domain\Blog\Entity\Category;
@@ -9,6 +10,7 @@ use TYannis\SDS\Domain\Blog\Presenter\Article\RemovePresenterInterface;
 use TYannis\SDS\Domain\Blog\Request\Article\RemoveRequest;
 use TYannis\SDS\Domain\Blog\Response\Article\RemoveResponse;
 use TYannis\SDS\Domain\Blog\UseCase\Article\Remove;
+use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Tests\Fixtures\Adapter\ArticleRepository;
 
 /**
@@ -49,7 +51,16 @@ class RemoveTest extends TestCase
             $id,
             'Article title',
             'My content',
-            Category::create('My category')
+            Category::create('My category'),
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
         );
 
         $this->useCase->execute($request, $this->presenter);

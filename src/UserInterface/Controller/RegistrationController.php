@@ -78,7 +78,7 @@ class RegistrationController
             );
             $registration->execute($request, $presenter);
 
-            return new RedirectResponse($this->urlGenerator->generate("home"));
+            return new RedirectResponse($this->urlGenerator->generate("login"));
         }
 
         return new Response($this->twig->render("security/registration.html.twig", [

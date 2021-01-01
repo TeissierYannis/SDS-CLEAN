@@ -4,7 +4,9 @@ namespace TYannis\SDS\Domain\Blog\Request\Article;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
+use DateTimeInterface;
 use TYannis\SDS\Domain\Blog\Entity\Category;
+use TYannis\SDS\Domain\Security\Entity\User;
 
 /**
  * Class CreateRequest
@@ -28,27 +30,53 @@ class CreateRequest
     private Category $category;
 
     /**
-     * @param string $title
-     * @param string $content
-     * @param Category $category
-     * @return static
+     * @var DateTimeInterface
      */
-    public static function create(string $title, string $content, Category $category): self
-    {
-        return new self($title, $content, $category);
-    }
+    private DateTimeInterface $createdAt;
+
+    /**
+     * @var User
+     */
+    private User $redactor;
 
     /**
      * CreateRequest constructor.
-     * @param string $title
-     * @param string $content
-     * @param Category $category
+     * @param  string  $title
+     * @param  string  $content
+     * @param  Category  $category
+     * @param  DateTimeInterface  $createdAt
+     * @param  User  $redactor
      */
-    public function __construct(string $title, string $content, Category $category)
-    {
+    public function __construct(
+        string $title,
+        string $content,
+        Category $category,
+        DateTimeInterface $createdAt,
+        User $redactor
+    ) {
         $this->title = $title;
         $this->content = $content;
         $this->category = $category;
+        $this->createdAt = $createdAt;
+        $this->redactor = $redactor;
+    }
+
+    /**
+     * @param  string  $title
+     * @param  string  $content
+     * @param  Category  $category
+     * @param  DateTimeInterface  $createdAt
+     * @param  User  $redactor
+     * @return static
+     */
+    public static function create(
+        string $title,
+        string $content,
+        Category $category,
+        DateTimeInterface $createdAt,
+        User $redactor
+    ): self {
+        return new self($title, $content, $category, $createdAt, $redactor);
     }
 
     /**
@@ -73,6 +101,22 @@ class CreateRequest
     public function getCategory(): Category
     {
         return $this->category;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getCreatedAt(): DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return User
+     */
+    public function getRedactor(): User
+    {
+        return $this->redactor;
     }
 
     /**

@@ -30,7 +30,7 @@ class UpdateTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->presenter = new class() implements UpdatePresenterInterface {
+        $this->presenter = new class () implements UpdatePresenterInterface {
             public UpdateResponse $response;
 
             public function present(UpdateResponse $response): void
@@ -102,5 +102,4 @@ class UpdateTest extends TestCase
         yield [null, null, '', null];
         yield [null, null, null, ['']];
     }
-
 }

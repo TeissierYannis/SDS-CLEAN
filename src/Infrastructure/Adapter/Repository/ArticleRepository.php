@@ -4,6 +4,7 @@ namespace App\Infrastructure\Adapter\Repository;
 
 use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
 use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
+use App\Infrastructure\Doctrine\Entity\DoctrineUser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -13,6 +14,7 @@ use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Blog\Entity\Article;
 use TYannis\SDS\Domain\Blog\Entity\Category;
 use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
+use TYannis\SDS\Domain\Security\Entity\User;
 
 /**
  * Class ArticleRepository
@@ -38,6 +40,10 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
         $doctrineArticle = new DoctrineArticle();
         self::hydrateArticle($doctrineArticle, $article);
 
+        $redactor = $this->_em->find(DoctrineUser::class, $article->getRedactor()->getId());
+
+        $doctrineArticle->setRedactor($redactor);
+
         $this->findCategoryFromArticle($article, $doctrineArticle);
 
         $this->_em->persist($doctrineArticle);
@@ -53,6 +59,7 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
         $doctrineArticle->setId($article->getId());
         $doctrineArticle->setTitle($article->getTitle());
         $doctrineArticle->setContent($article->getContent());
+        $doctrineArticle->setCreatedAt($article->getCreatedAt());
     }
 
     /**
@@ -117,7 +124,18 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
             $doctrineArticle->getId(),
             $doctrineArticle->getTitle(),
             $doctrineArticle->getContent(),
-            $category
+            $category,
+            $doctrineArticle->getCreatedAt(),
+            new User(
+                $doctrineArticle->getRedactor()->getId(),
+                $doctrineArticle->getRedactor()->getEmail(),
+                $doctrineArticle->getRedactor()->getPseudo(),
+                $doctrineArticle->getRedactor()->getPassword(),
+                $doctrineArticle->getRedactor()->getIsNewsletterRegistered(),
+                $doctrineArticle->getRedactor()->getRoles(),
+                $doctrineArticle->getRedactor()->getPasswordResetToken(),
+                $doctrineArticle->getRedactor()->getPasswordResetRequestedAt()
+            )
         );
     }
 
@@ -142,13 +160,30 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleGatewa
             ->getQuery()
             ->getResult();
 
+
         return array_map(
-            fn(DoctrineArticle $article) => new Article(
-                $article->getId(),
-                $article->getTitle(),
-                $article->getContent(),
-                new Category($article->getCategory()->getId(), $article->getCategory()->getTitle())
-            ),
+            function (DoctrineArticle $article) {
+                /** @var DoctrineUser $doctrineUser */
+                $doctrineUser = $article->getRedactor();
+                $user = new User(
+                    $doctrineUser->getId(),
+                    $doctrineUser->getEmail(),
+                    $doctrineUser->getPseudo(),
+                    $doctrineUser->getPassword(),
+                    $doctrineUser->getIsNewsletterRegistered(),
+                    $doctrineUser->getRoles(),
+                    $doctrineUser->getPasswordResetToken(),
+                    $doctrineUser->getPasswordResetRequestedAt()
+                );
+                return new Article(
+                    $article->getId(),
+                    $article->getTitle(),
+                    $article->getContent(),
+                    new Category($article->getCategory()->getId(), $article->getCategory()->getTitle()),
+                    $article->getCreatedAt(),
+                    $user
+                );
+            },
             $articles
         );
     }
