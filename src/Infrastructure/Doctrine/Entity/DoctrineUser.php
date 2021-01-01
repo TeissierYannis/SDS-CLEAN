@@ -45,6 +45,11 @@ class DoctrineUser
     private array $roles;
 
     /**
+     * @ORM\OneToMany(targetEntity="DoctrineArticle", mappedBy="redactor", cascade={})
+     */
+    private $articles;
+
+    /**
      * @var bool
      * @ORM\Column
      */
@@ -188,5 +193,21 @@ class DoctrineUser
     public function setIsNewsletterRegistered(bool $isNewsletterRegistered): void
     {
         $this->isNewsletterRegistered = $isNewsletterRegistered;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param  mixed  $articles
+     */
+    public function setArticles($articles): void
+    {
+        $this->articles = $articles;
     }
 }

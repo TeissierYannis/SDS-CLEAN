@@ -7,6 +7,7 @@ use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Blog\Entity\Article;
 use TYannis\SDS\Domain\Blog\Entity\Category;
 use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
+use TYannis\SDS\Domain\Security\Entity\User;
 
 /**
  * Class ArticleRepository
@@ -15,7 +16,7 @@ use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
 class ArticleRepository implements ArticleGateway
 {
     /**
-     * @param Article $article
+     * @param  Article  $article
      */
     public function create(Article $article): void
     {
@@ -27,12 +28,21 @@ class ArticleRepository implements ArticleGateway
 
     public function getArticleById(UuidInterface $id): ?Article
     {
-        return new Article($id, 'title', 'content', Category::create('category'), new \DateTime());
+        return new Article(
+            $id, 'title', 'content', Category::create('category'), new \DateTime(), new User(
+            Uuid::uuid4(),
+            'email@email.com',
+            'pseudo',
+            'password',
+            true,
+            ['ROLE_REDACTOR']
+        )
+        );
     }
 
     /**
-     * @param int $page
-     * @param int $limit
+     * @param  int  $page
+     * @param  int  $limit
      * @return Article[]
      */
     public function getArticles(int $page, int $limit, string $field, string $order): array
@@ -45,7 +55,15 @@ class ArticleRepository implements ArticleGateway
                 'Title',
                 'Content',
                 new Category(Uuid::uuid4(), 'Category'),
-                new \DateTime()
+                new \DateTime(),
+                new User(
+                    Uuid::uuid4(),
+                    'email@email.com',
+                    'pseudo',
+                    'password',
+                    true,
+                    ['ROLE_REDACTOR']
+                )
             )
         );
 
@@ -61,7 +79,7 @@ class ArticleRepository implements ArticleGateway
     }
 
     /**
-     * @param Article $article
+     * @param  Article  $article
      * @return bool
      */
     public function remove(Article $article): bool

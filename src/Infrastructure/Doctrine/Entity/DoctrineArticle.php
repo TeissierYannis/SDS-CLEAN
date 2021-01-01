@@ -45,6 +45,12 @@ class DoctrineArticle
     private DateTimeInterface $createdAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="DoctrineUser", inversedBy="articles", cascade={})
+     * @ORM\JoinColumn()
+     */
+    private $redactor;
+
+    /**
      * @return UuidInterface
      */
     public function getId(): UuidInterface
@@ -121,5 +127,21 @@ class DoctrineArticle
     public function setCreatedAt(DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRedactor()
+    {
+        return $this->redactor;
+    }
+
+    /**
+     * @param  mixed  $redactor
+     */
+    public function setRedactor($redactor): void
+    {
+        $this->redactor = $redactor;
     }
 }

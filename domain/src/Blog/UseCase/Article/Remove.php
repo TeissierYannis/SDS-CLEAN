@@ -39,7 +39,8 @@ class Remove
             $request->getTitle(),
             $request->getContent(),
             $request->getCategory(),
-            $request->getCreatedAt()
+            $request->getCreatedAt(),
+            $request->getRedactor()
         );
 
         if ($this->articleGateway->remove($article)) {

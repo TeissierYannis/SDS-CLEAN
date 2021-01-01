@@ -6,6 +6,7 @@ use Assert\Assertion;
 use Assert\AssertionFailedException;
 use DateTimeInterface;
 use TYannis\SDS\Domain\Blog\Entity\Category;
+use TYannis\SDS\Domain\Security\Entity\User;
 
 /**
  * Class CreateRequest
@@ -34,15 +35,21 @@ class CreateRequest
     private DateTimeInterface $createdAt;
 
     /**
+     * @var User
+     */
+    private User $redactor;
+
+    /**
      * @param  string  $title
      * @param  string  $content
      * @param  Category  $category
      * @param  DateTimeInterface  $createdAt
+     * @param  User  $redactor
      * @return static
      */
-    public static function create(string $title, string $content, Category $category, DateTimeInterface $createdAt): self
+    public static function create(string $title, string $content, Category $category, DateTimeInterface $createdAt, User $redactor): self
     {
-        return new self($title, $content, $category, $createdAt);
+        return new self($title, $content, $category, $createdAt, $redactor);
     }
 
     /**
@@ -51,13 +58,15 @@ class CreateRequest
      * @param  string  $content
      * @param  Category  $category
      * @param  DateTimeInterface  $createdAt
+     * @param  User  $redactor
      */
-    public function __construct(string $title, string $content, Category $category, DateTimeInterface $createdAt)
+    public function __construct(string $title, string $content, Category $category, DateTimeInterface $createdAt, User $redactor)
     {
         $this->title = $title;
         $this->content = $content;
         $this->category = $category;
         $this->createdAt = $createdAt;
+        $this->redactor = $redactor;
     }
 
     /**
@@ -90,6 +99,14 @@ class CreateRequest
     public function getCreatedAt(): DateTimeInterface
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return User
+     */
+    public function getRedactor(): User
+    {
+        return $this->redactor;
     }
 
     /**

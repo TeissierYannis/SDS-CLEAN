@@ -4,6 +4,7 @@ namespace TYannis\SDS\Domain\Tests\Blog\Article;
 
 use Assert\AssertionFailedException;
 use DateTime;
+use DateTimeInterface;
 use Generator;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
@@ -39,7 +40,15 @@ class CreateTest extends TestCase
             'Article title',
             'My content',
             Category::create('My category'),
-            new DateTime()
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
         );
 
         $this->useCase->execute($request, $this->presenter);
@@ -51,13 +60,14 @@ class CreateTest extends TestCase
 
         $this->assertEquals('Article title', $this->presenter->response->getArticle()->getTitle());
         $this->assertEquals('My content', $this->presenter->response->getArticle()->getContent());
-        $this->assertInstanceOf(\DateTimeInterface::class, $this->presenter->response->getArticle()->getCreatedAt());
+        $this->assertInstanceOf(DateTimeInterface::class, $this->presenter->response->getArticle()->getCreatedAt());
 
         $this->assertInstanceOf(Category::class, $this->presenter->response->getArticle()->getCategory());
         $this->assertEquals(
             'My category',
             $this->presenter->response->getArticle()->getCategory()->getTitle()
         );
+        $this->assertInstanceOf(User::class, $this->presenter->response->getArticle()->getRedactor());
     }
 
     /**
@@ -65,12 +75,18 @@ class CreateTest extends TestCase
      * @param  string  $articleTitle
      * @param  string  $articleContent
      * @param  Category  $category
-     * @param  \DateTimeInterface  $createdAt
+     * @param  DateTimeInterface  $createdAt
+     * @param  User  $redactor
      * @throws AssertionFailedException
      */
-    public function testFailed(string $articleTitle, string $articleContent, Category $category, \DateTimeInterface $createdAt)
-    {
-        $request = new CreateRequest($articleTitle, $articleContent, $category, $createdAt);
+    public function testFailed(
+        string $articleTitle,
+        string $articleContent,
+        Category $category,
+        DateTimeInterface $createdAt,
+        User $redactor
+    ) {
+        $request = new CreateRequest($articleTitle, $articleContent, $category, $createdAt, $redactor);
 
         $this->expectException(AssertionFailedException::class);
 
@@ -79,13 +95,91 @@ class CreateTest extends TestCase
 
     public function provideFailedData(): Generator
     {
-        yield ["", "My content", Category::create('My category'), new DateTime()];
-        yield ["My title", "", Category::create('My category'), new DateTime()];
-        yield ["My title", "My content", Category::create(''), new DateTime()];
+        yield [
+            "",
+            "My content",
+            Category::create('My category'),
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
+        ];
+        yield [
+            "My title",
+            "",
+            Category::create('My category'),
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
+        ];
+        yield [
+            "My title",
+            "My content",
+            Category::create(''),
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
+        ];
 
-        yield ["My", "My content", Category::create('My category'), new DateTime()];
-        yield ["My title", "My", Category::create('My category'), new DateTime()];
-        yield ["My title", "My content", Category::create('My'), new DateTime()];
+        yield [
+            "My",
+            "My content",
+            Category::create('My category'),
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
+        ];
+        yield [
+            "My title",
+            "My",
+            Category::create('My category'),
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
+        ];
+        yield [
+            "My title",
+            "My content",
+            Category::create('My'),
+            new DateTime(),
+            new User(
+                Uuid::uuid4(),
+                'email@email.com',
+                'pseudo',
+                'password',
+                true,
+                ['ROLE_REDACTOR']
+            )
+        ];
     }
 
     protected function setUp(): void
