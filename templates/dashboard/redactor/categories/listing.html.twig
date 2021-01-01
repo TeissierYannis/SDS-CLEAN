@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Gestion des catégories{% endblock %}
+
+{% block body %}
+    <h1 class="mt-5 mb-2">Gestion des catégories</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a class="btn btn-success" href="{{ path('category_create') }}">Nouvelle catégorie</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Titre</td>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in vm.categories %}
+            <tr>
+                <td>{{ category.title }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('category_update', { id: category.id }) }}">Editer</a>
+                    <a class="btn btn-danger" href="{{ path('category_remove', { id: category.id }) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Il n'y a aucune catégorie pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

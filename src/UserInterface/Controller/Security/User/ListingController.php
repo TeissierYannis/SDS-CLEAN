@@ -56,7 +56,7 @@ class ListingController
             $presenter
         );
 
-        return new Response($this->twig->render('security/users/listing.html.twig', [
+        return new Response($this->twig->render('dashboard/administrator/users/listing.html.twig', [
             'vm' => $presenter->getViewModel()
         ]));
     }

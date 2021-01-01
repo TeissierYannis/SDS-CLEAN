@@ -1,40 +1,40 @@
 article_create:
-    path: /articles/create
+    path: /dashboard/redactor/articles/create
     methods: GET|POST
     controller: App\UserInterface\Controller\Article\CreateController
 
 article_update:
-    path: /articles/{id}/update
+    path: /dashboard/redactor/articles/{id}/update
     methods: GET|POST
     controller: App\UserInterface\Controller\Article\UpdateController
 
 article_listing:
-    path: /articles
+    path: /dashboard/redactor/articles
     methods: GET
     controller: App\UserInterface\Controller\Article\ListingController
 
 article_remove:
-    path: /articles/{id}/remove
+    path: /dashboard/redactor/articles/{id}/remove
     methods: GET
     controller: App\UserInterface\Controller\Article\RemoveController
 
 category_create:
-    path: /categories/create
+    path: /dashboard/redactor/categories/create
     methods: GET|POST
     controller: App\UserInterface\Controller\Category\CreateController
 
 category_update:
-    path: /categories/{id}/update
+    path: /dashboard/redactor/categories/{id}/update
     methods: GET|POST
     controller: App\UserInterface\Controller\Category\UpdateController
 
 category_listing:
-    path: /categories
+    path: /dashboard/redactor/categories
     methods: GET
     controller: App\UserInterface\Controller\Category\ListingController
 
 category_remove:
-    path: /categories/{id}/remove
+    path: /dashboard/redactor/categories/{id}/remove
     methods: GET
     controller: App\UserInterface\Controller\Category\RemoveController
 
@@ -59,17 +59,17 @@ recover_password:
     controller: App\UserInterface\Controller\Security\RecoverPasswordController
 
 logout:
-    path: /logout
+    path: /users/logout
     methods: GET
     controller: App\UserInterface\Controller\LogoutController
 
 user_listing:
-    path: /dashboard/users
+    path: /dashboard/administrator/users
     methods: GET
     controller: App\UserInterface\Controller\Security\User\ListingController
 
 user_update:
-    path: /dashboard/users/{id}/update
+    path: /dashboard/administrator/users/{id}/update
     methods: GET|POST
     controller: App\UserInterface\Controller\Security\User\UpdateController
 

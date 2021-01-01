@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MaSalle{% endblock %}</title>
 
-        <h1><a href="{{ path('logout') }}">Déconnexion</a></h1>
-        {% block body %}{% endblock %}
-        {% include 'components/flash_messages.html.twig' %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+{% include "components/navbar.html.twig" %}
+
+{% include 'components/flash_messages.html.twig' %}
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}{% endblock %}
+
+</body>
 </html>

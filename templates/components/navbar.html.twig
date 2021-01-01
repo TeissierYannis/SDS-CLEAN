@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="{{ path('home') }}">HOME</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+
+            <!-- Classic -->
+
+            {% if 'administrator' not in app.request.uri and 'redactor' not in app.request.uri %}
+
+                {% for category in categories %}
+
+                    {% if category.articles is not empty %}
+
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                {{ category.title }}
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                {% for article in category.articles %}
+
+                                    <a class="dropdown-item"
+                                       href="#">{{ article.title }}</a>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </li>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            {% else %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{ path('user_listing') }}">Utilisateurs</a>
+
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{{ path('category_listing') }}">Catégories</a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{{ path('article_listing') }}">Articles</a>
+
+                </li>
+
+            {% endif %}
+
+        </ul>
+
+        {% if app.user %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+
+                <a class="nav-link" href="{{ path('user_listing') }}">Dashboard</a>
+
+            {% endif %}
+
+            <a class="nav-link" href="{{ path('logout') }}">Logout</a>
+
+        {% else %}
+
+            <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+
+            <a class="nav-link" href="{{ path('registration') }}">S'inscrire</a>
+
+        {% endif %}
+
+    </div>
+
+</nav>

@@ -39,7 +39,7 @@ class LoginController
      */
     public function __invoke(AuthenticationUtils $authenticationUtils): Response
     {
-        return new Response($this->twig->render('login.html.twig', [
+        return new Response($this->twig->render('security/login.html.twig', [
             'vm' => LoginViewModel::fromAuthenticationUtils($authenticationUtils)
         ]));
     }

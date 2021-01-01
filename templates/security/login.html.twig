@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <form method="post">
+            {% if vm.errorMessage is not null %}
+                <div class="alert alert-danger">{{ vm.errorMessage }}</div>
+            {% endif %}
+
+            <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+            <label for="inputEmail">E-mail</label>
+            <input type="email" value="{{ vm.lastUsername }}" name="username" id="inputEmail" class="form-control" required
+                   autofocus>
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me
+            functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+            #}
+            <div class="checkbox mb-3 d-flex justify-content-between">
+                {# <label>
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                </label> #}
+                <a class="d-flex justify-content-end" href="{{ path('ask_password_reset') }}">J'ai
+                    oublié mon mot de passe ?</a>
+            </div>
+
+            <button class="btn btn-lg btn-primary" type="submit">
+                Se connecter
+            </button>
+        </form>
+
+    </div>
+{% endblock %}

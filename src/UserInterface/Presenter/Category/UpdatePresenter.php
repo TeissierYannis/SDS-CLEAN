@@ -33,7 +33,7 @@ class UpdatePresenter implements UpdatePresenterInterface
     {
         $this->flashBag->add(
             "success",
-            "Catégorie modifié avec succès"
+            "Catégorie modifiée avec succès"
         );
     }
 }

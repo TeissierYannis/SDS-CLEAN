@@ -55,6 +55,6 @@ class RemoveController
             $presenter
         );
 
-        return new RedirectResponse($this->urlGenerator->generate('home'));
+        return new RedirectResponse($this->urlGenerator->generate('article_listing'));
     }
 }

@@ -1,8 +1,0 @@
-{% extends "base.html.twig" %}
-
-{% block body %}
-    {{ form_start(form) }}
-    {% include 'article/_form.html.twig' with { form: form } %}
-    <button>Modifier une catégorie</button>
-    {{ form_end(form) }}
-{% endblock %}

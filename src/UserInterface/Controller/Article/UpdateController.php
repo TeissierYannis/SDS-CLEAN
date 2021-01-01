@@ -106,10 +106,10 @@ class UpdateController
                 );
                 $create->execute($request, $presenter);
 
-                return new RedirectResponse($this->urlGenerator->generate('home'));
+                return new RedirectResponse($this->urlGenerator->generate('article_listing'));
             }
         }
-        return new Response($this->twig->render('article/update.html.twig', [
+        return new Response($this->twig->render('dashboard/redactor/articles/update.html.twig', [
             'form' => $form->createView()
         ]));
     }

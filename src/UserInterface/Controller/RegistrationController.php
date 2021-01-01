@@ -81,7 +81,7 @@ class RegistrationController
             return new RedirectResponse($this->urlGenerator->generate("home"));
         }
 
-        return new Response($this->twig->render("registration.html.twig", [
+        return new Response($this->twig->render("security/registration.html.twig", [
             "form" => $form->createView()
         ]));
     }
