@@ -6,6 +6,7 @@ use TYannis\SDS\Domain\Tickets\Entity\Ticket;
 use TYannis\SDS\Domain\Tickets\Presenter\CreatePresenterInterface;
 use TYannis\SDS\Domain\Tickets\Request\CreateRequest;
 use TYannis\SDS\Domain\Tickets\Response\CreateResponse;
+use TYannis\SDS\Domain\Tickets\TicketGateway;
 
 /**
  * Class Create
@@ -13,6 +14,17 @@ use TYannis\SDS\Domain\Tickets\Response\CreateResponse;
  */
 class Create
 {
+    private TicketGateway $ticketGateway;
+
+    /**
+     * Create constructor.
+     * @param  TicketGateway  $ticketGateway
+     */
+    public function __construct(TicketGateway $ticketGateway)
+    {
+        $this->ticketGateway = $ticketGateway;
+    }
+
     /**
      * @param  CreateRequest  $request
      * @param  CreatePresenterInterface  $presenter
@@ -23,6 +35,8 @@ class Create
         $request->validate();
 
         $ticket = Ticket::fromCreate($request);
+
+        $this->ticketGateway->create($ticket);
 
         $presenter->present(new CreateResponse($ticket));
     }

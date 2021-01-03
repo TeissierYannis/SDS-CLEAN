@@ -6,6 +6,7 @@ use Assert\AssertionFailedException;
 use DateTime;
 use DateTimeInterface;
 use Ramsey\Uuid\UuidInterface;
+use TYannis\SDS\Domain\Tests\Fixtures\Adapter\TicketRepository;
 use TYannis\SDS\Domain\Tickets\Entity\Ticket;
 use TYannis\SDS\Domain\Tickets\Presenter\CreatePresenterInterface;
 use TYannis\SDS\Domain\Tickets\Request\CreateRequest;
@@ -42,7 +43,6 @@ class CreateTest extends TestCase
         $this->assertEquals('Message content', $this->presenter->response->getTicket()->getMessage());
         $this->assertInstanceOf(DateTimeInterface::class, $this->presenter->response->getTicket()->getSendedAt());
         $this->assertEquals('PENDING', $this->presenter->response->getTicket()->getState());
-
     }
 
     /**
@@ -76,7 +76,7 @@ class CreateTest extends TestCase
 
     protected function setUp()
     {
-        $this->presenter = new class() implements CreatePresenterInterface {
+        $this->presenter = new class () implements CreatePresenterInterface {
             public CreateResponse $response;
 
             public function present(CreateResponse $response): void
@@ -85,6 +85,6 @@ class CreateTest extends TestCase
             }
         };
 
-        $this->useCase = new Create();
+        $this->useCase = new Create(new TicketRepository());
     }
 }
