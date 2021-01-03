@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}MaSalle - Edition d'un produit{% endblock %}
+
+
+{% block body %}
+    <h1 class="mt-5 mb-3">Edition d'un produit</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+
+        <a class="btn btn-secondary mr-2" href="{{ path('product_listing') }}">Retour</a>
+
+    </div>
+
+    {{ form_start(form) }}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.price) }}
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.image) }}
+        </div>
+        <div class="col">
+            <div class="text-center">
+                <img class="rounded img-thumbnail" style="height: 350px" height="100" src="{{ asset(productImage) }}"
+                     alt="">
+            </div>
+        </div>
+    </div>
+
+
+    {{ form_rest(form) }}
+    <button class="btn btn-primary">Sauvegarder</button>
+    {{ form_end(form) }}
+
+
+{% endblock %}

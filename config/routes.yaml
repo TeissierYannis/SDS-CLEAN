@@ -14,6 +14,11 @@ product_create:
     methods: GET|POST
     controller: App\UserInterface\Controller\Shop\Product\CreateController
 
+product_update:
+    path: /dashboard/administrator/shop/products/{id}/update
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Shop\Product\UpdateController
+
 product_listing:
     path: /dashboard/administrator/shop/products
     methods: GET

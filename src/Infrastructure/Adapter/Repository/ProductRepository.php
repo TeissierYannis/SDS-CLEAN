@@ -95,17 +95,30 @@ class ProductRepository extends ServiceEntityRepository implements ProductGatewa
 
     public function getProductById(UuidInterface $id): ?Product
     {
+        /** @var DoctrineProduct $doctrineProduct */
+        $doctrineProduct = $this->find($id);
+
+        if ($doctrineProduct === null) {
+            return null;
+        }
+
         return new Product(
-            $id,
-            'Product',
-            'Description',
-            12.3,
-            '/../.'
+            $doctrineProduct->getId(),
+            $doctrineProduct->getName(),
+            $doctrineProduct->getDescription(),
+            $doctrineProduct->getPrice(),
+            $doctrineProduct->getImage()
         );
     }
 
     public function update(Product $product): void
     {
-        // TODO: Implement update() method.
+        /** @var DoctrineProduct $doctrineProduct */
+        $doctrineProduct = $this->find($product->getId());
+
+        self::hydrateProduct($doctrineProduct, $product);
+
+        $this->_em->persist($doctrineProduct);
+        $this->_em->flush();
     }
 }
