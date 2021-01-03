@@ -60,4 +60,45 @@ class ProductRepository extends ServiceEntityRepository implements ProductGatewa
         $doctrineProduct->setPrice($product->getPrice());
         $doctrineProduct->setImage($product->getImage());
     }
+
+
+    public function countProducts(): int
+    {
+        return $this->count([]);
+    }
+
+    /**
+     * @param  int  $page
+     * @param  int  $limit
+     * @param  string  $field
+     * @param  string  $order
+     * @return array
+     */
+    public function getProducts(int $page, int $limit, string $field, string $order): array
+    {
+        $fields = [
+            'name' => 'q.name',
+            'price' => 'q.price'
+        ];
+
+        $products = $this->createQueryBuilder('q')
+            ->orderBy($fields[$field], $order)
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return array_map(
+            function (DoctrineProduct $product) {
+                return new Product(
+                    $product->getId(),
+                    $product->getName(),
+                    $product->getDescription(),
+                    $product->getPrice(),
+                    $product->getImage()
+                );
+            },
+            $products
+        );
+    }
 }

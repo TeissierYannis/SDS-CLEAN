@@ -10,9 +10,14 @@ user_update:
     controller: App\UserInterface\Controller\Security\User\UpdateController
 
 product_create:
-    path: /dashboard/administrator/shop/product/create
+    path: /dashboard/administrator/shop/products/create
     methods: GET|POST
     controller: App\UserInterface\Controller\Shop\Product\CreateController
+
+product_listing:
+    path: /dashboard/administrator/shop/products
+    methods: GET
+    controller: App\UserInterface\Controller\Shop\Product\ListingController
 
 ### REDACTOR ###
 article_create:
