@@ -38,7 +38,12 @@ class Create
     {
         $request->validate();
 
-        $product = Product::create($request->getName(), $request->getDescription(), $request->getPrice(), $request->getImage());
+        $product = Product::create(
+            $request->getName(),
+            $request->getDescription(),
+            $request->getPrice(),
+            $request->getImage()
+        );
 
         $this->productGateway->create($product);
 

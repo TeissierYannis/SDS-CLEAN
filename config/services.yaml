@@ -1,7 +1,7 @@
 parameters:
     app.from_email: 'no-reply@ma-salle.com'
     app.display_name: 'Ma Salle'
-
+    products_directory: '%kernel.project_dir%/public/assets/image/product'
 services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

@@ -30,7 +30,7 @@ class CreateTest extends TestCase
 
     protected function setUp()
     {
-        $this->presenter = new class() implements CreatePresenterInterface {
+        $this->presenter = new class () implements CreatePresenterInterface {
             public CreateResponse $response;
 
             public function present(CreateResponse $response): void

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TYannis\SDS\Domain\Shop\Gateway;
 
 use TYannis\SDS\Domain\Shop\Entity\Product;

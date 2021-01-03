@@ -1,3 +1,20 @@
+### ADMINISTRATOR ###
+user_listing:
+    path: /dashboard/administrator/users
+    methods: GET
+    controller: App\UserInterface\Controller\Security\User\ListingController
+
+user_update:
+    path: /dashboard/administrator/users/{id}/update
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Security\User\UpdateController
+
+product_create:
+    path: /dashboard/administrator/shop/product/create
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Shop\Product\CreateController
+
+### REDACTOR ###
 article_create:
     path: /dashboard/redactor/articles/create
     methods: GET|POST
@@ -43,6 +60,14 @@ category_remove:
     methods: GET
     controller: App\UserInterface\Controller\Category\RemoveController
 
+### USER ###
+logout:
+    path: /user/logout
+    methods: GET
+    controller: App\UserInterface\Controller\LogoutController
+
+### ANONYMOUS ###
+
 registration:
     path: /registration
     methods: GET|POST
@@ -63,21 +88,7 @@ recover_password:
     methods: GET|POST
     controller: App\UserInterface\Controller\Security\RecoverPasswordController
 
-logout:
-    path: /user/logout
-    methods: GET
-    controller: App\UserInterface\Controller\LogoutController
-
-user_listing:
-    path: /dashboard/administrator/users
-    methods: GET
-    controller: App\UserInterface\Controller\Security\User\ListingController
-
-user_update:
-    path: /dashboard/administrator/users/{id}/update
-    methods: GET|POST
-    controller: App\UserInterface\Controller\Security\User\UpdateController
-
+### ALL ###
 home:
     path: /
     methods: GET
