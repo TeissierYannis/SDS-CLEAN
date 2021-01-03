@@ -6,8 +6,9 @@ use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
 use App\Infrastructure\Doctrine\Entity\DoctrineTicket;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Tickets\Entity\Ticket;
-use TYannis\SDS\Domain\Tickets\TicketGateway;
+use TYannis\SDS\Domain\Tickets\Gateway\TicketGateway;
 
 /**
  * Class TicketRepository
@@ -21,7 +22,7 @@ class TicketRepository extends ServiceEntityRepository implements TicketGateway
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DoctrineArticle::class);
+        parent::__construct($registry, DoctrineTicket::class);
     }
 
     /**
@@ -47,5 +48,42 @@ class TicketRepository extends ServiceEntityRepository implements TicketGateway
         $doctrineTicket->setMessage($ticket->getMessage());
         $doctrineTicket->setSendedAt($ticket->getSendedAt());
         $doctrineTicket->setState($ticket->getState());
+    }
+
+    /**
+     * @param  Ticket  $ticket
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function updateState(Ticket $ticket): void
+    {
+        $doctrineTicket = $this->find($ticket->getId());
+
+        self::hydrateTicket($doctrineTicket, $ticket);
+
+        $this->_em->persist($doctrineTicket);
+        $this->_em->flush();
+    }
+
+    /**
+     * @param  UuidInterface  $id
+     * @return Ticket|null
+     */
+    public function getTicketById(UuidInterface $id): ?Ticket
+    {
+        /** @var DoctrineTicket $doctrineTicket */
+        $doctrineTicket = $this->find($id);
+
+        if ($doctrineTicket === null) {
+            return null;
+        }
+
+        return new Ticket(
+            $doctrineTicket->getId(),
+            $doctrineTicket->getEmail(),
+            $doctrineTicket->getMessage(),
+            $doctrineTicket->getSendedAt(),
+            $doctrineTicket->getState()
+        );
     }
 }

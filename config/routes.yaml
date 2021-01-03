@@ -34,6 +34,11 @@ newsletter_send:
     methods: GET|POST
     controller: App\UserInterface\Controller\Newsletter\SendController
 
+ticket_reply:
+    path: /dashboard/administrator/tickets/{id}/reply
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Ticket\ReplyController
+
 ### REDACTOR ###
 article_create:
     path: /dashboard/redactor/articles/create

@@ -3,7 +3,7 @@
 namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
 use TYannis\SDS\Domain\Tickets\Entity\Ticket;
-use TYannis\SDS\Domain\Tickets\TicketGateway;
+use TYannis\SDS\Domain\Tickets\Gateway\TicketGateway;
 
 /**
  * Class ArticleRepository
@@ -15,6 +15,10 @@ class TicketRepository implements TicketGateway
      * @inheritDoc
      */
     public function create(Ticket $ticket): void
+    {
+    }
+
+    public function updateState(Ticket $ticket): void
     {
     }
 }

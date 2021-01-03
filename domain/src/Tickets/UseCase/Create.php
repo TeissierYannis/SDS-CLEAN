@@ -6,7 +6,7 @@ use TYannis\SDS\Domain\Tickets\Entity\Ticket;
 use TYannis\SDS\Domain\Tickets\Presenter\CreatePresenterInterface;
 use TYannis\SDS\Domain\Tickets\Request\CreateRequest;
 use TYannis\SDS\Domain\Tickets\Response\CreateResponse;
-use TYannis\SDS\Domain\Tickets\TicketGateway;
+use TYannis\SDS\Domain\Tickets\Gateway\TicketGateway;
 
 /**
  * Class Create

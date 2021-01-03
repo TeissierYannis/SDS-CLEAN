@@ -15,7 +15,6 @@ use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-use TYannis\SDS\Domain\Tickets\Presenter\CreatePresenterInterface;
 use TYannis\SDS\Domain\Tickets\Request\CreateRequest;
 use TYannis\SDS\Domain\Tickets\UseCase\Create;
 
@@ -25,7 +24,7 @@ use TYannis\SDS\Domain\Tickets\UseCase\Create;
  */
 class SendController
 {
-    /** @var string  */
+    /** @var string */
     private const PENDING = 'PENDING';
     /**
      * @var FormFactoryInterface

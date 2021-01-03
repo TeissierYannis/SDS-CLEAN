@@ -44,43 +44,19 @@ class Ticket
     }
 
     /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getMessage(): ?string
-    {
-        return $this->message;
-    }
-
-    /**
-     * @return DateTimeInterface|null
-     */
-    public function getSendAt(): ?DateTimeInterface
-    {
-        return $this->sendAt;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getState(): ?string
-    {
-        return $this->state;
-    }
-
-    /**
      * @param  UuidInterface|null  $id
      */
     public function setId(?UuidInterface $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEmail(): ?string
+    {
+        return $this->email;
     }
 
     /**
@@ -92,6 +68,14 @@ class Ticket
     }
 
     /**
+     * @return string|null
+     */
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    /**
      * @param  string|null  $message
      */
     public function setMessage(?string $message): void
@@ -100,11 +84,27 @@ class Ticket
     }
 
     /**
+     * @return DateTimeInterface|null
+     */
+    public function getSendAt(): ?DateTimeInterface
+    {
+        return $this->sendAt;
+    }
+
+    /**
      * @param  DateTimeInterface|null  $sendAt
      */
     public function setSendAt(?DateTimeInterface $sendAt): void
     {
         $this->sendAt = $sendAt;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getState(): ?string
+    {
+        return $this->state;
     }
 
     /**
