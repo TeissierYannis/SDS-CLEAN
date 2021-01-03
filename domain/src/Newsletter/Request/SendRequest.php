@@ -25,6 +25,17 @@ class SendRequest
     private array $emails;
 
     /**
+     * @param  string  $object
+     * @param  string  $body
+     * @param  array  $emails
+     * @return static
+     */
+    public static function create(string $object, string $body, array $emails): self
+    {
+        return new self($object, $body, $emails);
+    }
+
+    /**
      * SendRequest constructor.
      * @param  string  $object
      * @param  string  $body

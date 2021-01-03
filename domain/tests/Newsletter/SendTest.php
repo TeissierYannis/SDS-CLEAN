@@ -4,12 +4,12 @@ namespace TYannis\SDS\Domain\Tests\Newsletter;
 
 use Assert\AssertionFailedException;
 use Generator;
+use PHPUnit\Framework\TestCase;
 use TYannis\SDS\Domain\Newsletter\Presenter\SendPresenterInterface;
 use TYannis\SDS\Domain\Newsletter\Provider\MailProviderInterface;
 use TYannis\SDS\Domain\Newsletter\Request\SendRequest;
 use TYannis\SDS\Domain\Newsletter\Response\SendResponse;
 use TYannis\SDS\Domain\Newsletter\UseCase\Send;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendTest
@@ -28,7 +28,7 @@ class SendTest extends TestCase
 
     public function testSuccessful(): void
     {
-        $request = new SendRequest('Object', 'Body', ['used@email.com', 'email@email.com']);
+        $request = SendRequest::create('Object', 'Body', ['used@email.com', 'email@email.com']);
 
         $this->useCase->execute($request, $this->presenter);
 
@@ -49,7 +49,7 @@ class SendTest extends TestCase
      */
     public function testFailed(string $object, string $body, array $emails)
     {
-        $request = new SendRequest($object, $body, $emails);
+        $request = SendRequest::create($object, $body, $emails);
 
         $this->expectException(AssertionFailedException::class);
 
