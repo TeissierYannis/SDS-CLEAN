@@ -81,6 +81,11 @@ logout:
     methods: GET
     controller: App\UserInterface\Controller\LogoutController
 
+user_profile_update:
+    path: /user/{id}/profile
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Security\User\Profile\UpdateController
+
 ### ANONYMOUS ###
 
 registration:

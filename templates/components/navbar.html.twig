@@ -87,6 +87,8 @@
 
             {% endif %}
 
+            <a class="nav-link" href="{{ path('user_profile_update', { id: app.user.id }) }}">Mon profil</a>
+
             <a class="nav-link" href="{{ path('logout') }}">Logout</a>
 
         {% else %}

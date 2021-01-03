@@ -2,7 +2,6 @@
 
 namespace TYannis\SDS\Domain\Shop\UseCase\Product;
 
-
 use TYannis\SDS\Domain\Shop\Entity\Product;
 use TYannis\SDS\Domain\Shop\Gateway\ProductGateway;
 use TYannis\SDS\Domain\Shop\Presenter\Product\RemovePresenterInterface;
