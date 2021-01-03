@@ -2,20 +2,11 @@
 
 namespace App\Infrastructure\Adapter\Repository;
 
-use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
-use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
 use App\Infrastructure\Doctrine\Entity\DoctrineProduct;
-use App\Infrastructure\Doctrine\Entity\DoctrineUser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
-use Doctrine\ORM\TransactionRequiredException;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
-use TYannis\SDS\Domain\Blog\Entity\Article;
-use TYannis\SDS\Domain\Blog\Entity\Category;
-use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
-use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Shop\Entity\Product;
 use TYannis\SDS\Domain\Shop\Gateway\ProductGateway;
 
@@ -100,5 +91,21 @@ class ProductRepository extends ServiceEntityRepository implements ProductGatewa
             },
             $products
         );
+    }
+
+    public function getProductById(UuidInterface $id): ?Product
+    {
+        return new Product(
+            $id,
+            'Product',
+            'Description',
+            12.3,
+            '/../.'
+        );
+    }
+
+    public function update(Product $product): void
+    {
+        // TODO: Implement update() method.
     }
 }
