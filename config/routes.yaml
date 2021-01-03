@@ -19,6 +19,11 @@ product_update:
     methods: GET|POST
     controller: App\UserInterface\Controller\Shop\Product\UpdateController
 
+product_remove:
+    path: /dashboard/administrator/shop/products/{id}/remove
+    methods: GET
+    controller: App\UserInterface\Controller\Shop\Product\RemoveController
+
 product_listing:
     path: /dashboard/administrator/shop/products
     methods: GET
