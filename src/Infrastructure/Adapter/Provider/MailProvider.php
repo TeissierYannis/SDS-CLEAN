@@ -8,12 +8,15 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Mime\Address;
 use TYannis\SDS\Domain\Newsletter\Provider\MailProviderInterface as NewsletterMailProviderInterface;
 use TYannis\SDS\Domain\Security\Provider\MailProviderInterface;
+use TYannis\SDS\Domain\Tickets\Entity\Ticket;
+use TYannis\SDS\Domain\Tickets\Provider\MailProviderInterface as TicketsMailProviderInterface;
+
 
 /**
  * Class MailProvider
  * @package App\Infrastructure\Adapter\Provider
  */
-class MailProvider implements MailProviderInterface, NewsletterMailProviderInterface
+class MailProvider implements MailProviderInterface, NewsletterMailProviderInterface, TicketsMailProviderInterface
 {
     /**
      * @var MessageBusInterface
@@ -98,5 +101,34 @@ class MailProvider implements MailProviderInterface, NewsletterMailProviderInter
 
             $this->bus->dispatch($message);
         }
+    }
+
+    /**
+     * @param  string  $pseudo
+     * @param  string  $body
+     * @param  Ticket  $ticket
+     */
+    public function replyToTicket(string $pseudo, string $body, Ticket $ticket): void
+    {
+        $email = (new NotificationEmail())
+            ->from(
+                new Address('contact@masalle.com', $pseudo)
+            )
+            ->to(
+                new Address($ticket->getEmail(), '')
+            )
+            ->subject("[ Ma Salle ] Réponse à votre question du " . $ticket->getSendedAt()->format('d/m/Y'))
+            ->htmlTemplate('emails/ticket_response.html.twig')
+            ->context(
+                [
+                    'pseudo' => $pseudo,
+                    'body' => $body,
+                    'ticket' => $ticket
+                ]
+            );
+
+        $message = new SendEmailMessage($email);
+
+        $this->bus->dispatch($message);
     }
 }

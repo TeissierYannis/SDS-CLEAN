@@ -31,7 +31,7 @@ class ReplyTest extends TestCase
     public function testSuccessfuly(): void
     {
         $ticket = new Ticket(Uuid::uuid4(), 'email@email.com', 'question', new \DateTime(), 'PENDING');
-        $request = new ReplyRequest($ticket, 'pseudo', 'message');
+        $request = ReplyRequest::create($ticket, 'pseudo', 'message');
 
         $this->assertEquals('PENDING', $ticket->getState());
 

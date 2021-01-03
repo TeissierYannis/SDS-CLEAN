@@ -21,21 +21,32 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, [
-                'label' => 'Votre adresse email',
-                'constraints' => [
-                    new NotBlank(),
-                    new Email()
+            ->add(
+                'message',
+                TextareaType::class,
+                [
+                    'label' => 'Votre message',
+                    'constraints' => [
+                        new NotBlank(),
+                        new Length(['min' => 3])
+                    ]
                 ]
-            ])
-            ->add('message', TextareaType::class, [
-                'label' => 'Votre message',
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(['min' => 3])
-                ]
-            ])
-        ;
+            );
+
+        if (!$options['admin_access']) {
+            $builder
+                ->add(
+                    'email',
+                    EmailType::class,
+                    [
+                        'label' => 'Votre adresse email',
+                        'constraints' => [
+                            new NotBlank(),
+                            new Email()
+                        ]
+                    ]
+                );
+        }
     }
 
     /**
@@ -44,5 +55,6 @@ class TicketType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefault("data_class", Ticket::class);
+        $resolver->setDefault("admin_access", false);
     }
 }

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Réponse à un ticket {% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5 mb-2">Réponse à un ticket</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.message) }}
+
+    {{ form_rest(form) }}
+    <button class="btn btn-primary">Envoyer</button>
+    {{ form_end(form) }}
+
+    <h2 class="mt-5">Contenu du ticket</h2>
+
+    <div class="jumbotron p-3 mt-2">
+        <p class="lead">{{ ticket.email }} le <span class="text-black-50">{{ ticket.sendedAt|date('d/m/Y') }}</span> à
+            <span class="text-black-50">{{ ticket.sendedAt|date('H:m') }}</span></p>
+        <hr class="my-4">
+        <p class="text-justify">{{ ticket.message|nl2br }}</p>
+    </div>
+
+{% endblock %}

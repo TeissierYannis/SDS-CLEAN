@@ -39,6 +39,17 @@ class ReplyRequest
     }
 
     /**
+     * @param  Ticket  $ticket
+     * @param  string  $pseudo
+     * @param  string  $message
+     * @return static
+     */
+    public static function create(Ticket $ticket, string $pseudo, string $message): self
+    {
+        return new self($ticket, $pseudo, $message);
+    }
+
+    /**
      * @return Ticket
      */
     public function getTicket(): Ticket

@@ -1,0 +1,24 @@
+{% extends '@email/default/notification/body.html.twig' %}
+
+{% block content %}
+    <p class="text-justify">{{ body }}</p>
+
+    <hr>
+
+    <h2 class="mt-5">Vous avez envoyé</h2>
+    <div class="jumbotron p-3 mt-2">
+        <p class="lead">{{ ticket.email }} le <span class="text-black-50">{{ ticket.sendedAt|date('d/m/Y') }}</span> à
+            <span class="text-black-50">{{ ticket.sendedAt|date('H:m') }}</span></p>
+        <hr class="my-4">
+        <p class="text-justify">{{ ticket.message|nl2br }}</p>
+    </div>
+
+    <div class="small muted">Bien cordialement {{ pseudo }}</div>
+{% endblock %}
+
+{% block action %}
+    <spacer size="16"></spacer>
+    <center>
+        Toute l'équipe de ma salle vous remercie !
+    </center>
+{% endblock %}
