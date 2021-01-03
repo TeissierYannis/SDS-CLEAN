@@ -22,7 +22,7 @@ use TYannis\SDS\Domain\Newsletter\UseCase\Send as SendUseCase;
  * Class Send
  * @package App\UserInterface\Controller\Newsletter
  */
-class Send extends AbstractController
+class SendController extends AbstractController
 {
     /**
      * @var FormFactoryInterface

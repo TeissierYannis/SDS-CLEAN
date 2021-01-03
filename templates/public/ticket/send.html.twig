@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Demande de renseignements {% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5 mb-2">Demande de renseignements</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.email) }}
+    {{ form_row(form.message) }}
+
+    {{ form_rest(form) }}
+    <button class="btn btn-primary">Envoyer</button>
+    {{ form_end(form) }}
+
+{% endblock %}

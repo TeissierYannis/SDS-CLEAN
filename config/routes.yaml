@@ -32,7 +32,7 @@ product_listing:
 newsletter_send:
     path: /dashboard/administrator/newsletter/send
     methods: GET|POST
-    controller: App\UserInterface\Controller\Newsletter\Send
+    controller: App\UserInterface\Controller\Newsletter\SendController
 
 ### REDACTOR ###
 article_create:
@@ -113,7 +113,13 @@ recover_password:
     methods: GET|POST
     controller: App\UserInterface\Controller\Security\RecoverPasswordController
 
+ticket_send:
+    path: /contact
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Ticket\SendController
+
 ### ALL ###
+
 home:
     path: /
     methods: GET
