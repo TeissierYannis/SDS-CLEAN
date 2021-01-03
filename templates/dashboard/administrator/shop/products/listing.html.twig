@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Gestion des produits{% endblock %}
+
+{% block body %}
+    <h1 class="mt-5 mb-2">Gestion des produits</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a class="btn btn-success" href="{{ path('product_create') }}">Nouveau produit</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in vm.products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }} €</td>
+                <td>
+                    <img src="{{ asset( product.image ) }}" class="img-thumbnail" style="height: 100px" alt="">
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="#">Editer</a>
+                    <a class="btn btn-danger" href="#">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Il n'y a aucun produit pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

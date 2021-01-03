@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
@@ -117,6 +118,7 @@ class CreateController extends AbstractController
                     $flashBag = new FlashBag();
                     $flashBag->clear();
                 }
+                return new RedirectResponse($this->generateUrl('product_listing'));
             }
         }
 

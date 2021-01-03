@@ -38,7 +38,7 @@ class Product
      * @param  DomainProduct  $product
      * @return static
      */
-    public static function fromDomainArticle(DomainProduct $product): self
+    public static function fromDomainProduct(DomainProduct $product): self
     {
         $newProduct = new self();
         $newProduct->setId($product->getId());
