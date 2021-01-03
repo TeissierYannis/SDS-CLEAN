@@ -71,6 +71,10 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
+        "demo": [
+            "symfony serve -d",
+            "php bin/console messenger:consume -vv"
+        ],
         "mailer": [
             "php bin/console messenger:consume -vv"
         ],
