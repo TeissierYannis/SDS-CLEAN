@@ -53,8 +53,9 @@ class UserType extends AbstractType
                     'constraints' => [
                     ]
                 ]
-            )
-            ->add(
+            );
+        if ($options['admin_access']) {
+            $builder->add(
                 'roles',
                 ChoiceType::class,
                 [
@@ -67,20 +68,22 @@ class UserType extends AbstractType
                 ]
             );
 
-        //roles field data transformer
-        $builder->get('roles')
-            ->addModelTransformer(
-                new CallbackTransformer(
-                    function ($rolesArray) {
-                        // transform the array to a string
-                        return count($rolesArray) ? $rolesArray[0] : null;
-                    },
-                    function ($rolesString) {
-                        // transform the string back to an array
-                        return [$rolesString];
-                    }
-                )
-            );
+
+            //roles field data transformer
+            $builder->get('roles')
+                ->addModelTransformer(
+                    new CallbackTransformer(
+                        function ($rolesArray) {
+                            // transform the array to a string
+                            return count($rolesArray) ? $rolesArray[0] : null;
+                        },
+                        function ($rolesString) {
+                            // transform the string back to an array
+                            return [$rolesString];
+                        }
+                    )
+                );
+        }
     }
 
     /**
@@ -89,5 +92,6 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefault("data_class", User::class);
+        $resolver->setDefault("admin_access", true);
     }
 }

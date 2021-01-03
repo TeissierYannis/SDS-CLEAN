@@ -32,6 +32,11 @@ class User implements UserInterface
         return $this->user->getPassword();
     }
 
+    public function getId()
+    {
+        return $this->user->getId();
+    }
+
     public function getSalt()
     {
     }
