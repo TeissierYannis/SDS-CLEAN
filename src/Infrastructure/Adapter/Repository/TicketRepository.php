@@ -7,7 +7,7 @@ use App\Infrastructure\Doctrine\Entity\DoctrineTicket;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use TYannis\SDS\Domain\Tickets\Entity\Ticket;
-use TYannis\SDS\Domain\Tickets\TicketGateway;
+use TYannis\SDS\Domain\Tickets\Gateway\TicketGateway;
 
 /**
  * Class TicketRepository
@@ -47,5 +47,10 @@ class TicketRepository extends ServiceEntityRepository implements TicketGateway
         $doctrineTicket->setMessage($ticket->getMessage());
         $doctrineTicket->setSendedAt($ticket->getSendedAt());
         $doctrineTicket->setState($ticket->getState());
+    }
+
+    public function updateState(Ticket $ticket): void
+    {
+        // TODO: Implement updateState() method.
     }
 }
