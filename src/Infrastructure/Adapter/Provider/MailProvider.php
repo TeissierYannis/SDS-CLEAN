@@ -11,7 +11,6 @@ use TYannis\SDS\Domain\Security\Provider\MailProviderInterface;
 use TYannis\SDS\Domain\Tickets\Entity\Ticket;
 use TYannis\SDS\Domain\Tickets\Provider\MailProviderInterface as TicketsMailProviderInterface;
 
-
 /**
  * Class MailProvider
  * @package App\Infrastructure\Adapter\Provider

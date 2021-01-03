@@ -39,6 +39,11 @@ ticket_reply:
     methods: GET|POST
     controller: App\UserInterface\Controller\Ticket\ReplyController
 
+ticket_listing:
+    path: /dashboard/administrator/tickets
+    methods: GET
+    controller: App\UserInterface\Controller\Ticket\ListingController
+
 ### REDACTOR ###
 article_create:
     path: /dashboard/redactor/articles/create
