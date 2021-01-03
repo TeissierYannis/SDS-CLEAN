@@ -3,17 +3,17 @@
 namespace App\Infrastructure\Adapter\Provider;
 
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Messenger\SendEmailMessage;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Mime\Address;
+use TYannis\SDS\Domain\Newsletter\Provider\MailProviderInterface as NewsletterMailProviderInterface;
 use TYannis\SDS\Domain\Security\Provider\MailProviderInterface;
 
 /**
  * Class MailProvider
  * @package App\Infrastructure\Adapter\Provider
  */
-class MailProvider implements MailProviderInterface
+class MailProvider implements MailProviderInterface, NewsletterMailProviderInterface
 {
     /**
      * @var MessageBusInterface
@@ -47,7 +47,6 @@ class MailProvider implements MailProviderInterface
      * @param  string  $email
      * @param  string  $pseudo
      * @param  string  $link
-     * @throws TransportExceptionInterface
      */
     public function sendPasswordResetLink(string $email, string $pseudo, string $link): void
     {
@@ -58,7 +57,7 @@ class MailProvider implements MailProviderInterface
             ->to(
                 new Address($email, $pseudo)
             )
-            ->subject("[ Code Challenge ] Réinitialisation de mot de passe")
+            ->subject("[ Ma Salle ] Réinitialisation de mot de passe")
             ->htmlTemplate('emails/password_reset_request.html.twig')
             ->context(
                 [
@@ -70,5 +69,34 @@ class MailProvider implements MailProviderInterface
         $message = new SendEmailMessage($email);
 
         $this->bus->dispatch($message);
+    }
+
+    /**
+     * @param  string  $object
+     * @param  string  $body
+     * @param  array  $emails
+     */
+    public function sendNewsletter(string $object, string $body, array $emails): void
+    {
+        foreach ($emails as $email) {
+            $email = (new NotificationEmail())
+                ->from(
+                    new Address('newsletter@masalle.com', 'Newsletter - Ma Salle')
+                )
+                ->to(
+                    new Address($email, '')
+                )
+                ->subject($object)
+                ->htmlTemplate('emails/newsletter.html.twig')
+                ->context(
+                    [
+                        'body' => $body,
+                    ]
+                );
+
+            $message = new SendEmailMessage($email);
+
+            $this->bus->dispatch($message);
+        }
     }
 }

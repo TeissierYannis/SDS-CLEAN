@@ -2,7 +2,6 @@
 
 namespace App\UserInterface\Controller\Security;
 
-use App\UserInterface\DataTransferObject\ResetPasswordData;
 use App\UserInterface\Form\ResetPasswordType;
 use App\UserInterface\Presenter\Security\AskPasswordResetPresenter;
 use Assert\AssertionFailedException;
@@ -13,12 +12,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\RouterInterface;
-use TYannis\SDS\Domain\Security\Request\AskPasswordResetRequest;
-use TYannis\SDS\Domain\Security\UseCase\AskPasswordReset;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
+use TYannis\SDS\Domain\Security\Request\AskPasswordResetRequest;
+use TYannis\SDS\Domain\Security\UseCase\AskPasswordReset;
 
 /**
  * Class AskPasswordResetController
@@ -48,10 +47,10 @@ class AskPasswordResetController
 
     /**
      * AskPasswordResetController constructor.
-     * @param FormFactoryInterface $formFactory
-     * @param Environment $twig
-     * @param FlashBagInterface $flashBag
-     * @param RouterInterface $router
+     * @param  FormFactoryInterface  $formFactory
+     * @param  Environment  $twig
+     * @param  FlashBagInterface  $flashBag
+     * @param  RouterInterface  $router
      */
     public function __construct(
         FormFactoryInterface $formFactory,
@@ -66,9 +65,9 @@ class AskPasswordResetController
     }
 
     /**
-     * @param Request $request
-     * @param AskPasswordReset $useCase
-     * @param AskPasswordResetPresenter $presenter
+     * @param  Request  $request
+     * @param  AskPasswordReset  $useCase
+     * @param  AskPasswordResetPresenter  $presenter
      * @return Response
      * @throws LoaderError
      * @throws RuntimeError
@@ -101,8 +100,13 @@ class AskPasswordResetController
 
             return new RedirectResponse($this->router->generate('login'));
         }
-        return new Response($this->twig->render("security/reset_password.html.twig", [
-            "form" => $form->createView()
-        ]));
+        return new Response(
+            $this->twig->render(
+                "security/reset_password.html.twig",
+                [
+                    "form" => $form->createView()
+                ]
+            )
+        );
     }
 }

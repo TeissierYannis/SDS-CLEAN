@@ -19,7 +19,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
 {
     /**
      * UserRepository constructor.
-     * @param ManagerRegistry $registry
+     * @param  ManagerRegistry  $registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -81,7 +81,7 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @throws ORMException
      * @throws OptimisticLockException
      */
@@ -181,5 +181,24 @@ class UserRepository extends ServiceEntityRepository implements UserGateway
             $doctrineUser->getPasswordResetToken(),
             $doctrineUser->getPasswordResetRequestedAt()
         );
+    }
+
+    /**
+     * @return array
+     */
+    public function getNewsletterSubscriber(): array
+    {
+        $user_email = $this->createQueryBuilder('q')
+            ->select('q.email')
+            ->where('q.isNewsletterRegistered = 1')
+            ->getQuery()
+            ->getResult();
+
+        $emails = [];
+        foreach ($user_email as $email) {
+            array_push($emails, $email['email']);
+        }
+
+        return $emails;
     }
 }

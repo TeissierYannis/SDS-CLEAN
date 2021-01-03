@@ -29,6 +29,11 @@ product_listing:
     methods: GET
     controller: App\UserInterface\Controller\Shop\Product\ListingController
 
+newsletter_send:
+    path: /dashboard/administrator/newsletter/send
+    methods: GET|POST
+    controller: App\UserInterface\Controller\Newsletter\Send
+
 ### REDACTOR ###
 article_create:
     path: /dashboard/redactor/articles/create

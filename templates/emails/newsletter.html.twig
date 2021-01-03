@@ -1,0 +1,12 @@
+{% extends '@email/default/notification/body.html.twig' %}
+
+{% block content %}
+    <p>{{ body }}</p>
+{% endblock %}
+
+{% block action %}
+    <spacer size="16"></spacer>
+    <center>
+        Pour ne plus reçevoir de newsletters, rendez-vous sur votre profil.
+    </center>
+{% endblock %}
