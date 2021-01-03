@@ -31,13 +31,18 @@ interface ProductGateway
     public function countProducts(): int;
 
     /**
-     * @param UuidInterface $id
+     * @param  UuidInterface  $id
      * @return Product|null
      */
     public function getProductById(UuidInterface $id): ?Product;
 
     /**
-     * @param Product $product
+     * @param  Product  $product
      */
     public function update(Product $product): void;
+
+    /**
+     * @param  Product  $product
+     */
+    public function remove(Product $product): bool;
 }
