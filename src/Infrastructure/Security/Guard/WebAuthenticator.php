@@ -112,7 +112,7 @@ class WebAuthenticator extends AbstractFormLoginAuthenticator implements LoginPr
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-        $this->flashBag->add('success', 'Bonjour ' . $this->getUser()->getPseudo() .'!');
+        $this->flashBag->add('success', 'Bonjour ' . $this->getUser()->getPseudo() . '!');
         return new RedirectResponse('/');
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Infrastructure\Adapter\Repository;
 
-use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
 use App\Infrastructure\Doctrine\Entity\DoctrineTicket;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -85,5 +84,47 @@ class TicketRepository extends ServiceEntityRepository implements TicketGateway
             $doctrineTicket->getSendedAt(),
             $doctrineTicket->getState()
         );
+    }
+
+    /**
+     * @param  int  $page
+     * @param  int  $limit
+     * @param  string  $field
+     * @param  string  $order
+     * @return array
+     */
+    public function getTickets(int $page, int $limit, string $field, string $order): array
+    {
+        $fields = [
+            'state' => 'q.state',
+        ];
+
+        $tickets = $this->createQueryBuilder('q')
+            ->orderBy($fields[$field], $order)
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+
+        return array_map(
+            function (DoctrineTicket $product) {
+                return new Ticket(
+                    $product->getId(),
+                    $product->getEmail(),
+                    $product->getMessage(),
+                    $product->getSendedAt(),
+                    $product->getState()
+                );
+            },
+            $tickets
+        );
+    }
+
+    /**
+     * @return int
+     */
+    public function countTickets(): int
+    {
+        return $this->count([]);
     }
 }
