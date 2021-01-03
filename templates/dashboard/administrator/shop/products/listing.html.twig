@@ -26,7 +26,7 @@
                     <img src="{{ asset( product.image ) }}" class="img-thumbnail" style="height: 100px" alt="">
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="#">Editer</a>
+                    <a class="btn btn-primary" href="{{ path('product_update', { id: product.id }) }}">Editer</a>
                     <a class="btn btn-danger" href="#">Supprimer</a>
                 </td>
             </tr>

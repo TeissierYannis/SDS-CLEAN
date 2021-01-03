@@ -2,6 +2,7 @@
 
 namespace TYannis\SDS\Domain\Shop\Gateway;
 
+use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Shop\Entity\Product;
 
 /**
@@ -28,4 +29,15 @@ interface ProductGateway
      * @return int
      */
     public function countProducts(): int;
+
+    /**
+     * @param UuidInterface $id
+     * @return Product|null
+     */
+    public function getProductById(UuidInterface $id): ?Product;
+
+    /**
+     * @param Product $product
+     */
+    public function update(Product $product): void;
 }

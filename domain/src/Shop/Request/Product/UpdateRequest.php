@@ -1,20 +1,22 @@
 <?php
 
-namespace TYannis\SDS\Domain\Shop\Entity;
+namespace TYannis\SDS\Domain\Shop\Request\Product;
 
-use Ramsey\Uuid\Uuid;
+use Assert\Assertion;
+use Assert\AssertionFailedException;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * Class Product
- * @package TYannis\SDS\Domain\Shop\Entity
+ * Class UpdateRequest
+ * @package TYannis\SDS\Domain\Shop\Request\Product
  */
-class Product
+class UpdateRequest
 {
     /**
      * @var UuidInterface
      */
     private UuidInterface $id;
+
     /**
      * @var string
      */
@@ -33,19 +35,7 @@ class Product
     private string $image;
 
     /**
-     * @param  string  $name
-     * @param  string  $description
-     * @param  float  $price
-     * @param  string  $image
-     * @return static
-     */
-    public static function create(string $name, string $description, float $price, string $image): self
-    {
-        return new self(Uuid::uuid4(), $name, $description, $price, $image);
-    }
-
-    /**
-     * Product constructor.
+     * UpdateRequest constructor.
      * @param  UuidInterface  $id
      * @param  string  $name
      * @param  string  $description
@@ -61,6 +51,22 @@ class Product
         $this->image = $image;
     }
 
+    /**
+     * @param  UuidInterface  $id
+     * @param  string  $title
+     * @param  string  $content
+     * @param  Category  $category
+     * @return static
+     */
+    public static function create(
+        UuidInterface $id,
+        string $name,
+        string $description,
+        float $price,
+        string $image
+    ): self {
+        return new self($id, $name, $description, $price, $image);
+    }
 
     /**
      * @return UuidInterface
@@ -103,34 +109,18 @@ class Product
     }
 
     /**
-     * @param  string  $name
+     * @throws AssertionFailedException
      */
-    public function setName(string $name): void
+    public function validate(): void
     {
-        $this->name = $name;
-    }
+        Assertion::notBlank($this->name);
+        Assertion::minLength($this->name, 3);
 
-    /**
-     * @param  string  $description
-     */
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
+        Assertion::notBlank($this->description);
+        Assertion::minLength($this->description, 3);
 
-    /**
-     * @param  float  $price
-     */
-    public function setPrice(float $price): void
-    {
-        $this->price = $price;
-    }
+        Assertion::notBlank($this->price);
 
-    /**
-     * @param  string  $image
-     */
-    public function setImage(string $image): void
-    {
-        $this->image = $image;
+        Assertion::notBlank($this->image);
     }
 }

@@ -59,9 +59,8 @@ class ProductType extends AbstractType
                 [
                     'label' => 'Image du produit',
                     'mapped' => false,
-                    'required' => true,
+                    'required' => false,
                     'constraints' => [
-                        new NotBlank(),
                         new File(
                             [
                                 'mimeTypes' => [

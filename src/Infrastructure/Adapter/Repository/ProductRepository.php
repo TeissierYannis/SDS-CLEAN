@@ -2,20 +2,11 @@
 
 namespace App\Infrastructure\Adapter\Repository;
 
-use App\Infrastructure\Doctrine\Entity\DoctrineArticle;
-use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
 use App\Infrastructure\Doctrine\Entity\DoctrineProduct;
-use App\Infrastructure\Doctrine\Entity\DoctrineUser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
-use Doctrine\ORM\TransactionRequiredException;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
-use TYannis\SDS\Domain\Blog\Entity\Article;
-use TYannis\SDS\Domain\Blog\Entity\Category;
-use TYannis\SDS\Domain\Blog\Gateway\ArticleGateway;
-use TYannis\SDS\Domain\Security\Entity\User;
 use TYannis\SDS\Domain\Shop\Entity\Product;
 use TYannis\SDS\Domain\Shop\Gateway\ProductGateway;
 
@@ -100,5 +91,34 @@ class ProductRepository extends ServiceEntityRepository implements ProductGatewa
             },
             $products
         );
+    }
+
+    public function getProductById(UuidInterface $id): ?Product
+    {
+        /** @var DoctrineProduct $doctrineProduct */
+        $doctrineProduct = $this->find($id);
+
+        if ($doctrineProduct === null) {
+            return null;
+        }
+
+        return new Product(
+            $doctrineProduct->getId(),
+            $doctrineProduct->getName(),
+            $doctrineProduct->getDescription(),
+            $doctrineProduct->getPrice(),
+            $doctrineProduct->getImage()
+        );
+    }
+
+    public function update(Product $product): void
+    {
+        /** @var DoctrineProduct $doctrineProduct */
+        $doctrineProduct = $this->find($product->getId());
+
+        self::hydrateProduct($doctrineProduct, $product);
+
+        $this->_em->persist($doctrineProduct);
+        $this->_em->flush();
     }
 }

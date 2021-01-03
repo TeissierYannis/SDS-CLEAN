@@ -3,6 +3,7 @@
 namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use TYannis\SDS\Domain\Shop\Entity\Product;
 use TYannis\SDS\Domain\Shop\Gateway\ProductGateway;
 
@@ -46,5 +47,21 @@ class ProductRepository implements ProductGateway
         );
 
         return array_slice($products, ($page - 1) * $limit, $limit);
+    }
+
+    public function getProductById(UuidInterface $id): ?Product
+    {
+        return new Product(
+            $id,
+            'Product',
+            'Description',
+            12.3,
+            '/../.'
+        );
+    }
+
+    public function update(Product $product): void
+    {
+        // TODO: Implement update() method.
     }
 }
