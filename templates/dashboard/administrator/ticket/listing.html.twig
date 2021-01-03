@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaSalle - Gestion des tickets{% endblock %}
+
+{% block body %}
+    <h1 class="mt-5 mb-2">Gestion des tickets</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th></th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ticket in vm.tickets %}
+            <tr>
+                <td>{{ ticket.email }}</td>
+                <td class="text-truncate">{{ ticket.message }}</td>
+                <td class="text-muted">{{ ticket.sendedAt|date('d/m/Y H:m') }}</td>
+                <td>{{ ticket.state }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('ticket_reply', { id: ticket.id }) }}">Répondre</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Il n'y a aucun produit pour le moment</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

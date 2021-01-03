@@ -4,6 +4,7 @@ namespace App\UserInterface\DataTransferObject;
 
 use DateTimeInterface;
 use Ramsey\Uuid\UuidInterface;
+use TYannis\SDS\Domain\Tickets\Entity\Ticket as DomainTicket;
 
 /**
  * Class Ticket
@@ -28,12 +29,27 @@ class Ticket
     /**
      * @var ?DateTimeInterface
      */
-    private ?DateTimeInterface $sendAt = null;
+    private ?DateTimeInterface $sendedAt = null;
 
     /**
      * @var string|null
      */
     private ?string $state = null;
+
+    /**
+     * @param  DomainTicket  $ticket
+     * @return static
+     */
+    public static function fromDomainProduct(DomainTicket $ticket): self
+    {
+        $newTicket = new self();
+        $newTicket->setId($ticket->getId());
+        $newTicket->setEmail($ticket->getEmail());
+        $newTicket->setMessage($ticket->getMessage());
+        $newTicket->setSendedAt($ticket->getSendedAt());
+        $newTicket->setState($ticket->getState());
+        return $newTicket;
+    }
 
     /**
      * @return UuidInterface|null
@@ -86,17 +102,17 @@ class Ticket
     /**
      * @return DateTimeInterface|null
      */
-    public function getSendAt(): ?DateTimeInterface
+    public function getSendedAt(): ?DateTimeInterface
     {
-        return $this->sendAt;
+        return $this->sendedAt;
     }
 
     /**
-     * @param  DateTimeInterface|null  $sendAt
+     * @param  DateTimeInterface|null  $sendedAt
      */
-    public function setSendAt(?DateTimeInterface $sendAt): void
+    public function setSendedAt(?DateTimeInterface $sendedAt): void
     {
-        $this->sendAt = $sendAt;
+        $this->sendedAt = $sendedAt;
     }
 
     /**
