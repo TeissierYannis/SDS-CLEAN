@@ -4,6 +4,7 @@ namespace App\Infrastructure\Adapter\Repository;
 
 use App\Infrastructure\Doctrine\Entity\DoctrineProduct;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
@@ -120,5 +121,22 @@ class ProductRepository extends ServiceEntityRepository implements ProductGatewa
 
         $this->_em->persist($doctrineProduct);
         $this->_em->flush();
+    }
+
+    /**
+     * @param  Product  $product
+     * @return bool
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function remove(Product $product): bool
+    {
+        $doctrineProduct = $this->find($product->getId());
+
+        $this->_em->remove($doctrineProduct);
+
+        $this->_em->flush();
+
+        return is_null($this->find($product->getId())) ? true : false;
     }
 }

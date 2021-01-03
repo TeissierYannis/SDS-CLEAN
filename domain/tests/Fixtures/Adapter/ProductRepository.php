@@ -4,6 +4,7 @@ namespace TYannis\SDS\Domain\Tests\Fixtures\Adapter;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use TYannis\SDS\Domain\Blog\Entity\Article;
 use TYannis\SDS\Domain\Shop\Entity\Product;
 use TYannis\SDS\Domain\Shop\Gateway\ProductGateway;
 
@@ -62,6 +63,14 @@ class ProductRepository implements ProductGateway
 
     public function update(Product $product): void
     {
-        // TODO: Implement update() method.
+    }
+
+    /**
+     * @param  Product $product
+     * @return bool
+     */
+    public function remove(Product $product): bool
+    {
+        return true;
     }
 }
