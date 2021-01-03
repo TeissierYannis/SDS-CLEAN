@@ -28,8 +28,9 @@ class Send
     }
 
     /**
-     * @param SendRequest $request
-     * @param SendPresenterInterface $presenter
+     * @param  SendRequest  $request
+     * @param  SendPresenterInterface  $presenter
+     * @throws \Assert\AssertionFailedException
      */
     public function execute(SendRequest $request, SendPresenterInterface $presenter)
     {

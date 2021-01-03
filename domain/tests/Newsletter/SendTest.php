@@ -69,7 +69,7 @@ class SendTest extends TestCase
 
     protected function setUp()
     {
-        $this->presenter = new class() implements SendPresenterInterface {
+        $this->presenter = new class () implements SendPresenterInterface {
             public SendResponse $response;
 
             public function present(SendResponse $response): void
