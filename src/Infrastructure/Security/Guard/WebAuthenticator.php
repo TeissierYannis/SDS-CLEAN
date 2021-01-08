@@ -42,8 +42,8 @@ class WebAuthenticator extends AbstractFormLoginAuthenticator implements LoginPr
 
     /**
      * WebAuthenticator constructor.
-     * @param  Login  $login
-     * @param  FlashBagInterface  $flashBag
+     * @param Login $login
+     * @param FlashBagInterface $flashBag
      */
     public function __construct(Login $login, FlashBagInterface $flashBag)
     {
@@ -112,7 +112,7 @@ class WebAuthenticator extends AbstractFormLoginAuthenticator implements LoginPr
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-        $this->flashBag->add('success', 'Bonjour ' . $this->getUser()->getPseudo() . '!');
+        $this->flashBag->add('success', 'Bonjour !');
         return new RedirectResponse('/');
     }
 
