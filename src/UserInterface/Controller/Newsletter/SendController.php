@@ -5,6 +5,7 @@ namespace App\UserInterface\Controller\Newsletter;
 use App\Infrastructure\Adapter\Repository\UserRepository;
 use App\UserInterface\Presenter\Newsletter\SendPresenter;
 use Exception;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -113,7 +114,7 @@ class SendController extends AbstractController
             )
             ->add(
                 'body',
-                TextareaType::class,
+                CKEditorType::class,
                 [
                     'label' => 'Contenu de la newsletter'
                 ]

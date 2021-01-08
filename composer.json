@@ -10,6 +10,7 @@
         "ext-json": "*",
         "beberlei/assert": "^3.2",
         "enqueue/sqs": "^0.10.1",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "ramsey/uuid": "^4.0",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^5.6",
