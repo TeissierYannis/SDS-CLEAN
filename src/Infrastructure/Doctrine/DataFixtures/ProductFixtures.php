@@ -29,7 +29,7 @@ class ProductFixtures extends Fixture
             $products[$i]->setName($faker->word);
             $products[$i]->setDescription($faker->paragraph(5, true));
             $products[$i]->setPrice($faker->randomFloat(2, 1, 200));
-            $products[$i]->setImage($faker->imageUrl('1200', '680'));
+            $products[$i]->setImage('https://dummyimage.com/16:9x720');
 
             $manager->persist($products[$i]);
         }

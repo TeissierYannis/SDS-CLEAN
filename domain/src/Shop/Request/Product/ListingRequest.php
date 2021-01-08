@@ -84,7 +84,7 @@ class ListingRequest
     public function validate(): void
     {
         Assertion::min($this->page, 1);
-        Assertion::inArray($this->limit, [10, 25, 50, 100]);
+        Assertion::inArray($this->limit, [3, 10, 25, 50, 100]);
         Assertion::inArray($this->field, ['name', 'price']);
         Assertion::inArray($this->order, ['asc', 'desc']);
     }

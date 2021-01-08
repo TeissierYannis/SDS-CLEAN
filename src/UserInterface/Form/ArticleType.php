@@ -4,6 +4,7 @@ namespace App\UserInterface\Form;
 
 use App\Infrastructure\Doctrine\Entity\DoctrineCategory;
 use App\UserInterface\DataTransferObject\Article;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -30,7 +31,7 @@ class ArticleType extends AbstractType
                 ],
                 'help' => 'Écrivez le titre de l\'article'
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content', CKEditorType::class, [
                 'label' => 'Contenu de l\'article',
                 'constraints' => [
                     new NotBlank(),

@@ -3,6 +3,7 @@
 namespace App\UserInterface\Form;
 
 use App\UserInterface\DataTransferObject\Product;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -36,7 +37,7 @@ class ProductType extends AbstractType
             )
             ->add(
                 'description',
-                TextareaType::class,
+                CKEditorType::class,
                 [
                     'label' => 'Description du produit',
                     'constraints' => [

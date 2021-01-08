@@ -42,7 +42,7 @@ class Listing
 
         $pages = ceil($countArticle / $request->getLimit());
 
-        Assertion::range($request->getPage(), 1, $pages);
+        Assertion::range($request->getPage(), 1, $pages === 0 ? $pages : 1);
 
         $presenter->present(
             new ListingResponse(

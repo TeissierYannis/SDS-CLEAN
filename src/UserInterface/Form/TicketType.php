@@ -3,6 +3,7 @@
 namespace App\UserInterface\Form;
 
 use App\UserInterface\DataTransferObject\Ticket;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -20,21 +21,19 @@ class TicketType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add(
-                'message',
-                TextareaType::class,
-                [
-                    'label' => 'Votre message',
-                    'constraints' => [
-                        new NotBlank(),
-                        new Length(['min' => 3])
-                    ]
-                ]
-            );
-
         if (!$options['admin_access']) {
             $builder
+                ->add(
+                    'message',
+                    TextareaType::class,
+                    [
+                        'label' => 'Votre message',
+                        'constraints' => [
+                            new NotBlank(),
+                            new Length(['min' => 3])
+                        ]
+                    ]
+                )
                 ->add(
                     'email',
                     EmailType::class,
@@ -46,11 +45,24 @@ class TicketType extends AbstractType
                         ]
                     ]
                 );
+        } else {
+            $builder
+                ->add(
+                    'message',
+                    CKEditorType::class,
+                    [
+                        'label' => 'Votre message',
+                        'constraints' => [
+                            new NotBlank(),
+                            new Length(['min' => 3])
+                        ]
+                    ]
+                );
         }
     }
 
     /**
-     * @param  OptionsResolver  $resolver
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
