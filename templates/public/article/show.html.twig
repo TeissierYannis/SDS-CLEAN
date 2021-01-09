@@ -4,23 +4,27 @@
 
 {% block body %}
 
-    <h1 class="mt-5 mb-2">{{ article.title }}</h1>
+    <section class="px-10">
 
-    <div class="d-flex">
-        <div class="text-uppercase text-primary small">
-        {{ article.category.title }}
-        </div>
-        <span class="text-black-50 mx-1">/</span>
-        <div class="text-black-50 small">
-            {{ article.createdAt|date("m/d/Y", "Europe/Paris") }}
-        </div>
-        <span class="text-black-50 mx-1">/</span>
-        <div class="text-black-50 small">
-            rédigé par {{ article.redactor.pseudo }}
-        </div>
-    </div>
-    <hr>
+        <h1 class="mt-5 mb-2 text-xl
+         uppercase font-bold">{{ article.title }}</h1>
 
-    <p class="text-justify">{{ article.content|raw }}</p>
+        <div class="flex w-full ml-10 mb-2">
+            <div class="uppercase text-pink-600 text-xs">
+                {{ article.category.title }}
+            </div>
+            <span class="text-black mx-1 text-xs">/</span>
+            <div class="text-black text-xs">
+                {{ article.createdAt|date("m/d/Y", "Europe/Paris") }}
+            </div>
+            <span class="text-black mx-1 text-xs">/</span>
+            <div class="text-black text-xs">
+                rédigé par {{ article.redactor.pseudo }}
+            </div>
+        </div>
+        <hr class="mb-2">
+
+        <p class="text-justify capitalize">{{ article.content|raw }}</p>
+    </section>
 
 {% endblock %}

@@ -3,20 +3,27 @@
 {% block title %}MaSalle - Connexion{% endblock %}
 
 {% block body %}
+    <div class="flex items-center flex-col">
 
-    <div class="container">
-
-        <form method="post">
+        <form method="post" class="w-1/2">
             {% if vm.errorMessage is not null %}
                 <div class="alert alert-danger">{{ vm.errorMessage }}</div>
             {% endif %}
 
-            <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
-            <label for="inputEmail">E-mail</label>
-            <input type="email" value="{{ vm.lastUsername }}" name="username" id="inputEmail" class="form-control" required
+            <h1 class="mt-5 mb-2 text-2xl uppercase font-bold">Se connecter</h1>
+
+            <label for="inputEmail" class="block text-sm font-medium text-gray-700">E-mail</label>
+
+            <input type="email" value="{{ vm.lastUsername }}" name="username" id="inputEmail"
+                   class="mt-1 focus:ring-pink-600 focus:border-pink-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                   required
                    autofocus>
-            <label for="inputPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+            <label for="inputPassword" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+
+            <input type="password" name="password" id="inputPassword"
+                   class="mt-1 focus:ring-pink-600 focus:border-pink-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                   required>
 
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
@@ -27,18 +34,18 @@
             functionality.
             See https://symfony.com/doc/current/security/remember_me.html
             #}
-            <div class="checkbox mb-3 d-flex justify-content-between">
-                {# <label>
+            {# <label>
                     <input type="checkbox" name="_remember_me"> Se souvenir de moi
                 </label> #}
-                <a class="d-flex justify-content-end" href="{{ path('ask_password_reset') }}">J'ai
-                    oublié mon mot de passe ?</a>
-            </div>
+            <a class="block text-sm font-medium text-gray-700" href="{{ path('ask_password_reset') }}">J'ai
+                oublié mon mot de passe ?</a>
 
-            <button class="btn btn-lg btn-primary" type="submit">
+            <button type="submit"
+                    class="mt-5 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
                 Se connecter
             </button>
         </form>
 
     </div>
+
 {% endblock %}

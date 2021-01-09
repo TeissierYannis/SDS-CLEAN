@@ -5,19 +5,35 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>MaSalle</h1>
 
-        <div class="mt-5 d-flex justify-content-around">
+    {% include "components/header.html.twig" %}
+
+    <div class="mx-10">
+        <h1 class="text-4xl text-left ml-32">MaSalle</h1>
+
+        <div class="mt-5 flex md:flex-row items-center flex-col md:justify-evenly">
 
             {% for product in vm.products %}
-                <div class="card" style="width: 22rem;">
-                    <img class="card-img-top" src="{{ product.image }}" alt="{{ product.name }}">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description|u.truncate(200) }}</p>
-                        <h2>{{ product.price }} €</h2>
-                        <a href="#" class="btn btn-primary">Voir plus</a>
+
+                <div class="mb-10 border shadow-sm p-5 rounded-lg bg-white" style="width: 22rem;">
+
+                    <img class="h-48 rounded-lg" src="{{ product.image }}" alt="{{ product.name }}">
+
+                    <div class="flex flex-col justify-between">
+
+                        <h5 class="capitalize text-xl font-bold my-2">{{ product.name }}</h5>
+
+                        <p class="text-justify">{{ product.description|u.truncate(200) }}</p>
+
+                        <h2 class="font-bold italic text-right">{{ product.price }} €</h2>
+
+                        <div class="w-full flex justify-center">
+
+                            <a href="#"
+                               class="px-3 py-2 border border-pink-600 hover:bg-white hover:text-pink-600 rounded bg-pink-600 w-32 text-center text-white uppercase">Voir
+                                plus</a>
+
+                        </div>
                     </div>
                 </div>
             {% endfor %}
