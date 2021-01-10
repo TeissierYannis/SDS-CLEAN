@@ -69,6 +69,7 @@ class RegistrationController
         $form = $this->formFactory->create(RegistrationType::class)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $request = RegistrationRequest::create(
                 $form->getData()->getEmail(),
                 $form->getData()->getPseudo(),
