@@ -3,35 +3,77 @@
 {% block title %}MaSalle - Gestion des tickets{% endblock %}
 
 {% block body %}
-    <h1 class="mt-5 mb-2">Gestion des tickets</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Email</th>
-            <th>Message</th>
-            <th>Date</th>
-            <th></th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for ticket in vm.tickets %}
-            <tr>
-                <td>{{ ticket.email }}</td>
-                <td class="text-truncate">{{ ticket.message }}</td>
-                <td class="text-muted">{{ ticket.sendedAt|date('d/m/Y H:m') }}</td>
-                <td>{{ ticket.state }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{ path('ticket_reply', { id: ticket.id }) }}">Répondre</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Il n'y a aucun produit pour le moment</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <h1 class="uppercase font-bold text-2xl my-3 ml-10">Gestion des tickets</h1>
+
+    <div class="flex flex-col mx-10 <">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                                Email
+                            </th>
+
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                                Message
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                                Date
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                état
+                            </th>
+
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Répondre</span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+
+                        {% for ticket in vm.tickets %}
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap hidden lg:table-cell">
+                                    {{ ticket.email }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap hidden lg:table-cell truncate ">
+                                    {{ ticket.message|u.truncate(30) }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap hidden lg:table-cell">
+                                    {{ ticket.sendedAt|date('d/m/Y H:m') }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span style="width: 80px"
+                                          class="text-center px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ ticket.state == 'RESOLVED' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}b">
+                                      {{ ticket.state }}
+                                    </span>
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex flex-col">
+
+                                    <a class="text-pink-600 hover:text-pink-600"
+                                       href="{{ path('ticket_reply', { id: ticket.id }) }}">Répondre</a>
+
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {% include "components/pagination.html.twig" %}
+    </div>
 
 {% endblock %}

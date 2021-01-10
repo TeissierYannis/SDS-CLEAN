@@ -1,47 +1,340 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="bg-blue-800">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
 
-    <a class="navbar-brand" href="{{ path('home') }}">HOME</a>
+                <!-- Mobile menu button-->
+                <button id="mobileButton"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-700 hover:outline-none hover:ring-2 hover:ring-inset hover:ring-white"
+                        aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
 
-        <span class="navbar-toggler-icon"></span>
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="{{ path('home') }}">
+                        <img class="hidden lg:block h-8 w-auto"
+                             src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                             alt="Workflow">
+                    </a>
+                </div>
+                <div class="hidden sm:block sm:ml-6">
+                    <div class="flex space-x-4">
 
-    </button>
+                        {% if 'administrator' not in app.request.uri and 'redactor' not in app.request.uri %}
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            {% for category in categories %}
 
-        <ul class="navbar-nav mr-auto">
+                                {% if category.articles is not empty %}
 
-            <!-- Classic -->
+                                    <div class="relative group">
+                                        <button
+                                                class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            {{ category.title }}
+                                        </button>
+                                        <div class="absolute z-10 hidden bg-grey-200 group-hover:block">
+
+                                            <div class="absolute -mt-0 w-64 bg-blue-800 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 group-hover:block">
+                                                {% for article in category.articles %}
+                                                    <a href="{{ path('article_show', { id: article.id }) }}"
+                                                       class="text-white hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base">
+                                                        {{ article.title }}
+                                                    </a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% else %}
+
+                            {% if is_granted('ROLE_ADMIN') %}
+
+                                <a href="{{ path('user_listing') }}"
+                                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Utilisateurs
+                                </a>
+                                <a href="{{ path('product_listing') }}"
+                                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Produits
+                                </a>
+
+                                <a href="{{ path('ticket_listing') }}"
+                                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Tickets
+                                </a>
+
+                                <a href="{{ path('newsletter_send') }}"
+                                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    Newsletter
+                                </a>
+
+                            {% endif %}
+
+                            <a href="{{ path('category_listing') }}"
+                               class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm
+                                font-medium">
+                                Catégories
+                            </a>
+
+                            <a href="{{ path('article_listing') }}"
+                               class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                Articles
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+                {% if app.user %}
+                    <div>
+                        <button id="alertButton"
+                                class="bg-blue-800 p-1 rounded-full text-gray-400 hover:text-white hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-offset-blue-800 hover:ring-white">
+                            <span class="sr-only">View notifications</span>
+                            <!-- Heroicon name: bell -->
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                            </svg>
+                            <strong class="absolute top-0">{{ app.flashes|length }}</strong>
+                        </button>
+
+                        <div id="alertDropDown"
+                             class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden"
+                             aria-orientation="vertical">
+
+                            {% for info in app.flashes('success') %}
+
+                                <div class="bg-green-400">
+                                    <strong class="pl-2">Information</strong>
+                                    <div class="pl-2">
+                                        {{ info }}
+                                    </div>
+                                </div>
+                                <hr>
+
+                            {% endfor %}
+
+                            {% for info in app.flashes('error') %}
+
+                                <div class="bg-red-600">
+                                    <strong class="pl-2">Erreur</strong>
+                                    <div class="pl-2">
+                                        {{ info }}
+                                    </div>
+                                </div>
+                                <hr>
+
+                            {% endfor %}
+
+                            {% for info in app.flashes('warning') %}
+
+                                <div class="bg-yellow-600">
+                                    <strong class="pl-2">Alerte</strong>
+                                    <div class="pl-2">
+                                        {{ info }}
+                                    </div>
+                                </div>
+                                <hr>
+
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+
+                {% endif %}
+
+                <!-- Profile dropdown -->
+                <div class="ml-3 relative">
+                    <div class="flex space-x-4">
+
+                        {% if app.user %}
+                            <div class="relative group">
+
+                                <button id="userButton"
+                                        class="bg-blue-800 flex text-sm rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-offset-blue-800 group-hover:block hover:ring-white"
+                                        id="user-menu">
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="h-8 w-8 rounded-full"
+                                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                         alt="">
+                                </button>
+
+                                <div id="userDropdown"
+                                     class="origin-top-right absolute right-0 mt-0 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block"
+                                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+
+                                    {% if app.user %}
+
+                                        <a href="{{ path('user_profile_update', { id: app.user.id }) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                           role="menuitem">Mon
+                                            profil</a>
+
+                                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_REDACTOR') %}
+
+                                            <a href="{{ path('category_listing') }}"
+                                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                               role="menuitem">Panel
+                                                de gestion</a>
+
+                                        {% endif %}
+
+                                    {% endif %}
+
+                                    <a href="{{ path('logout') }}"
+                                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                       role="menuitem">Déconnexion</a>
+                                </div>
+
+                            </div>
+
+                        {% else %}
+
+                            <div>
+                                <button id="alertButton"
+                                        class="bg-blue-800 p-1 rounded-full text-gray-400 hover:text-white hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-offset-blue-800 hover:ring-white">
+                                    <span class="sr-only">View notifications</span>
+                                    <!-- Heroicon name: bell -->
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                                    </svg>
+                                    <strong class="absolute -top-3">{{ app.flashes|length }}</strong>
+                                </button>
+
+                                <div id="alertDropDown"
+                                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden"
+                                     aria-orientation="vertical">
+
+                                    {% if app.flashes|length == 0 %}
+
+                                        <div class="bg-white">
+                                            <strong class="pl-2">Aucune notifications</strong>
+                                        </div>
+
+                                    {% else %}
+
+                                        {% for info in app.flashes('success') %}
+
+                                            <div class="bg-green-400">
+                                                <strong class="pl-2">Information</strong>
+                                                <div class="pl-2">
+                                                    {{ info }}
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                        {% endfor %}
+
+                                        {% for info in app.flashes('error') %}
+
+                                            <div class="bg-red-600">
+                                                <strong class="pl-2">Erreur</strong>
+                                                <div class="pl-2">
+                                                    {{ info }}
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                        {% endfor %}
+
+                                        {% for info in app.flashes('warning') %}
+
+                                            <div class="bg-yellow-600">
+                                                <strong class="pl-2">Alerte</strong>
+                                                <div class="pl-2">
+                                                    {{ info }}
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                        {% endfor %}
+
+                                    {% endif %}
+
+                                </div>
+                            </div>
+
+                            <a href="{{ path('ticket_send') }}"
+                               class="hidden sm:block text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                Contact
+                            </a>
+
+                            <a href="{{ path('login') }}"
+                               class="hidden sm:block text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                Connexion
+                            </a>
+
+                            <a href="{{ path('registration') }}"
+                               class="hidden sm:block text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                Inscription
+                            </a>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden sm:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 flex flex-col">
+
+            {% if not app.user %}
+
+                <a href="{{ path('ticket_send') }}"
+                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    Contact
+                </a>
+
+                <a href="{{ path('login') }}"
+                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    Connexion
+                </a>
+
+                <a href="{{ path('registration') }}"
+                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    Inscription
+                </a>
+
+                <hr>
+
+            {% endif %}
 
             {% if 'administrator' not in app.request.uri and 'redactor' not in app.request.uri %}
 
                 {% for category in categories %}
 
                     {% if category.articles is not empty %}
-
-                        <li class="nav-item dropdown">
-
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                {{ category.title }}
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                {% for article in category.articles %}
-
-                                    <a class="dropdown-item"
-                                       href="{{ path('article_show', { id: article.id }) }}">{{ article.title }}</a>
-
-                                {% endfor %}
-
-                            </div>
-
-                        </li>
-
+                        <p class="text-white block px-3 py-2 rounded-md text-base font-bold">{{ category.title }}</p>
+                        <hr>
+                        {% for article in category.articles %}
+                            <a href="{{ path('article_show', { id: article.id }) }}"
+                               class="text-white hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">{{ article.title }}</a>
+                        {% endfor %}
                     {% endif %}
 
                 {% endfor %}
@@ -50,74 +343,45 @@
 
                 {% if is_granted('ROLE_ADMIN') %}
 
-                    <li class="nav-item">
+                    <a href="{{ path('user_listing') }}"
+                       class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Utilisateurs
+                    </a>
+                    <a href="{{ path('product_listing') }}"
+                       class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Produits
+                    </a>
 
-                        <a class="nav-link" href="{{ path('user_listing') }}">Utilisateurs</a>
+                    <a href="{{ path('ticket_listing') }}"
+                       class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Tickets
+                    </a>
 
-                    </li>
+                    <a href="{{ path('newsletter_send') }}"
+                       class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Newsletter
+                    </a>
 
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="{{ path('product_listing') }}">Produits</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a href="{{ path('ticket_listing') }}" class="nav-link">Tickets</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a href="{{ path('product_listing') }}" class="nav-link">Produits</a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a href="{{ path('newsletter_send') }}" class="nav-link">Newsletter</a>
-
-                    </li>
                 {% endif %}
 
-                <li class="nav-item">
+                <a href="{{ path('category_listing') }}"
+                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm
+                                font-medium">
+                    Catégories
+                </a>
 
-                    <a class="nav-link" href="{{ path('category_listing') }}">Catégories</a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="{{ path('article_listing') }}">Articles</a>
-
-                </li>
-
-            {% endif %}
-
-        </ul>
-
-        {% if app.user %}
-
-            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_REDACTOR') %}
-
-                <a class="nav-link" href="{{ path('category_listing') }}">Dashboard</a>
+                <a href="{{ path('article_listing') }}"
+                   class="text-white hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    Articles
+                </a>
 
             {% endif %}
 
-            <a class="nav-link" href="{{ path('user_profile_update', { id: app.user.id }) }}">Mon profil</a>
 
-            <a class="nav-link" href="{{ path('logout') }}">Logout</a>
-
-        {% else %}
-
-            <a class="nav-link" href="{{ path('ticket_send') }}">Contact</a>
-
-            <a class="nav-link" href="{{ path('login') }}">Connexion</a>
-
-            <a class="nav-link" href="{{ path('registration') }}">S'inscrire</a>
-        {% endif %}
-
+        </div>
     </div>
-
 </nav>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('navbar') }}
+{% endblock %}

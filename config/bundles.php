@@ -15,4 +15,5 @@ return [
     Enqueue\Bundle\EnqueueBundle::class => ['all' => true],
     Enqueue\MessengerAdapter\Bundle\EnqueueAdapterBundle::class => ['all' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
+    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
 ];

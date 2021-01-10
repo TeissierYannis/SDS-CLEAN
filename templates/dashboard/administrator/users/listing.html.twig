@@ -3,40 +3,84 @@
 {% block title %}MaSalle - Gestion utilistateurs{% endblock %}
 
 {% block body %}
-    <div class="container">
 
-        <h1 class="mt-5 mb-2">Gestion des utilisateurs</h1>
+    <h1 class="uppercase font-bold text-2xl my-5 ml-10">Gestion des utilisateurs</h1>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Pseudo</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Newsletter</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for user in vm.users %}
-                <tr>
-                    <td>{{ user.email }}</td>
-                    <td>
-                        {{ user.pseudo }}
-                    </td>
-                    <td>
-                        {{ user.roles[0] }}
-                    </td>
-                    <td>
-                        {{ user.isNewsletterRegistered ? 'Inscrit' : 'Non Inscrit' }}
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" href="{{ path('user_update', {'id': user.id}) }}">Editer</a>
-                        <a class="btn btn-danger" href="{{ path('ask_password_reset') }}">Reset MDP</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+    <div class="flex flex-col mx-10">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Coordonnées
+                            </th>
+
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                                Rôle
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                                Newsletter
+                            </th>
+
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+
+                        {% for user in vm.users %}
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10 hidden md:block">
+                                            <img class="h-10 w-10 rounded-full"
+                                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
+                                                 alt="">
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">
+                                                {{ user.pseudo }}
+                                            </div>
+                                            <div class="text-sm text-gray-500">
+                                                {{ user.email }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:block">
+                                    {{ user.roles[0] }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full hidden md:block {{ user.isNewsletterRegistered ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}b">
+                  {{ user.isNewsletterRegistered ? 'Inscrit' : 'Non Inscrit' }}
+                </span>
+                                </td>
+
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex flex-col">
+
+                                    <a class="text-pink-600 hover:text-pink-600"
+                                       href="{{ path('user_update', {'id': user.id}) }}">Editer</a>
+                                    <a class="text-pink-600 hover:text-pink-600"
+                                       href="{{ path('ask_password_reset') }}">Reset
+                                        MDP</a>
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {% include "components/pagination.html.twig" %}
     </div>
 {% endblock %}
