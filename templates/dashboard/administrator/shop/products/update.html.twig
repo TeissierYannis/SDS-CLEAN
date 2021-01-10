@@ -4,38 +4,88 @@
 
 
 {% block body %}
-    <h1 class="mt-5 mb-3">Edition d'un produit</h1>
+    <div class="flex items-center flex-col">
 
-    <div class="d-flex justify-content-end mb-3">
+        <h1 class="mt-5 mb-2 text-2xl uppercase font-bold">édition d'un produit</h1>
 
-        <a class="btn btn-secondary mr-2" href="{{ path('product_listing') }}">Retour</a>
+        <div class="flex justify-end mb-3 w-1/2">
 
-    </div>
-
-    {{ form_start(form) }}
-
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
-
-    {{ form_row(form.name) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.price) }}
-    <div class="row">
-        <div class="col">
-            {{ form_row(form.image) }}
+            <a href="{{ path('product_listing') }}"
+               class="mt-5 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Retour
+            </a>
         </div>
-        <div class="col">
-            <div class="text-center">
-                <img class="rounded img-thumbnail" style="height: 350px" height="100" src="{{ asset(productImage) }}"
-                     alt="">
+
+
+        {{ form_start(form, {
+            'attr': {
+                'class': 'w-1/2'
+            }
+        }) }}
+
+        {{ form_errors(form) }}
+
+
+        {{ form_row(form.name, {
+            'attr': {
+                'class': 'mt-1 focus:ring-pink-600 focus:border-pink-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+            },
+            'label_attr': {
+                'class': 'block text-sm font-medium text-gray-700'
+            }
+        }) }}
+        {{ form_row(form.description, {
+            'attr': {
+                'class': 'mt-1 focus:ring-pink-600 focus:border-pink-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md',
+                'rows': '15'
+            },
+            'label_attr': {
+                'class': 'block text-sm font-medium text-gray-700'
+            }
+        }) }}
+        {{ form_row(form.price, {
+            'attr': {
+                'class': 'mt-1 focus:ring-pink-600 focus:border-pink-600 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
+            },
+            'label_attr': {
+                'class': 'block text-sm font-medium text-gray-700'
+            }
+        }) }}
+        <div>
+            <label class="block text-sm font-medium text-gray-700">
+                Image de l'article
+            </label>
+            <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                <div class="space-y-1 text-center">
+                    <img class="mx-auto h-18 w-24 text-gray-400"
+                         src="{{ asset(productImage) }}"
+                         alt="">
+                    <div class="flex text-sm text-gray-600">
+                        {{ form_row(form.image, {
+                            'attr': {
+                                'class': 'sr-only'
+                            },
+                            'label_attr': {
+
+                                'class': 'relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'
+                            }
+                        }) }}
+                        <p class="pl-1">ou glissez-déposez</p>
+                    </div>
+                    <p class="text-xs text-gray-500">
+                        PNG, JPG, WEBP (10MB)
+                    </p>
+                </div>
             </div>
         </div>
+
+        <button type="submit"
+                class="mt-5 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+            Sauvegarder
+        </button>
+
+        {{ form_end(form) }}
     </div>
-
-
-    {{ form_rest(form) }}
-    <button class="btn btn-primary">Sauvegarder</button>
-    {{ form_end(form) }}
 
 
 {% endblock %}
