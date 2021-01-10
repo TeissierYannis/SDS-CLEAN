@@ -45,11 +45,13 @@ class ListingController extends AbstractController
      */
     public function __invoke(Request $request, Listing $listing): Response
     {
+        $page = $request->get('page', 1);
+
         $presenter = new ListingPresenter();
 
         $listing->execute(
             new ListingRequest(
-                $request->get('page', 1),
+                $request->get('page', 1) <= 0 ? 1 : $page,
                 $request->get('limit', 10),
                 $request->get('field', 'state'),
                 $request->get('order', 'asc'),

@@ -57,7 +57,7 @@
                                     {{ user.roles[0] }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full hidden md:block {{ user.isNewsletterRegistered ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}b">
+                <span style="width: 80px" class="text-center px-2 inline-flex text-xs leading-5 font-semibold rounded-full hidden md:block {{ user.isNewsletterRegistered ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}b">
                   {{ user.isNewsletterRegistered ? 'Inscrit' : 'Non Inscrit' }}
                 </span>
                                 </td>
@@ -81,6 +81,6 @@
             </div>
         </div>
 
-        {% include "components/pagination.html.twig" %}
+        {% include "components/pagination.html.twig" with {'page': vm.currentPage, 'pages': vm.pages, 'limit': vm.limit} %}
     </div>
 {% endblock %}

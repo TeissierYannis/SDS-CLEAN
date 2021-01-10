@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        {% include "components/pagination.html.twig" %}
+        {% include "components/pagination.html.twig" with {'page': vm.currentPage, 'pages': vm.pages, 'limit': vm.limit} %}
     </div>
 
 {% endblock %}

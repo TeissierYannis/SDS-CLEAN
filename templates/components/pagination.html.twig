@@ -13,17 +13,17 @@
         <div>
             <p class="text-sm text-gray-700">
                 Page
-                <span class="font-medium">1</span>
+                <span class="font-medium">{{ page }}</span>
                 sur
-                <span class="font-medium">10</span>
+                <span class="font-medium">{{ limit }}</span>
                 -
-                <span class="font-medium">97</span>
-                résultats
+                <span class="font-medium">{{ pages }}</span>
+                pages
             </p>
         </div>
         <div>
             <nav class="relative z-0 inline-flex shadow-sm -space-x-px" aria-label="Pagination">
-                <a href="#"
+                <a href="{% if page == 1 %}#{% else %}{{ page - 1 }}{% endif %}"
                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                     <span class="sr-only">Précedent</span>
                     <!-- Heroicon name: chevron-left -->
@@ -34,34 +34,13 @@
                               clip-rule="evenodd"/>
                     </svg>
                 </a>
-                <a href="#"
-                   class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    1
-                </a>
-                <a href="#"
-                   class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    2
-                </a>
-                <a href="#"
-                   class="hidden md:inline-flex relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    3
-                </a>
-                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
-          ...
-        </span>
-                <a href="#"
-                   class="hidden md:inline-flex relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    8
-                </a>
-                <a href="#"
-                   class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    9
-                </a>
-                <a href="#"
-                   class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    10
-                </a>
-                <a href="#"
+                {% for page in 1..pages %}
+                    <a href="?page={{ page }}"
+                       class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        {{ page }}
+                    </a>
+                {% endfor %}
+                <a href="{% if page == pages %}#{% else %}?page={{ page + 1 }}{% endif %}"
                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                     <span class="sr-only">Suivant</span>
                     <!-- Heroicon name: chevron-right -->
