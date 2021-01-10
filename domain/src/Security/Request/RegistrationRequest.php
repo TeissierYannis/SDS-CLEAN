@@ -131,6 +131,7 @@ class RegistrationRequest
         Assertion::nonUniqueEmail($this->email, $userGateway);
         Assertion::notBlank($this->pseudo);
         Assertion::nonUniquePseudo($this->pseudo, $userGateway);
+        Assertion::alnum($this->pseudo);
         Assertion::notBlank($this->plainPassword);
         Assertion::minLength($this->plainPassword, 8);
 

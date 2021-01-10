@@ -101,5 +101,6 @@ class RegistrationTest extends TestCase
         yield ["used@email.com", "pseudo", "password", false, ['ROLE_USER']];
         yield ["email@email.com", "used_pseudo", "password", false, ['ROLE_USER']];
         yield ["email@email.com", "pseudo", "password", false, ['']];
+        yield ["email@email.com", "sµqd.!", "password", false, ['ROLE_USER']];
     }
 }
