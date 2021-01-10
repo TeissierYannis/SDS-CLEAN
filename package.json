@@ -26,6 +26,7 @@
         "@tailwindcss/typography": "^0.3.1",
         "@tailwindcss/ui": "^0.7.2",
         "autoprefixer": "^9.8.6",
+        "ckeditor": "^4.12.1",
         "postcss": "^7.0.35",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
     }
