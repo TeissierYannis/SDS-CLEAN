@@ -22,7 +22,7 @@ class ListingController
 
     /**
      * ListingController constructor.
-     * @param Environment $twig
+     * @param  Environment  $twig
      */
     public function __construct(Environment $twig)
     {
@@ -31,11 +31,13 @@ class ListingController
 
     public function __invoke(Request $request, Listing $listing): Response
     {
+        $page = $request->get('page', 1);
+
         $presenter = new ListingPresenter();
 
         $listing->execute(
             new ListingRequest(
-                $request->get('page', 1),
+                $request->get('page', 1) <= 0 ? 1 : $page,
                 $request->get('limit', 10),
                 $request->get('field', 'title'),
                 $request->get('order', 'asc'),
@@ -43,8 +45,13 @@ class ListingController
             $presenter
         );
 
-        return new Response($this->twig->render('dashboard/redactor/articles/listing.html.twig', [
-            'vm' => $presenter->getViewModel()
-        ]));
+        return new Response(
+            $this->twig->render(
+                'dashboard/redactor/articles/listing.html.twig',
+                [
+                    'vm' => $presenter->getViewModel()
+                ]
+            )
+        );
     }
 }

@@ -5,9 +5,9 @@ namespace TYannis\SDS\Domain\Tickets\UseCase;
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 use TYannis\SDS\Domain\Tickets\Gateway\TicketGateway;
+use TYannis\SDS\Domain\Tickets\Presenter\ListingPresenterInterface;
 use TYannis\SDS\Domain\Tickets\Request\ListingRequest;
 use TYannis\SDS\Domain\Tickets\Response\ListingResponse;
-use TYannis\SDS\Domain\Tickets\Presenter\ListingPresenterInterface;
 
 /**
  * Class Listing
@@ -42,7 +42,7 @@ class Listing
 
         $pages = ceil($countProducts / $request->getLimit());
 
-        Assertion::range($request->getPage(), 1, $pages === 0 ? $pages : 1);
+        Assertion::range($request->getPage(), 1, $pages === 0 ? 1 : $pages);
 
         $presenter->present(
             new ListingResponse(
