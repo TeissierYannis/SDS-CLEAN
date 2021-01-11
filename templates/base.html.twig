@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}MaSalle{% endblock %}</title>
 
-    <link rel="icon" type="image/svg" href="{{ asset('assets/image/logo.svg') }}" />
+    <link rel="icon" type="image/svg" href="{{ asset('assets/image/logo.svg') }}"/>
 
     {{ encore_entry_link_tags('app') }}
 
@@ -15,6 +15,8 @@
 {% include "components/navbar.html.twig" %}
 
 <div>
+    {% include "components/header.html.twig" %}
+
     {% block body %}{% endblock %}
 </div>
 {% block javascripts %}
