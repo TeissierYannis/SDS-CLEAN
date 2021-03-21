@@ -17,7 +17,6 @@
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-
                     <!-- Mobile menu button-->
                     <p id="mobileButton"
                        class="cursor-pointer inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-700 hover:outline-none hover:ring-2 hover:ring-inset hover:ring-white"
@@ -62,13 +61,13 @@
                                     {% if category.articles is not empty %}
 
                                         <div class="relative group">
-                                            <button
+                                            <a
                                                     class="transition duration-300 ease-in-out text-blue-700 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                                 {{ category.title }}
-                                            </button>
+                                            </a>
                                             <div class="select-none absolute z-10 hidden bg-grey-200 group-hover:block">
 
-                                                <div class="transition duration-300 ease-in-out select-none absolute -mt-0 w-64 rounded-md shadow-lg py-1 bg-gray-100 ring-1 ring-black ring-opacity-5 group-hover:block">
+                                                <div class="transition duration-300 ease-in-out select-none absolute mt-1 w-64 rounded-md shadow-lg py-1 bg-gray-100 ring-1 ring-black ring-opacity-5 group-hover:block">
                                                     {% for article in category.articles %}
                                                         <a href="{{ path('article_show', { id: article.id }) }}"
                                                            class="transition duration-300 ease-in-out select-none text-blue-700 hover:text-white hover:bg-blue-700 block px-3 py-2 rounded-md text-base">
@@ -145,8 +144,8 @@
 
                                 {% if notificationCount == 0 %}
 
-                                    <div class="bg-white" style="width: 150px">
-                                        <strong class="pl-2">Aucune notifications</strong>
+                                    <div class="bg-white text-center" style="width: 150px">
+                                        <strong class="pl-2 text-gray-800">Aucune notifications</strong>
                                     </div>
 
                                 {% else %}

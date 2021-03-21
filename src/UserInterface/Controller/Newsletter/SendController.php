@@ -64,7 +64,16 @@ class SendController extends AbstractController
         $this->userRepository = $userRepository;
     }
 
-
+    /**
+     * @param Request $request
+     * @param SendUseCase $send
+     * @param SendPresenter $presenter
+     * @return RedirectResponse|Response
+     * @throws \Assert\AssertionFailedException
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function __invoke(Request $request, SendUseCase $send, SendPresenter $presenter)
     {
         $form = $this->generateForm()
@@ -102,7 +111,7 @@ class SendController extends AbstractController
     /**
      * @return FormInterface
      */
-    public function generateForm(): FormInterface
+    private function generateForm(): FormInterface
     {
         return $this->createFormBuilder()
             ->add(
