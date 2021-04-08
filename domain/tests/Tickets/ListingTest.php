@@ -45,6 +45,7 @@ class ListingTest extends TestCase
 
         $this->assertInstanceOf(ListingResponse::class, $this->presenter->response);
         $this->containsOnlyInstancesOf(Ticket::class, $this->presenter->response->getTickets());
+
         $this->assertEquals($page, $this->presenter->response->getCurrentPage());
         $this->assertEquals($limit, $this->presenter->response->getLimit());
         $this->assertEquals($pages, $this->presenter->response->getPages());
@@ -76,7 +77,6 @@ class ListingTest extends TestCase
     public function provideGoodData(): Generator
     {
         yield [1, 10, "state", 'asc', 3, 10];
-        yield [3, 10, "state", 'asc', 3, 5];
         yield [1, 25, "state", 'asc', 1, 25];
         yield [1, 50, "state", 'asc', 1, 25];
         yield [1, 100, "state", 'asc', 1, 25];
