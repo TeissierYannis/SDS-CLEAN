@@ -56,4 +56,14 @@ class MuscleGroup
     {
         return $this->name;
     }
+
+    /**
+     * @param string $name
+     * @return \TYannis\SDS\Domain\Sport\MuscleGroup\Entity\MuscleGroup
+     */
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+        return $this;
+    }
 }
